@@ -13,7 +13,6 @@ class UserController extends Controller
 
     public function postlogin(Request $request)
     {
-    	return redirect()->route('users.index');
     	$email = $request->input('email');
     	$password = $request->input('password');
 
