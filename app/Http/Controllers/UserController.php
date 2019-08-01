@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -21,8 +23,7 @@ class UserController extends Controller
     			return redirect()->route('users.index');
     		}
     	} else {
-            $errors = new MessageBag(['errorlogin' => 'email or password is incorrect']);
-            return redirect()->route('users.login')->withErrors($errors);
+            return redirect()->route('users.login');
         } 
     }
 
@@ -38,6 +39,6 @@ class UserController extends Controller
 
     public function store()
     {
-        
+
     }
 }
