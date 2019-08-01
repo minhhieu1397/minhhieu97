@@ -19,7 +19,6 @@ class UserController extends Controller
 
     	if (Auth::attempt(['email' => $email, 'password' => $password])) {
     		if (Auth::user()->role == 'admin') {
-    			dd(Auth::user()->role);
     			return redirect()->route('users.index');
     		}
     	} else {
