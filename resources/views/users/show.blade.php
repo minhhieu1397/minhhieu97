@@ -14,7 +14,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($users as $user)
+					@foreach ($user as $user)
 						<tr class="table__content">
 							<td>{{$user->id}}</td>
 							<td>{{$user->name}}</td>
@@ -23,13 +23,9 @@
 							<td>{{$user->role}}</td>
 
 							<td>
-								<a href="{{route('users.show', $user['id'])}}">VIEW</a>
-								{!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id]]) !!}
-						       		<div class="form-group">
-						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
-									</div>
-								{!! Form::close() !!}
+								<a href="{{route('users.edit', $user['id'])}}">edit</a>
 							</td>
+							
 						</tr>
 					@endforeach
 				</tbody>

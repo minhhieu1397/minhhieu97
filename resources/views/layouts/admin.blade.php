@@ -31,7 +31,10 @@
           <a class="nav-link text-success h5" href="{{route('users.create')}}">Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-success h5" href="">View Timesheet</a>
+          <a class="nav-link text-success h5" href="{{route('users.index')}}">View Timesheet</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success h5" href="{{route('hours.edit')}}">Update Hours</a>
         </li>
       </ul>
     </div>
@@ -39,7 +42,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link list_title" href="">Logout</a>
+          <a class="nav-link list_title" href="{{route('users.logout')}}">Logout</a>
         </li>
       </ul>
     </div>

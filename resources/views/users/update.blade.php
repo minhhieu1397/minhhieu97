@@ -5,7 +5,8 @@
 		<div class="col-md-4 offset-md-3">
 			<h2 class="h1 text-center">Register</h2>
 
-			{!! Form::open(['method' => 'POST', 'route' => 'users.store']) !!}
+			{!! Form::open(['method' => 'PUT', 'route' => ['users.update', $user->id]]) !!}
+
 				
 				@if ($errors->any())
 					<div class="alert alert-danger">
@@ -27,7 +28,7 @@
 	            	{{ Form::text('email', null, ['class' => 'form-control']) }}
 	       		</div>
 
-	       		<div class="form-group">
+				<div class="form-group">
 	            	{{ Form::label('password', 'Password', ['class' => 'control-label']) }}
 	       			{{ Form::password('password', ['class' => 'form-control']) }}
 	       		</div>
@@ -36,18 +37,13 @@
 	            	{{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'control-label']) }}
 	       			{{ Form::password('password_confirmation', ['class' => 'form-control']) }}
 	       		</div>
-
-	       		<div class="form-group">
-	            	{{ Form::label('description', 'Description', ['class' => 'control-label']) }}
-	            	{{ Form::text('description', null, ['class' => 'form-control']) }}
-	       		</div>
-
+	       		
 				<div class="form-group">
 	       			{!! Form::select('role',['admin' => 'admin', 'user' => 'user']) !!}
 	       		</div>
     			
 	       		<div class="form-group">
-	       			{!! Form::submit( 'Create', ['class' => 'btn btn-primary']) !!}
+	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}
 				</div>
 			{!! Form::close() !!}
 		</div>

@@ -11,12 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        	DB::table('users')->insert([
-    		'name' => 'Nguyễn Văn A',
-    		'email' => 'minhhieu97.hust@gmail.com',
-    		'password' => bcrypt('minhhieu97'),
-    		'role' => 'admin', 
-    		'description' => 'abc'
-    	]);
+        	DB::table('hourstimesheet')->insert([
+    		'start_time' => '7:00',
+    		'end_time' => '17:30'    	
+            ]);
     }
 }
