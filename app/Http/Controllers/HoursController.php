@@ -16,7 +16,6 @@ class HoursController extends Controller
     public function update(HoursRequest $request)
     {
     	$data = $request->all();
-
         $post = HoursTimesheet::findOrFail(0);
         $post->update($data);
 
