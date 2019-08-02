@@ -16,8 +16,8 @@ class HoursController extends Controller
     public function update(HoursRequest $request)
     {
     	$data = $request->all();
-        $post = HoursTimesheet::findOrFail(0);
-        $post->update($data);
+        $hours = HoursTimesheet::findOrFail(0);
+        $hours->update($data);
 
 		return back()->withSuccess( 'You have successfully updated' );
     }
