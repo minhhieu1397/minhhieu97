@@ -13,16 +13,25 @@
 
 Route::get('/', 'UserController@login')->name('users.login');
 Route::post('/users/login', 'UserController@postlogin')->name('users.loginpost');
-Route::get('/users', 'UserController@index')->name('users.index');
+Route::get('/user/userupdate/aaaa', 'UserController@useredit')->name('users.useredit');
+Route::put('/user/userupdate/aa', 'UserController@userupdate')->name('users.userupdate');
 
+
+Route::get('/users', 'UserController@index')->name('users.index');
 Route::get('/users/create', 'UserController@create')->name('users.create');
 Route::post('/users/create', 'UserController@store')->name('users.store');
-
 Route::get('/user/{user}', 'UserController@show')->name('users.show');
 Route::get('/user/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('/user/{user}/edit', 'UserController@update')->name('users.update');
 route::get('logout', 'UserController@logout')->name('users.logout');
 Route::delete('/user/{user}', 'UserController@destroy')->name('users.destroy');
+Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
+Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
 
-Route::get('hours/edit', 'HoursController@edit')->name('hours.edit');
-Route::put('hours/edit', 'HoursController@update')->name('hours.update');
+Route::get('/timesheets', 'TimesheetController@index')->name('timesheets.index');
+Route::get('/timesheets/create', 'TimesheetController@create')->name('timesheets.create');
+Route::post('/timesheets/create', 'TimesheetController@store')->name('timesheets.store');
+Route::get('/timesheets/{timesheet}', 'TimesheetController@show')->name('timesheets.show');
+Route::get('/timesheets/{timesheet}/edit', 'TimesheetController@edit')->name('timesheets.edit');
+Route::put('/timesheets/{timesheet}/edit', 'TimesheetController@update')->name('timesheets.update');
+

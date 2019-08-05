@@ -43,7 +43,6 @@ class UserService
 		$user = $this->userRepository->update($user, [
 			'name' => $request->input('name'),
 			'email' => $request->input('email'),
-			'password' => \Hash::make($request->input('password')),
 			'role' => $request->input('role'),
 		]);
 
@@ -53,5 +52,13 @@ class UserService
 	public function delete($user)
 	{
 		return $this->userRepository->delete($user);
+	}
+
+	public function user_update($request)
+	{
+		
+		return $this->userRepository->user_update($request, [
+			'email' => $request->input('email'),
+		]);
 	}
 }

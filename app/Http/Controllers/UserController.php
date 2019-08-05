@@ -32,7 +32,9 @@ class UserController extends Controller
     	if (Auth::attempt(['email' => $email, 'password' => $password])) {
     		if (Auth::user()->role == 'admin') {
     			return redirect()->route('users.index');
-    		}
+    		} else {
+                return redirect()->route('timesheets.index');
+            }
     	} else {
             return redirect()->route('users.login');
         } 
@@ -100,6 +102,19 @@ class UserController extends Controller
             return back()->withErrors([
                 'errorDelete' => 'Have an error while deleting timesheet'
             ]);
+        }
+    }
+
+    public function useredit(){
+        return view('users.userupdate');
+    }
+
+    public function userupdate(Request $request)
+    {
+        if($this->userService->user_update($request)) {
+            return redirect()->route('timesheets.index');
+        } else {
+            return Back()->withInput();
         }
     }
 }
