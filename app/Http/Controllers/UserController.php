@@ -109,7 +109,13 @@ class UserController extends Controller
         return view('users.userupdate');
     }
 
-    public function userupdate(Request $request)
+    public function edit_user()
+    {
+        $user = Auth::user();
+
+        return view('users.edit_user', ['user' => $user]);
+    }
+    public function update_user(Request $request)
     {
         if($this->userService->user_update($request)) {
             return redirect()->route('timesheets.index');
@@ -117,4 +123,25 @@ class UserController extends Controller
             return Back()->withInput();
         }
     }
+
+    public function upload_avatar(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $request->file('image')->getClientOriginalName();
+            if($file->move('image', $filename)) {
+                $user = \Auth::user();
+                $user->avatar = '/image/' . $filename;
+                $user->save();
+
+                return Back()->withSuccess( 'Upload Avatar is successfuly' );;
+            } else {
+                return Back();
+            }
+        } else {
+                return Back();
+        }
+
+    }
+
 }

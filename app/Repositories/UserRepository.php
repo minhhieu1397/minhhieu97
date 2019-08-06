@@ -40,15 +40,6 @@ class UserRepository
 
 	public function user_update($request, $attributes)
 	{
-		/*if ($request->hasFile('image')) {
-               $image = $request->file('file');
-               $filename = time() . '.' . $image->getClientOriginalExtension();
-               $location = public_path('image/' . $filename);
-               Image::make($file)->resize(800, 400)->save($location);
-        }
-		$user = \Auth::user();
-		$user->avatar = $filename;
-		$user->save();*/
 		return $this->model->find(\Auth::user()->id)->update($attributes);
 	}
 

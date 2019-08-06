@@ -17,16 +17,18 @@ class TimesheetController extends Controller
 		$this->timesheetService = $timesheetService;
 	}
 
-	/*public function homepage()
-	{
-		$user =
-	}*/
-
     public function index()
     {
-    	$timesheets = $this->timesheetService->index();
+        $user = Auth::user();
+        
+    	return view('timesheets.home',['user' => $user]);
+    }
 
-    	return view('timesheets.view', ['timesheets' => $timesheets]);
+    public function view()
+    {
+        $timesheets = $this->timesheetService->index();
+
+        return view('timesheets.view', ['timesheets' => $timesheets]);
     }
 
     public function create()

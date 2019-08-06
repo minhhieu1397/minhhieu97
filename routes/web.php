@@ -10,13 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'UserController@login')->name('users.login');
 Route::post('/users/login', 'UserController@postlogin')->name('users.loginpost');
-Route::get('/user/userupdate/aaaa', 'UserController@useredit')->name('users.useredit');
-Route::put('/user/userupdate/aa', 'UserController@userupdate')->name('users.userupdate');
+Route::get('/user/update_avatar', 'UserController@useredit')->name('users.avatar');
+Route::post('/user/update_avatar', 'UserController@upload_avatar')->name('users.update.avatar');
+Route::post('file','UserController@upload_avatar');
 
 
+Route::get('/users/edit', 'UserController@edit_user')->name('users.edit_user');
+Route::put('/users/edit', 'UserController@update_user')->name('users.update_user');
 Route::get('/users', 'UserController@index')->name('users.index');
 Route::get('/users/create', 'UserController@create')->name('users.create');
 Route::post('/users/create', 'UserController@store')->name('users.store');
@@ -25,9 +27,11 @@ Route::get('/user/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('/user/{user}/edit', 'UserController@update')->name('users.update');
 route::get('logout', 'UserController@logout')->name('users.logout');
 Route::delete('/user/{user}', 'UserController@destroy')->name('users.destroy');
+
 Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
 Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
 
+Route::get('/timesheets/view', 'TimesheetController@view')->name('timesheet.view');
 Route::get('/timesheets', 'TimesheetController@index')->name('timesheets.index');
 Route::get('/timesheets/create', 'TimesheetController@create')->name('timesheets.create');
 Route::post('/timesheets/create', 'TimesheetController@store')->name('timesheets.store');

@@ -1,34 +1,33 @@
-@extends ('layouts.admin')
+@extends ('layouts.layout_timesheet')
 @section('content')
 
 	<div class="row">
 		<div class="col-md-4 offset-md-3">
 			<h2 class="h1 text-center">Register</h2>
+			
 
-			{!! Form::open(['method' => 'PUT', 'route' => ['users.userupdate']]) !!}
 
-				
-				@if ($errors->any())
+			<form action="{{ route('users.update.avatar') }}" enctype='multipart/form-data' method="POST">
+		        {{ csrf_field() }}
+		        @if ($errors->any())
 					<div class="alert alert-danger">
 			   			<ul>
 							@foreach ($errors->all() as $error)
 								<li>{{ $error }}</li>
 							@endforeach
 				        </ul>
-				    </div>
+				    </div>			
 				@endif
-				
-				<div class="form-group">
-	            	{{ Form::label('email', 'Email', ['class' => 'control-label']) }}
-	            	{{ Form::text('email', null, ['class' => 'form-control']) }}
-	       		</div>
-
-				{{Form::file('file') }}
-    			
-	       		<div class="form-group">
-	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}
-				</div>
-			{!! Form::close() !!}
+				@if (Session::has( 'success' ))
+					 {{ Session::get( 'success' ) }}
+				@endif
+		        <input type="file" name="image" required="true">
+		        <br/>
+		        <input type="submit" value="upload">
+		    </form>
+		    @php
+				$photo = \Auth::user()->avatar;
+		    @endphp
 		</div>
 	</div>	
 

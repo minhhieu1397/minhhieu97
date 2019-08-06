@@ -58,7 +58,7 @@ class UserService
 	{
 		
 		return $this->userRepository->user_update($request, [
-			'email' => $request->input('email'),
+			'description' => $request->input('description'),
 		]);
 	}
 }

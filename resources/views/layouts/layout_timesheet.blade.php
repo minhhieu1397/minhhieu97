@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-success h5" href="{{route('timesheets.create')}}">Create Timesheet</a>
+          <a class="nav-link text-success h5" href="{{route('timesheets.index')}}">Home</a>
         </li>
       </ul>
     </div>
