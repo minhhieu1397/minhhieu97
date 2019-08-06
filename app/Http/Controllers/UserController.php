@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Services\UserService;
 use App\Models\User;
 
@@ -115,7 +116,8 @@ class UserController extends Controller
 
         return view('users.edit_user', ['user' => $user]);
     }
-    public function update_user(Request $request)
+
+    public function update_user(UpdateRequest $request)
     {
         if($this->userService->user_update($request)) {
             return redirect()->route('timesheets.index');

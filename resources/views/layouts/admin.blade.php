@@ -31,10 +31,13 @@
           <a class="nav-link text-success h5" href="{{route('users.create')}}">Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-success h5" href="{{route('users.index')}}">View Timesheet</a>
+          <a class="nav-link text-success h5" href="{{route('timesheets.index')}}">View Timesheet</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-success h5" href="{{route('hours.edit')}}">Update Hours</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-success h5" href="{{route('users.index')}}">View User</a>
         </li>
       </ul>
     </div>

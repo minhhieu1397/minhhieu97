@@ -7,6 +7,8 @@ use App\Services\TimesheetService;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Timesheets;
+use App\Http\Requests\Timesheet\CreateTimesheetRequest;
+use App\Http\Requests\Timesheet\UpdateTimesheetRequest;
 
 class TimesheetController extends Controller
 {
@@ -36,7 +38,7 @@ class TimesheetController extends Controller
     	return view('timesheets.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateTimesheetRequest $request)
     {
     	if ($this->timesheetService->create($request)) {
     		return redirect()->route('timesheets.index')->withSuccess('Create is successfuly');
@@ -59,7 +61,7 @@ class TimesheetController extends Controller
     	return view('timesheets.update', ['timesheet' => $timesheet]);
     }
 
-    public function update(Request $request, Timesheets $timesheet)
+    public function update(UpdateTimesheetRequest $request, Timesheets $timesheet)
     {
     	if($this->timesheetService->update($request, $timesheet)) {
     		return redirect()->route('timesheets.index');
