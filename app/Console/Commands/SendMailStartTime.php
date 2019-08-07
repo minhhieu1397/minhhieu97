@@ -43,10 +43,13 @@ class SendMailStartTime extends Command
     public function handle()
     {
         $users = User::where('role', 'user')->get();
-        \Log::debug('user id: ' . $user->id);
+        
 
         foreach ($users as $user) {
-                
+                 Mail::send('emails.starttime_create_timesheet', ['user' => $user], function ($mail) use ($user) {
+                    $mail->from('nkok.been@gmail.com', 'Company');
+                    $mail->to($user['email'])->subject('aaaaaaaa!');
+            });
          
         }
     }
