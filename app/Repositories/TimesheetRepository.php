@@ -22,6 +22,16 @@ class TimesheetRepository
         }
 	}
 
+	public function view_by_month($month)
+	{
+		return $this->model->whereMonth('work_date', $month)->Where('user_id', \Auth::user()->id)->get();
+	}
+
+	public function view_by_week($week)
+	{
+		return $this->model->where('(work_date)->weekOfYear', $week)->get();
+	}
+
 	public function create($attributes)
 	{
 		return $this->model->create($attributes);

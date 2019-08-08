@@ -3,20 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\User;
-use Mail;
-use App\Mail\SendMailable;
 
-
-
-class SendMailStartTime extends Command
+class SendMailEndTime extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'timesheet:startcreate';
+    protected $signature = 'timesheet:endcreate';
 
     /**
      * The console command description.

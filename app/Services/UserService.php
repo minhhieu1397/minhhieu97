@@ -61,4 +61,11 @@ class UserService
 			'description' => $request->input('description'),
 		]);
 	}
+
+	public function change_password($request)
+	{
+        $new_password = $request->input('new_password');
+
+		return $this->userRepository->change_password($new_password);
+	}
 }

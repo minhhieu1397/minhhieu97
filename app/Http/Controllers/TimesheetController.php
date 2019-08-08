@@ -33,6 +33,20 @@ class TimesheetController extends Controller
         return view('timesheets.view', ['timesheets' => $timesheets]);
     }
 
+    public function view_by_month(Request $request)
+    {
+        $timesheets = $this->timesheetService->view_by_month($request);
+
+        return view('timesheets.view', ['timesheets' => $timesheets]);
+    }
+
+    public function view_by_week(Request $request)
+    {
+        $timesheets = $this->timesheetService->view_by_week($request);
+
+        return view('timesheets.view', ['timesheets' => $timesheets]);
+    }
+
     public function create()
     {
     	return view('timesheets.create');

@@ -16,6 +16,9 @@ Route::get('/user/update_avatar', 'UserController@useredit')->name('users.avatar
 Route::post('/user/update_avatar', 'UserController@upload_avatar')->name('users.update.avatar');
 Route::post('file','UserController@upload_avatar');
 
+Route::get('/users/edit_password', 'UserController@employees_edit_password')->name('users.employees.editpassword');
+Route::put('/users/edit_password', 'UserController@employees_update_password')->name('users.employees.updatepassword');
+
 
 Route::get('/users/edit', 'UserController@edit_user')->name('users.edit_user');
 Route::put('/users/edit', 'UserController@update_user')->name('users.update_user');
@@ -32,6 +35,10 @@ Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
 Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
 
 Route::get('/timesheets/view', 'TimesheetController@view')->name('timesheet.view');
+Route::get('/timesheets/view_by_week', 'TimesheetController@view_by_week')->name('timesheet.viewweek');
+Route::get('/timesheets/view_by_month', 'TimesheetController@view_by_month')->name('timesheet.viewmonth');
+
+
 Route::get('/timesheets', 'TimesheetController@index')->name('timesheets.index');
 Route::get('/timesheets/create', 'TimesheetController@create')->name('timesheets.create');
 Route::post('/timesheets/create', 'TimesheetController@store')->name('timesheets.store');

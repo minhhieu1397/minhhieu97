@@ -16,9 +16,9 @@ class SendMailStartTimeMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +28,10 @@ class SendMailStartTimeMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.starttime_create_timesheet');
+         return $this->subject('Timesheet create')
+            ->view('emails.starttime_create_timesheet')->with([
+                'user' => $this->user
+            ]);
+        
     }
 }

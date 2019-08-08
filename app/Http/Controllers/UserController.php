@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\UpdateRequest;
+use App\Http\Requests\User\ChangePasswordRequest;
 use App\Services\UserService;
 use App\Models\User;
 
@@ -126,6 +127,22 @@ class UserController extends Controller
         }
     }
 
+    public function employees_edit_password()
+    {
+        return view('users.employees.update_password');
+    }
+
+    public function employees_update_password(ChangePasswordRequest $request)
+    {
+        if($this->userService->change_password($request)) {
+            return redirect()->route('users.logout');
+        } else {
+            return Back()->withErrors([
+                'errorChangePass' =>    'Have an erroe while change password'
+            ]);
+        }
+    }
+
     public function upload_avatar(Request $request)
     {
         if ($request->hasFile('image')) {
@@ -141,9 +158,8 @@ class UserController extends Controller
                 return Back();
             }
         } else {
-                return Back();
+            return Back();
         }
-
     }
 
 }

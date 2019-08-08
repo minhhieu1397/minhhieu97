@@ -1,8 +1,25 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
+	<h1 class="h1 text-center text-primary">View</h1>
+
+	<div class="row">
+		<div class="col-md-2">
+			<h2 class="h5">By week:</h2>
+				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewweek']) !!}
+		            {{ Form::text('week', null) }}
+		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+				{!! Form::close() !!}
+		</div>
+		<div class="col-md-2">
+			<h2 class="h5">By month:</h2>
+				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewmonth']) !!}
+		            {{ Form::text('month', null) }}
+		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+				{!! Form::close() !!}
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12 ">
-			<h1 class="h1 text-center text-primary">View</h1>
 			<div class="text-center">
 				@if (Session::has( 'success' ))
 					{{ Session::get( 'success' ) }}

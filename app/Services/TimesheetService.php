@@ -20,6 +20,20 @@ class TimesheetService
 		return $this->timesheetRepository->all();
 	}
 
+	public function view_by_month($request)
+	{
+		$month = $request->input('month');
+
+		return $this->timesheetRepository->view_by_month($month);
+	}
+
+	public function view_by_week($request)
+	{
+		$week = $request->input('week');
+
+		return $this->timesheetRepository->view_by_week($week);
+	}
+
 	public function create($request)
 	{
 		$now = \Carbon\Carbon::now();

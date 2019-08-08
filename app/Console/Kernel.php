@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
 
-    protected $commands = ['App\Console\Commands\SendMailStartTime'];
+    protected $commands = ['App\Console\Commands\SendMailStartTime',
+        'App\Console\Commands\SendMailEndTime'];
 
 
     /**
@@ -24,7 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('timesheet:create')->dailyAt('18:01');
+        $schedule->command('timesheet:startcreate')->dailyAt('17:25');
+        $schedule->command('timesheet:endcreate')->dailyAt('19:03');
     }
 
     /**
