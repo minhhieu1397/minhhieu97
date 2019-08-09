@@ -31,6 +31,11 @@
 				<div class="form-group">
 	       			{!! Form::select('role',['admin' => 'admin', 'user' => 'user']) !!}
 	       		</div>
+
+	       		<div class="form-group">
+	            	{{ Form::label('leader', 'Leader', ['class' => 'control-label']) }}
+	            	{{ Form::text('leader', null, ['class' => 'form-control']) }}
+	       		</div>
     			
 	       		<div class="form-group">
 	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}

@@ -27,9 +27,9 @@ class TimesheetRepository
 		return $this->model->whereMonth('work_date', $month)->Where('user_id', \Auth::user()->id)->get();
 	}
 
-	public function view_by_week($week)
+	public function view_by_week($date)
 	{
-		return $this->model->where('(work_date)->weekOfYear', $week)->get();
+		return $this->model->whereDate('work_date', $date )->Where('user_id', \Auth::user()->id)->get();
 	}
 
 	public function create($attributes)
@@ -43,6 +43,16 @@ class TimesheetRepository
 	}
 
 	public function update($timesheet, array $attributes)
+	{
+		return $this->model->find($timesheet->id)->update($attributes);
+	}
+
+	public function view_approve()
+	{
+		return $this->model->where('leader', \Auth::user()->email)->where('approve', 0)->get();
+	}
+
+	public function update_approve($timesheet, $attributes)
 	{
 		return $this->model->find($timesheet->id)->update($attributes);
 	}

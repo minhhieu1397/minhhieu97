@@ -29,9 +29,9 @@ class TimesheetService
 
 	public function view_by_week($request)
 	{
-		$week = $request->input('week');
+		$date = $request->input('date');
 
-		return $this->timesheetRepository->view_by_week($week);
+		return $this->timesheetRepository->view_by_week($date);
 	}
 
 	public function create($request)
@@ -39,15 +39,15 @@ class TimesheetService
 		$now = \Carbon\Carbon::now();
         $workDate = \Carbon\Carbon::parse($request->input('work_date'))->hour(17);
         $lateFlg = $now->diffInSeconds($workDate, false) < 0;
-
         $timesheet = $this->timesheetRepository->create([
         	'name' => \Auth::user()->name,
             'work_date' => $request->input('work_date'),
             'start_time' => $request->input('start_time'),
             'end_time' => $request->input('end_time'),
             'details' => $request->input('details'),
-            'approve' => $request->input('approve'),
+            'approve' => false,
             'late_flg' => $lateFlg,
+            'leader' => \Auth::user()->leader,
             'user_id' => \Auth::user()->id
         ]);
 
@@ -66,5 +66,15 @@ class TimesheetService
         return $this->timesheetRepository->update($timesheet, $attributes);
 	}
 
+	public function view_approve()
+	{
+		return $this->timesheetRepository->view_approve();
+	}
 
+	public function update_approve($timesheet)
+	{
+		return $this->timesheetRepository->update_approve($timesheet, [
+			'approve' => true,
+		]);
+	}
 }

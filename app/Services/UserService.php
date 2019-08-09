@@ -21,7 +21,7 @@ class UserService
 			'email' => $request->input('email'),
 			'password' => \Hash::make($request->input('password')),
 			'description' => $request->input('description'),
-			'role' => $request->input('role'),
+			'role' => $request->input('role')
 		]);
 
 		return $user;
@@ -39,11 +39,11 @@ class UserService
 
 	public function update($user, $request)
 	{
-		/*$attributes = $request->all();*/
 		$user = $this->userRepository->update($user, [
 			'name' => $request->input('name'),
 			'email' => $request->input('email'),
 			'role' => $request->input('role'),
+			'leader' => $request->input('leader'),
 		]);
 
 		return $user;
@@ -56,7 +56,6 @@ class UserService
 
 	public function user_update($request)
 	{
-		
 		return $this->userRepository->user_update($request, [
 			'description' => $request->input('description'),
 		]);

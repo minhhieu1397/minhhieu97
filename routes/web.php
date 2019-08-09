@@ -34,6 +34,8 @@ Route::delete('/user/{user}', 'UserController@destroy')->name('users.destroy');
 Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
 Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
 
+Route::get('/timesheet/approve', 'TimesheetController@view_approve')->name('timesheet.approve');
+Route::put('/timesheet/approve/{timesheet}', 'TimesheetController@edit_approve')->name('timesheet.approve_edit');
 Route::get('/timesheets/view', 'TimesheetController@view')->name('timesheet.view');
 Route::get('/timesheets/view_by_week', 'TimesheetController@view_by_week')->name('timesheet.viewweek');
 Route::get('/timesheets/view_by_month', 'TimesheetController@view_by_month')->name('timesheet.viewmonth');

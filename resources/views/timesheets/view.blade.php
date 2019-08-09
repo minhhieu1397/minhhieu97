@@ -4,9 +4,9 @@
 
 	<div class="row">
 		<div class="col-md-2">
-			<h2 class="h5">By week:</h2>
+			<h2 class="h5">By date:</h2>
 				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewweek']) !!}
-		            {{ Form::text('week', null) }}
+		            {{Form::date('date', \Carbon\Carbon::now())}}
 		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
 				{!! Form::close() !!}
 		</div>
@@ -39,14 +39,14 @@
 			<table class="table table-condensed">
 				<thead>
 					<tr class="table__title">
-						<th>ID</th>
-						<th>NAME</th>
-						<th>WORD DATE</th>
-						<th>START TIME</th>
-						<th>END TIME</th>
-						<th>DETAILS</th>
-						<th>APPROVE</th>
-						<th>LATE</th>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Work date</th>
+						<th>Start time</th>
+						<th>End time</th>
+						<th>Details</th>
+						<th>Approve</th>
+						<th>Late</th>
 						<th ></th>
 					</tr>
 				</thead>

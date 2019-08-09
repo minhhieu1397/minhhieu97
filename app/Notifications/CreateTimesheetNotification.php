@@ -7,18 +7,19 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SendMaiStartTime extends Notification
+class CreateTimesheetNotification extends Notification
 {
     use Queueable;
 
+    protected $name;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->name = $name;
     }
 
     /**
@@ -41,9 +42,9 @@ class SendMaiStartTime extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->greeting('Hello!')
+            ->line($this->name .' have a timesheet subscriber.')
+            ->line('Thank you!');
     }
 
     /**

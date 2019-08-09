@@ -45,7 +45,7 @@
 				<div class="form-group">
 	       			{!! Form::select('role',['admin' => 'admin', 'user' => 'user']) !!}
 	       		</div>
-    			
+
 	       		<div class="form-group">
 	       			{!! Form::submit( 'Create', ['class' => 'btn btn-primary']) !!}
 				</div>

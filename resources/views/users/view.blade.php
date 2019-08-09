@@ -5,12 +5,13 @@
 			<table class="table table-condensed" >
 				<thead>
 					<tr class="table__title">
-						<th>ID</th>
+						<th>Id</th>
 						<th>Name</th>
 						<th>Email</th>
 						<th>Description</th>
-						<th>Role</th>					
-						<th>VIEW</th>
+						<th>Role</th>
+						<th>leader</th>				
+						<th>View</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -21,6 +22,8 @@
 							<td>{{$user->email}}</td>
 							<td>{{$user->description}}</td>
 							<td>{{$user->role}}</td>
+							<td>{{$user->leader}}</td>
+
 
 							<td>
 								<a href="{{route('users.show', $user['id'])}}">VIEW</a>

@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Services\TimesheetService;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Timesheets;
 use App\Http\Requests\Timesheet\CreateTimesheetRequest;
 use App\Http\Requests\Timesheet\UpdateTimesheetRequest;
+use App\Notifications\CreateTimesheetNotification;
 
 class TimesheetController extends Controller
 {
@@ -55,6 +57,10 @@ class TimesheetController extends Controller
     public function store(CreateTimesheetRequest $request)
     {
     	if ($this->timesheetService->create($request)) {
+            /*$user = \Auth::user();
+            $leader = User::where('email', $user->leader)->first();
+            $leader->notify(new CreateTimesheetNotification($user->name));*/
+
     		return redirect()->route('timesheets.index')->withSuccess('Create is successfuly');
     	} else {
     		return Back()->withInput()->withErrors([
@@ -77,12 +83,30 @@ class TimesheetController extends Controller
 
     public function update(UpdateTimesheetRequest $request, Timesheets $timesheet)
     {
-    	if($this->timesheetService->update($request, $timesheet)) {
+    	if ($this->timesheetService->update($request, $timesheet)) {
     		return redirect()->route('timesheets.index');
     	} else {
     		return Back()->withInput();
     	}
     }
 
+    public function view_approve()
+    {
+        $timesheets = $this->timesheetService->view_approve();
+
+        return view('timesheets.approve', ['timesheets' => $timesheets]);
+    }
+
+    public function edit_approve(Timesheets $timesheet)
+    {
+        if ($this->timesheetService->update_approve($timesheet)) {
+            return Back()->withSuccess('Approve is Success');
+        } else {
+            return Back()->withErrors([
+                'errorApprove' => 'Have an error while Approve'
+            ]);
+        }
+
+    }
  
 }

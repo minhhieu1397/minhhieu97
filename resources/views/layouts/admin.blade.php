@@ -39,6 +39,9 @@
          <li class="nav-item">
           <a class="nav-link text-success h5" href="{{route('users.index')}}">View User</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-success h5" href="{{route('timesheet.approve')}}">Approve</a>
+        </li>
       </ul>
     </div>
 
