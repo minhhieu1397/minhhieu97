@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('timesheet:startcreate')->dailyAt('17:25');
-        $schedule->command('timesheet:endcreate')->dailyAt('19:03');
+        /*$schedule->command('timesheet:startcreate')->dailyAt('17:25');
+        $schedule->command('timesheet:endcreate')->dailyAt('19:03');*/
     }
 
     /**

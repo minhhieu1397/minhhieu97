@@ -30,6 +30,9 @@ class TimesheetController extends Controller
 
     public function view()
     {
+        $user = Auth::user();
+        $timesheet = Timesheets::where('user_id', $user->id)->first();
+        $this->authorize('view', $timesheet);
         $timesheets = $this->timesheetService->index();
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
@@ -72,7 +75,8 @@ class TimesheetController extends Controller
     public function show(Timesheets $timesheet)
     {
     	$timesheet = $this->timesheetService->show($timesheet);
-
+         $this->authorize('view', $timesheet);
+         
     	return view('timesheets.show',['timesheet' => $timesheet]);
     }
 

@@ -39,6 +39,7 @@ class TimesheetService
 		$now = \Carbon\Carbon::now();
         $workDate = \Carbon\Carbon::parse($request->input('work_date'))->hour(17);
         $lateFlg = $now->diffInSeconds($workDate, false) < 0;
+
         $timesheet = $this->timesheetRepository->create([
         	'name' => \Auth::user()->name,
             'work_date' => $request->input('work_date'),
@@ -63,7 +64,10 @@ class TimesheetService
 	{
 		$attributes = $request->all();
       
-        return $this->timesheetRepository->update($timesheet, $attributes);
+        return $this->timesheetRepository->update($timesheet, [
+        	'approve' => false,
+        	'details' => $request->input('details')
+        ]);
 	}
 
 	public function view_approve()

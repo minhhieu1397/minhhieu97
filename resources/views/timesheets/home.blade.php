@@ -9,7 +9,7 @@
 						<a class="nav-link text-primary h5" href="{{route('users.avatar')}}">Update Avatar</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-primary h5" href="{{route('users.edit_user')}}">Update User</a>
+						<a class="nav-link text-primary h5" href="{{route('users.edit')}}">Update User</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-primary h5" href="{{route('timesheet.view')}}">View Timesheets</a>
@@ -20,6 +20,11 @@
 					<li class="nav-item">
 						<a class="nav-link text-primary h5" href="{{route('users.employees.editpassword')}}">Change Password</a>
 					</li>
+					@can ('Admin')
+						<li class="nav-item">
+							<a class="nav-link text-primary h5" href="{{route('users.index')}}">Admin</a>
+						</li>
+					@endcan
 				</ul>
 			</div>
 		</div>

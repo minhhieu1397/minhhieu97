@@ -23,7 +23,7 @@
 							<td>{{$user->role}}</td>
 
 							<td>
-								<a href="{{route('users.edit', $user['id'])}}">edit</a>
+								<a href="{{route('admin.users.edit', $user['id'])}}">edit</a>
 							</td>
 							
 						</tr>

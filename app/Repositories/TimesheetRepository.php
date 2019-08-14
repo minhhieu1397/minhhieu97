@@ -42,7 +42,7 @@ class TimesheetRepository
 		return $this->model->find($timesheet->id);
 	}
 
-	public function update($timesheet, array $attributes)
+	public function update($timesheet, $attributes)
 	{
 		return $this->model->find($timesheet->id)->update($attributes);
 	}

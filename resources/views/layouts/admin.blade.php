@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="nav-iteme">
-          <a class="nav-link text-success h5" href="{{route('users.create')}}">Create</a>
+          <a class="nav-link text-success h5" href="{{route('admin.users.create')}}">Create</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-success h5" href="{{route('timesheets.index')}}">View Timesheet</a>
@@ -56,7 +56,7 @@
 </nav>
 
 <!-- Page Content -->	
-	<div class="container">
+	<div class="container contentTimesheet">
 		@yield('content')
 	</div>
 

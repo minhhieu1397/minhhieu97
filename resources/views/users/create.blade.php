@@ -5,7 +5,7 @@
 		<div class="col-md-4 offset-md-4">
 			<h2 class="h1 text-center">Register</h2>
 
-			{!! Form::open(['method' => 'POST', 'route' => 'users.store']) !!}
+			{!! Form::open(['method' => 'POST', 'route' => 'admin.users.store']) !!}
 				
 				@if ($errors->any())
 					<div class="alert alert-danger">

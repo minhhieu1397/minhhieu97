@@ -30,20 +30,20 @@ class UserController extends Controller
     {
     	$email = $request->input('email');
     	$password = $request->input('password');
-
-    	if (Auth::attempt(['email' => $email, 'password' => $password])) {
-    		if (Auth::user()->role == 'admin') {
-    			return redirect()->route('users.index');
-    		} else {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+               if (Auth::user()->role == 'admin') {
+                       return redirect()->route('users.index');
+               } else {
                 return redirect()->route('timesheets.index');
             }
-    	} else {
+        } else {
             return redirect()->route('users.login');
-        } 
+        }
     }
 
     public function index()
     {
+        $user = Auth::user();
         $users = $this->userService->index();
 
     	return view('users.view', ['users' => $users]);
@@ -51,6 +51,9 @@ class UserController extends Controller
 
     public function create()
     {
+        $user = Auth::user();
+        $this->authorize('view',$user);
+
         return view('users.create');
     }
 
@@ -67,6 +70,8 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $user = Auth::user();
+        $this->authorize('view',$user);
         $user = $this->userService->show($user);
 
         return view('users.show',['user' => $user]);
@@ -74,6 +79,9 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $user = Auth::user();
+        $this->authorize('view',$user);
+        
         return view('users.update', ['user' => $user]);
     }
 
