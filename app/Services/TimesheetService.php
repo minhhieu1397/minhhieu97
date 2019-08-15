@@ -46,6 +46,8 @@ class TimesheetService
             'start_time' => $request->input('start_time'),
             'end_time' => $request->input('end_time'),
             'details' => $request->input('details'),
+            'issue' => $request->input('issue'),
+            'intention' => $request->input('intention'),
             'approve' => false,
             'late_flg' => $lateFlg,
             'leader' => \Auth::user()->leader,
@@ -80,5 +82,15 @@ class TimesheetService
 		return $this->timesheetRepository->update_approve($timesheet, [
 			'approve' => true,
 		]);
+	}
+
+	public function view_timesheet($user)
+	{
+		return $this->timesheetRepository->view_timesheet($user);
+	}
+
+	public function delete($timesheet)
+	{
+		return $this->timesheetRepository->delete($timesheet);
 	}
 }

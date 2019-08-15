@@ -2,7 +2,7 @@
 @section('content')
 	
 	<div class="row">
-		<div class="col-md-4 offset-md-4">
+		<div class="col-md-3 offset-md-4">
 			<h1 class="h1 text-center text-primary"> Edit Timesheet</h1>
 
 			{!! Form::open(['method' => 'PUT', 'route' => ['timesheets.update', $timesheet->id]]) !!}

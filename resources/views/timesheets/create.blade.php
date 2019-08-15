@@ -41,6 +41,16 @@
 	            	{{ Form::textarea('details', null, ['class' => 'form-control', 'rows' => 3]) }}
 	       		</div>
 
+	       		<div class="form-group">
+	            	{{ Form::label('issue', 'Issue', ['class' => 'control-label']) }}
+	            	{{ Form::textarea('issue', null, ['class' => 'form-control', 'rows' => 3]) }}
+	       		</div>
+
+	       		<div class="form-group">
+	            	{{ Form::label('intention', 'Intention', ['class' => 'control-label']) }}
+	            	{{ Form::textarea('intention', null, ['class' => 'form-control', 'rows' => 3]) }}
+	       		</div>
+
 				<div>
 	       			{!! Form::submit( 'Create', ['class' => 'btn btn-primary']) !!}
 				</div>

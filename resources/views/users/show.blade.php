@@ -9,7 +9,7 @@
 						<th>Name</th>
 						<th>Email</th>
 						<th>Description</th>
-						<th>Role</th>					
+						<th>Role</th>				
 						<th>VIEW</th>
 					</tr>
 				</thead>

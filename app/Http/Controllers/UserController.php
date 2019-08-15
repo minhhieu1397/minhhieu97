@@ -8,6 +8,7 @@ use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\User\ChangePasswordRequest;
+use App\Http\Requests\User\ResetPasswordRequest;
 use App\Services\UserService;
 use App\Models\User;
 
@@ -52,7 +53,7 @@ class UserController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $this->authorize('view',$user);
+        $this->authorize('admin',$user);
 
         return view('users.create');
     }
@@ -70,17 +71,17 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $user = Auth::user();
-        $this->authorize('view',$user);
         $user = $this->userService->show($user);
 
+        $admin = Auth::user();
+        $this->authorize('admin',$admin);
         return view('users.show',['user' => $user]);
     }
 
     public function edit(User $user)
     {
-        $user = Auth::user();
-        $this->authorize('view',$user);
+        $admin = Auth::user();
+        $this->authorize('admin',$admin);
         
         return view('users.update', ['user' => $user]);
     }
@@ -89,7 +90,7 @@ class UserController extends Controller
     {
         if ($this->userService->update($user, $request))
         {
-            return redirect()->route('users.index')->withSuccess('Update is success');
+            return back()->withSuccess('Update is success');
         } else {
             return back()->withInput()->withErrors([
                 'errorUpdate' => 'Have an error while updating'
@@ -146,7 +147,7 @@ class UserController extends Controller
             return redirect()->route('users.logout');
         } else {
             return Back()->withErrors([
-                'errorChangePass' =>    'Have an erroe while change password'
+                'errorChangePass' => 'Have an erroe while change password'
             ]);
         }
     }
@@ -160,13 +161,23 @@ class UserController extends Controller
                 $user = \Auth::user();
                 $user->avatar = '/image/' . $filename;
                 $user->save();
-
                 return Back()->withSuccess( 'Upload Avatar is successfuly' );;
             } else {
                 return Back();
             }
         } else {
             return Back();
+        }
+    }
+
+    public function admin_resetpassword(User $user, ResetPasswordRequest $request)
+    {
+        if ($this->userService->admin_resetpassword($user, $request)) {
+            return back()->withSuccess('Reset Password is successfuly');
+        } else {
+            return back()->withErrors([
+                'ResetPasswordError' => 'Have an error while Reset Password'
+            ]);
         }
     }
 

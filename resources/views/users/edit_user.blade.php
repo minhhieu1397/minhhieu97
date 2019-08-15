@@ -1,7 +1,7 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
 	<div class="row">
-		<div class="col-md-4 offset-md-3">
+		<div class="col-md-3 offset-md-4">
 			<h2 class="h1 text-center">Register</h2>
 
 			{!! Form::open(['method' => 'PUT', 'route' => ['users.update']]) !!}

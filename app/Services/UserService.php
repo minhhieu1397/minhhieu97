@@ -67,4 +67,11 @@ class UserService
 
 		return $this->userRepository->change_password($new_password);
 	}
+
+	public function admin_resetpassword($user, $request)
+	{
+		return $this->userRepository->admin_resetpassword($user, [
+			'password' => \Hash::make($request->input('password')),
+		]);
+	}
 }

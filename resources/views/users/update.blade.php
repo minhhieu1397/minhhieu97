@@ -6,8 +6,11 @@
 			<h2 class="h1 text-center">Register</h2>
 
 			{!! Form::open(['method' => 'PUT', 'route' => ['admin.users.update', $user->id]]) !!}
-
-				
+				<div class="success alert-success">
+					@if (Session::has( 'success' ))
+	          			{{ Session::get( 'success' ) }}
+	        		@endif
+				</div>
 				@if ($errors->any())
 					<div class="alert alert-danger">
 			   			<ul>
@@ -34,7 +37,7 @@
 
 	       		<div class="form-group">
 	            	{{ Form::label('leader', 'Leader', ['class' => 'control-label']) }}
-	            	{{ Form::text('leader', null, ['class' => 'form-control']) }}
+	            	{{ Form::text('leader', $user->leader, ['class' => 'form-control']) }}
 	       		</div>
     			
 	       		<div class="form-group">
@@ -46,7 +49,7 @@
 	<div class="row">
 		<div class="col-md-4 offset-md-3">
 			<h2>Reset Password</h2>
-			{!! Form::open(['method' => 'PUT', 'route' => ['admin.users.update', $user->id]]) !!}
+			{!! Form::open(['method' => 'PUT', 'route' => ['admin.user.resetpassword', $user->id]]) !!}
 
 				
 				@if ($errors->any())
@@ -60,14 +63,18 @@
 				@endif
 			
 			<div class="form-group">
-            	{{ Form::label('name', 'Name', ['class' => 'control-label']) }}
-            	{{ Form::password('password', $user->name, ['class' => 'form-control']) }}
+            	{{ Form::label('password', 'Password', ['class' => 'control-label']) }}
+            	{{ Form::password('password', ['class' => 'form-control']) }}
        		</div>
 
 			<div class="form-group">
-            	{{ Form::label('email', 'Email', ['class' => 'control-label']) }}
-            	{{ Form::password('email', $user->email, ['class' => 'form-control']) }}
+            	{{ Form::label('password_confirmation', 'Confilm Password', ['class' => 'control-label']) }}
+            	{{ Form::password('password_confirmation', ['class' => 'form-control']) }}
        		</div>
+
+       		<div class="form-group">
+	       		{!! Form::submit( 'Reset Password', ['class' => 'btn btn-primary']) !!}
+			</div>
 			{!! Form::close() !!}
 
 		</div>

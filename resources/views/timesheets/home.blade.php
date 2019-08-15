@@ -1,7 +1,7 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2 offset-md-1">
 			<h1>List</h1>
 			<div class="navbar-collapse">
 				<ul class=" navbar-nav">

@@ -30,9 +30,7 @@ class TimesheetController extends Controller
 
     public function view()
     {
-        $user = Auth::user();
-        $timesheet = Timesheets::where('user_id', $user->id)->first();
-        $this->authorize('view', $timesheet);
+        
         $timesheets = $this->timesheetService->index();
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
@@ -75,7 +73,7 @@ class TimesheetController extends Controller
     public function show(Timesheets $timesheet)
     {
     	$timesheet = $this->timesheetService->show($timesheet);
-         $this->authorize('view', $timesheet);
+        $this->authorize('view', $timesheet);
          
     	return view('timesheets.show',['timesheet' => $timesheet]);
     }
@@ -111,6 +109,24 @@ class TimesheetController extends Controller
             ]);
         }
 
+    }
+
+    public function view_timesheet(User $user)
+    {
+        $timesheets = $this->timesheetService->view_timesheet($user);
+
+        return view('timesheets.view', ['timesheets' => $timesheets]);
+    }
+
+    public function destroy($timesheet)
+    {
+        if ($this->timesheetService->delete($timesheet)) {
+            return back()->withSuccess( 'Delete is successfuly' );
+        } else {
+            return back()->withErrors([
+                'errorDelete' => 'Have an error while deleting timesheet'
+            ]);
+        }
     }
  
 }

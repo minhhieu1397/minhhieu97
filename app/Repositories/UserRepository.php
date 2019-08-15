@@ -52,4 +52,9 @@ class UserRepository
         return true;
 	}
 
+	public function admin_resetpassword($user, $attributes)
+	{
+		return $this->model->find($user->id)->update($attributes);
+	}
+
 }

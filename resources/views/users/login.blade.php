@@ -36,9 +36,6 @@
 				<div>
 	       			{!! Form::submit( 'Login', ['class' => 'btn btn-primary']) !!}
 				</div>
-				<div class="form-group">
-					<a href="">Forget Password</a>
-				</div>
 			{!! Form::close() !!}
 		</div>
 	</div>

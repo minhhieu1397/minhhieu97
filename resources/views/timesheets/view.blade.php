@@ -19,12 +19,13 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 ">
+		<div class="col-md-12">
 			<div class="text-center">
-				@if (Session::has( 'success' ))
-					{{ Session::get( 'success' ) }}
-				@endif
-
+				<div class="alert-success">
+					@if (Session::has( 'success' ))
+						{{ Session::get( 'success' ) }}
+					@endif
+				</div>
 				@if ($errors->any())
 					<div class="alert alert-danger">
 			   			<ul>
@@ -45,29 +46,48 @@
 						<th>Start time</th>
 						<th>End time</th>
 						<th>Details</th>
+						<th>Issue</th>
+						<th>Intention</th>
 						<th>Approve</th>
 						<th>Late</th>
 						<th ></th>
 					</tr>
 				</thead>
 				<tbody>
+					@php
+						$late = 0;
+						$id = 0;
+					@endphp
 					@foreach ($timesheets as $timesheet)
 						<tr class="table__content">
-							<td>{{$timesheet->id}}</td>
+							@php
+								$id ++;
+								if ($timesheet->late_flg)
+									$late++;
+							@endphp
+							<td>{{$id}}</td>
 							<td>{{$timesheet->name}}</td>
 							<td>{{$timesheet->work_date}}</td>
 							<td>{{$timesheet->start_time}}</td>
 							<td>{{$timesheet->end_time}}</td>
 							<td>{{$timesheet->details}}</td>
+							<td>{{$timesheet->issue}}</td>
+							<td>{{$timesheet->intention}}</td>
 							<td>{{$timesheet->approve}}</td>
 							<td>{{$timesheet->late_flg}}</td>
 							<td> 
 								<a href="{{route('timesheets.show', $timesheet['id'])}}" title="View TimeSheet!!!" >View</a>
+								{!! Form::open(['method' => 'DELETE', 'route' => ['timesheets.destroy', $timesheet->id]]) !!}
+						       		<div class="form-group">
+						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
+									</div>
+								{!! Form::close() !!}
 							</td>
 						</tr>
 					@endforeach
 				</tbody>
 			</table>
+			<p> late: {{$late}}</p>
 		</div>
 	</div>
 @stop()
