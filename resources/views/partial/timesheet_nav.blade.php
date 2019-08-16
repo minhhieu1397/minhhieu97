@@ -3,8 +3,13 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-success h5" href="{{route('timesheets.index')}}">Home</a>
+          <a class="nav-link text-primary h5" href="{{route('timesheets.index')}}">Home</a>
         </li>
+        @can ('Admin')
+          <li class="nav-item">
+            <a class="nav-link text-primary h5" href="{{route('users.index')}}">Admin</a>
+          </li>
+        @endcan
       </ul>
     </div>
 

@@ -3,7 +3,7 @@
 
 	<div class="row">
 		<div class="col-md-4 offset-md-3">
-			<h2 class="h1 text-center">Register</h2>
+			<h2 class="text-center login-title">Register</h2>
 
 			{!! Form::open(['method' => 'PUT', 'route' => ['admin.users.update', $user->id]]) !!}
 				<div class="success alert-success">

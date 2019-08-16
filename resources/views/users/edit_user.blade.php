@@ -2,7 +2,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-3 offset-md-4">
-			<h2 class="h1 text-center">Register</h2>
+			<h2 class="text-center login-title">Register</h2>
 
 			{!! Form::open(['method' => 'PUT', 'route' => ['users.update']]) !!}
 

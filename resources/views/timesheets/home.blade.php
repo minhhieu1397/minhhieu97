@@ -2,7 +2,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-2 offset-md-1">
-			<h1>List</h1>
+			<h1 class="text-center login-title">List</h1>
 			<div class="navbar-collapse">
 				<ul class=" navbar-nav">
 					<li class="nav-item">
@@ -20,11 +20,6 @@
 					<li class="nav-item">
 						<a class="nav-link text-primary h5" href="{{route('users.employees.editpassword')}}">Change Password</a>
 					</li>
-					@can ('Admin')
-						<li class="nav-item">
-							<a class="nav-link text-primary h5" href="{{route('users.index')}}">Admin</a>
-						</li>
-					@endcan
 				</ul>
 			</div>
 		</div>

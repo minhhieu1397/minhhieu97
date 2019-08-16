@@ -12,7 +12,6 @@ use App\Http\Requests\User\ResetPasswordRequest;
 use App\Services\UserService;
 use App\Models\User;
 
-
 class UserController extends Controller
 {
     protected $userService;
@@ -34,7 +33,7 @@ class UserController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
                if (Auth::user()->role == 'admin') {
                        return redirect()->route('users.index');
-               } else {
+                } else {
                 return redirect()->route('timesheets.index');
             }
         } else {
@@ -116,7 +115,8 @@ class UserController extends Controller
         }
     }
 
-    public function useredit(){
+    public function useredit()
+    {
         return view('users.userupdate');
     }
 
@@ -157,11 +157,11 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = $request->file('image')->getClientOriginalName();
-            if($file->move('image', $filename)) {
+            if ($file->move('image', $filename)) {
                 $user = \Auth::user();
                 $user->avatar = '/image/' . $filename;
                 $user->save();
-                return Back()->withSuccess( 'Upload Avatar is successfuly' );;
+                return Back()->withSuccess('Upload Avatar is successfuly');
             } else {
                 return Back();
             }
@@ -180,5 +180,4 @@ class UserController extends Controller
             ]);
         }
     }
-
 }

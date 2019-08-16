@@ -13,3 +13,25 @@
 .contentTimesheet{
 	background-color: #FFFFFFFF;
 }
+
+.login-title{
+	font-family: "Oswald";
+	/* text-transform: uppercase; in hoa*/
+	 font-size: 50px;
+	 line-height: 85px;
+	 font-weight: 400;
+	 margin-top: 5px;
+	 padding: 20px 10px;
+}
+.navbar-nav > li > a {
+  font-family: "Oswald";
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  margin-left: 10px;
+  -webkit-transition: color 0.3s, background-color 0.3s, padding 0.3s;
+          transition: color 0.3s, background-color 0.3s, padding 0.3s;
+}

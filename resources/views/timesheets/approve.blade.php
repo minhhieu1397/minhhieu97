@@ -1,6 +1,6 @@
 @extends ('layouts.admin')
 @section('content')
-  <h1 class="h1 text-center text-primary">View</h1>
+  <h1 class="text-center login-title text-primary">View</h1>
 
  
   <div class="row">

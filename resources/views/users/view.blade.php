@@ -2,6 +2,7 @@
 @section('content')
 	<div class="row content_login">
 		<div class="col-md-10 offset-md-1">
+			<h1 class="text-center login-title">List Users</h1>
 			<table class="table table-condensed" >
 				<thead>
 					<tr class="table__title">

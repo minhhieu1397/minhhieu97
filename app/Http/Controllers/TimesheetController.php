@@ -30,7 +30,6 @@ class TimesheetController extends Controller
 
     public function view()
     {
-        
         $timesheets = $this->timesheetService->index();
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
