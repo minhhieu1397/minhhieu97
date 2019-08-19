@@ -21,11 +21,9 @@
 							<td>{{$user->email}}</td>
 							<td>{{$user->description}}</td>
 							<td>{{$user->role}}</td>
-
 							<td>
 								<a href="{{route('admin.users.edit', $user['id'])}}">edit</a>
 							</td>
-							
 						</tr>
 					@endforeach
 				</tbody>

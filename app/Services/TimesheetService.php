@@ -15,23 +15,23 @@ class TimesheetService
 		$this->timesheetRepository = $timesheetRepository;
 	}
 
-	public function index()
+	public function getAll()
 	{
 		return $this->timesheetRepository->all();
 	}
 
-	public function view_by_month($request)
+	public function viewByMonth($request)
 	{
 		$month = $request->input('month');
 
-		return $this->timesheetRepository->view_by_month($month);
+		return $this->timesheetRepository->viewByMonth($month);
 	}
 
-	public function view_by_week($request)
+	public function viewByDay($request)
 	{
 		$date = $request->input('date');
 
-		return $this->timesheetRepository->view_by_week($date);
+		return $this->timesheetRepository->viewByDay($date);
 	}
 
 	public function create($request)
@@ -74,17 +74,17 @@ class TimesheetService
 
 	public function view_approve()
 	{
-		return $this->timesheetRepository->view_approve();
+		return $this->timesheetRepository->viewApprove();
 	}
 
-	public function update_approve($timesheet)
+	public function updateApprove($timesheet)
 	{
-		return $this->timesheetRepository->update_approve($timesheet, [
+		return $this->timesheetRepository->updateApprove($timesheet, [
 			'approve' => true,
 		]);
 	}
 
-	public function view_timesheet($user)
+	public function adminViewTimesheet($user)
 	{
 		return $this->timesheetRepository->view_timesheet($user);
 	}

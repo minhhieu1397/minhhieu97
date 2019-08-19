@@ -46,7 +46,7 @@ class SendMailStartTime extends Command
 
         foreach ($users as $user) {
             Mail::send('emails.starttime_create_timesheet', ['user' => $user], function ($mail) use ($user) {
-                    $mail->to($user['email'])->subject('Create Timesheet!');
+                $mail->to($user['email'])->subject('Create Timesheet!');
             });
         }
     }

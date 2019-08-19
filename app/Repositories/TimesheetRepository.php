@@ -18,12 +18,12 @@ class TimesheetRepository
     	   return $this->model->all()->where('user_id', \Auth::user()->id);
 	}
 
-	public function view_by_month($month)
+	public function viewByMonth($month)
 	{
 		return $this->model->whereMonth('work_date', $month)->Where('user_id', \Auth::user()->id)->get();
 	}
 
-	public function view_by_week($date)
+	public function viewByDay($date)
 	{
 		return $this->model->whereDate('work_date', $date )->Where('user_id', \Auth::user()->id)->get();
 	}
@@ -43,17 +43,17 @@ class TimesheetRepository
 		return $this->model->find($timesheet->id)->update($attributes);
 	}
 
-	public function view_approve()
+	public function viewApprove()
 	{
 		return $this->model->where('leader', \Auth::user()->email)->where('approve', 0)->get();
 	}
 
-	public function update_approve($timesheet, $attributes)
+	public function updateApprove($timesheet, $attributes)
 	{
 		return $this->model->find($timesheet->id)->update($attributes);
 	}
 
-	public function view_timesheet($user)
+	public function adminViewTimesheet($user)
 	{
 		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->get();
 	}

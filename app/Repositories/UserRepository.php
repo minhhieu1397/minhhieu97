@@ -28,7 +28,7 @@ class UserRepository
 		return $this->model->all()->where('id', $user->id);
 	}
 
-	public function update($user, $attributes)
+	public function adminUpdate($user, $attributes)
 	{
         return $this->model->find($user->id)->update($attributes);
 	}
@@ -38,12 +38,12 @@ class UserRepository
 		return $this->model->find($user)->delete();
 	}
 
-	public function user_update($request, $attributes)
+	public function userUpdate($request, $attributes)
 	{
 		return $this->model->find(\Auth::user()->id)->update($attributes);
 	}
 
-	public function change_password($new_password)
+	public function userUpdatePassword($new_password)
 	{
 		$user = \Auth::user();
         $user->password = bcrypt($new_password);
@@ -52,7 +52,7 @@ class UserRepository
         return true;
 	}
 
-	public function admin_resetpassword($user, $attributes)
+	public function adminResestPassword($user, $attributes)
 	{
 		return $this->model->find($user->id)->update($attributes);
 	}

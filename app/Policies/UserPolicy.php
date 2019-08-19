@@ -16,7 +16,7 @@ class UserPolicy
         }
     }
     
-    public function admin(User $user)
+    public function adminView(User $user)
     {
         if ($user->role == 'admin') {
             return true;
@@ -25,6 +25,23 @@ class UserPolicy
         }
     }
 
+    public function adminCreate(User $user)
+    {
+        if ($user->role == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
+    } 
+
+    public function adminUpdate(User $user)
+    {
+        if ($user->role == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**
      * Create a new policy instance.
      *

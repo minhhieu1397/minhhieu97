@@ -8,9 +8,7 @@
 					{{ Session::get( 'success' ) }}
 				@endif
 			</div>
-			
 			{!! Form::open(['method' => 'POST', 'route' => 'timesheets.store']) !!}
-
 				@if ($errors->any())
 					<div class="alert alert-danger">
 			   			<ul>
@@ -20,37 +18,30 @@
 				        </ul>
 				    </div>
 				@endif
-				
 	       		<div class="form-group">
 	            	{{ Form::label('work_date', 'Work Date (MM-DD-YYYY)', ['class' => 'control-label']) }}
 	            	{{ Form::date('work_date', null, ['class' => 'form-control']) }}
 	       		</div>
-
 	       		<div class="form-group">
 	            	{{ Form::label('start_time', 'Start Time', ['class' => 'control-label']) }}
 	            	{{ Form::text('start_time', null, ['class' => 'form-control']) }}
 	       		</div>
-
 	       		<div class="form-group">
 	            	{{ Form::label('end_time', 'End Time', ['class' => 'control-label']) }}
 	            	{{ Form::text('end_time', null, ['class' => 'form-control']) }}
 	       		</div>
-
 	       		<div class="form-group">
 	            	{{ Form::label('details', 'Details', ['class' => 'control-label']) }}
 	            	{{ Form::textarea('details', null, ['class' => 'form-control', 'rows' => 3]) }}
 	       		</div>
-
 	       		<div class="form-group">
 	            	{{ Form::label('issue', 'Issue', ['class' => 'control-label']) }}
 	            	{{ Form::textarea('issue', null, ['class' => 'form-control', 'rows' => 3]) }}
 	       		</div>
-
 	       		<div class="form-group">
 	            	{{ Form::label('intention', 'Intention', ['class' => 'control-label']) }}
 	            	{{ Form::textarea('intention', null, ['class' => 'form-control', 'rows' => 3]) }}
 	       		</div>
-
 				<div>
 	       			{!! Form::submit( 'Create', ['class' => 'btn btn-primary']) !!}
 				</div>

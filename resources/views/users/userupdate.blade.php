@@ -1,12 +1,8 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
-
 	<div class="row">
 		<div class="col-md-4 offset-md-3">
 			<h2 class="text-center login-title">Update</h2>
-			
-
-
 			<form action="{{ route('users.update.avatar') }}" enctype='multipart/form-data' method="POST">
 		        {{ csrf_field() }}
 		        @if ($errors->any())
@@ -22,7 +18,7 @@
 					 {{ Session::get( 'success' ) }}
 				@endif
 		        <input type="file" name="image" required="true">
-		        <br/>
+		        	<br/>
 		        <input type="submit" value="upload">
 		    </form>
 		    @php
@@ -30,6 +26,4 @@
 		    @endphp
 		</div>
 	</div>	
-
-
 @stop()

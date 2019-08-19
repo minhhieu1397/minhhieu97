@@ -24,27 +24,27 @@ class TimesheetController extends Controller
     public function index()
     {
         $user = Auth::user();
-        
-    	return view('timesheets.home',['user' => $user]);
+
+    	return view('timesheets.home', ['user' => $user]);
     }
 
     public function view()
     {
-        $timesheets = $this->timesheetService->index();
+        $timesheets = $this->timesheetService->getAll();
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
     }
 
-    public function view_by_month(Request $request)
+    public function viewByMonth(Request $request)
     {
-        $timesheets = $this->timesheetService->view_by_month($request);
+        $timesheets = $this->timesheetService->viewByMonth($request);
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
     }
 
-    public function view_by_week(Request $request)
+    public function viewByDay(Request $request)
     {
-        $timesheets = $this->timesheetService->view_by_week($request);
+        $timesheets = $this->timesheetService->viewByDay($request);
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
     }
@@ -60,10 +60,9 @@ class TimesheetController extends Controller
             /*$user = \Auth::user();
             $leader = User::where('email', $user->leader)->first();
             $leader->notify(new CreateTimesheetNotification($user->name));*/
-
     		return redirect()->route('timesheets.index')->withSuccess('Create is successfuly');
     	} else {
-    		return Back()->withInput()->withErrors([
+    		return back()->withInput()->withErrors([
     			'errorCreate' => 'Have an error while creating timesheet'
     		]);
     	}
@@ -79,6 +78,8 @@ class TimesheetController extends Controller
 
     public function edit(Timesheets $timesheet)
     {
+        $this->authorize('update', $timesheet);
+
     	return view('timesheets.update', ['timesheet' => $timesheet]);
     }
 
@@ -87,32 +88,32 @@ class TimesheetController extends Controller
     	if ($this->timesheetService->update($request, $timesheet)) {
     		return redirect()->route('timesheets.index');
     	} else {
-    		return Back()->withInput();
+    		return back()->withInput();
     	}
     }
 
-    public function view_approve()
+    public function viewApprove()
     {
-        $timesheets = $this->timesheetService->view_approve();
+        $timesheets = $this->timesheetService->viewApprove();
 
         return view('timesheets.approve', ['timesheets' => $timesheets]);
     }
 
-    public function edit_approve(Timesheets $timesheet)
+    public function updateApprove(Timesheets $timesheet)
     {
-        if ($this->timesheetService->update_approve($timesheet)) {
-            return Back()->withSuccess('Approve is Success');
+        if ($this->timesheetService->updateApprove($timesheet)) {
+            return back()->withSuccess('Approve is Success');
         } else {
-            return Back()->withErrors([
+            return back()->withErrors([
                 'errorApprove' => 'Have an error while Approve'
             ]);
         }
 
     }
 
-    public function view_timesheet(User $user)
+    public function adminViewTimesheet(User $user)
     {
-        $timesheets = $this->timesheetService->view_timesheet($user);
+        $timesheets = $this->timesheetService->adminViewTimesheet($user);
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
     }
@@ -120,12 +121,11 @@ class TimesheetController extends Controller
     public function destroy($timesheet)
     {
         if ($this->timesheetService->delete($timesheet)) {
-            return back()->withSuccess( 'Delete is successfuly' );
+            return back()->withSuccess('Delete is successfuly');
         } else {
             return back()->withErrors([
                 'errorDelete' => 'Have an error while deleting timesheet'
             ]);
         }
     }
- 
 }

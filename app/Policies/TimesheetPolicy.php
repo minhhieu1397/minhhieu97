@@ -25,6 +25,16 @@ class TimesheetPolicy
             return false;
         }
     }
+
+    public function update(User $user, Timesheets $timesheet)
+    {
+        if ($user->id == $timesheet->user_id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     /**
      * Create a new policy instance.
      *

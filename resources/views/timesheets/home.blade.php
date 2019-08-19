@@ -6,7 +6,7 @@
 			<div class="navbar-collapse">
 				<ul class=" navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link text-primary h5" href="{{route('users.avatar')}}">Update Avatar</a>
+						<a class="nav-link text-primary h5" href="{{route('users.edit.avatar')}}">Update Avatar</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-primary h5" href="{{route('users.edit')}}">Update User</a>
@@ -29,7 +29,7 @@
 		   		<img src="{{ $user->avatar }}" alt="Smiley face" class="img-thumbnail">
 			</div>
 		</div>
-
+		
 		<div class="col-md-6">
 			<div class="h4">
 				<strong>Email:</strong> {{$user->email}}

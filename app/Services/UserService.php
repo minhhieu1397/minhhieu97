@@ -27,7 +27,7 @@ class UserService
 		return $user;
 	}
 
-	public function index()
+	public function getAll()
 	{
 		return $this->userRepository->all();
 	}
@@ -37,13 +37,14 @@ class UserService
 		return $this->userRepository->show($user);
 	}
 
-	public function update($user, $request)
+	public function adminUpdate($user, $request)
 	{
-		$user = $this->userRepository->update($user, [
+		$user = $this->userRepository->adminUpdate($user, [
 			'name' => $request->input('name'),
 			'email' => $request->input('email'),
 			'role' => $request->input('role'),
 			'leader' => $request->input('leader'),
+			'description' => $request->input('description'),
 		]);
 
 		return $user;
@@ -54,23 +55,23 @@ class UserService
 		return $this->userRepository->delete($user);
 	}
 
-	public function user_update($request)
+	public function userUpdate($request)
 	{
 		return $this->userRepository->user_update($request, [
 			'description' => $request->input('description'),
 		]);
 	}
 
-	public function change_password($request)
+	public function userUpdatePassword($request)
 	{
         $new_password = $request->input('new_password');
 
 		return $this->userRepository->change_password($new_password);
 	}
 
-	public function admin_resetpassword($user, $request)
+	public function adminResestPassword($user, $request)
 	{
-		return $this->userRepository->admin_resetpassword($user, [
+		return $this->userRepository->adminResestPassword($user, [
 			'password' => \Hash::make($request->input('password')),
 		]);
 	}

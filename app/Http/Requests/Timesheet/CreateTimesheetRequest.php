@@ -23,7 +23,7 @@ class CreateTimesheetRequest extends FormRequest
      */
     public function rules()
     {
-       return [
+        return [
             'work_date' => 'required|date|before:tomorrow',         
             'start_time' => 'required',
             'end_time' => 'required',

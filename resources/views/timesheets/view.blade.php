@@ -1,18 +1,17 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
 	<h1 class="h1 text-center text-primary">View</h1>
-
 	<div class="row">
 		<div class="col-md-2">
 			<h2 class="h5">By date:</h2>
-				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewweek']) !!}
+				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewDay']) !!}
 		            {{Form::date('date', \Carbon\Carbon::now())}}
 		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
 				{!! Form::close() !!}
 		</div>
 		<div class="col-md-2">
 			<h2 class="h5">By month:</h2>
-				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewmonth']) !!}
+				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewMonth']) !!}
 		            {{ Form::text('month', null) }}
 		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
 				{!! Form::close() !!}
@@ -21,11 +20,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="text-center">
-				<div class="alert-success">
-					@if (Session::has( 'success' ))
+				@if (Session::has( 'success' ))
+					<div class="alert alert-success">
 						{{ Session::get( 'success' ) }}
-					@endif
-				</div>
+					</div>
+				@endif
 				@if ($errors->any())
 					<div class="alert alert-danger">
 			   			<ul>
@@ -36,7 +35,6 @@
 				    </div>
 				@endif
 			</div>
-			
 			<table class="table table-condensed">
 				<thead>
 					<tr class="table__title">

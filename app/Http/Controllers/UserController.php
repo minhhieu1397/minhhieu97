@@ -26,40 +26,42 @@ class UserController extends Controller
     	return view('users.login');
     }
 
-    public function postlogin(Request $request)
+    public function postLogin(Request $request)
     {
     	$email = $request->input('email');
     	$password = $request->input('password');
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-               if (Auth::user()->role == 'admin') {
-                       return redirect()->route('users.index');
-                } else {
+            if (Auth::user()->role == 'admin') {
+                return redirect()->route('users.index');
+            } else {
                 return redirect()->route('timesheets.index');
             }
         } else {
-            return redirect()->route('users.login');
+            return redirect()->route('users.login')->withErrors([
+                'errorLogin' => 'Username or password incorrect'
+            ]);
         }
     }
 
     public function index()
     {
         $user = Auth::user();
-        $users = $this->userService->index();
+        $users = $this->userService->getAll();
 
     	return view('users.view', ['users' => $users]);
     }
 
-    public function create()
+    public function adminCreateUser()
     {
         $user = Auth::user();
-        $this->authorize('admin',$user);
+        $this->authorize('adminCreate', $user);
 
         return view('users.create');
     }
 
-    public function store(CreateUserRequest $request)
+    public function adminStoreUser(CreateUserRequest $request)
     {
-        if($this->userService->create($request)) {
+        if ($this->userService->create($request)) {
             return redirect()->route('users.index');
         } else {
             return back()->withInput()->withErrors([
@@ -71,24 +73,22 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user = $this->userService->show($user);
-
         $admin = Auth::user();
-        $this->authorize('admin',$admin);
+        $this->authorize('adminView', $admin);
+
         return view('users.show',['user' => $user]);
     }
 
-    public function edit(User $user)
+    public function adminEdit(User $user)
     {
         $admin = Auth::user();
-        $this->authorize('admin',$admin);
-        
+
         return view('users.update', ['user' => $user]);
     }
 
-    public function update(User $user, UpdateUserRequest $request)
+    public function adminUpdate(User $user, UpdateUserRequest $request)
     {
-        if ($this->userService->update($user, $request))
-        {
+        if ($this->userService->adminUpdate($user, $request)) {
             return back()->withSuccess('Update is success');
         } else {
             return back()->withInput()->withErrors([
@@ -115,44 +115,44 @@ class UserController extends Controller
         }
     }
 
-    public function useredit()
-    {
-        return view('users.userupdate');
-    }
-
-    public function edit_user()
+    public function userEdit()
     {
         $user = Auth::user();
 
-        return view('users.edit_user', ['user' => $user]);
+        return view('users.update', ['user' => $user]);
     }
 
-    public function update_user(UpdateRequest $request)
+    public function userUpdate(UpdateRequest $request)
     {
-        if($this->userService->user_update($request)) {
+        if($this->userService->userUpdate($request)) {
             return redirect()->route('timesheets.index');
         } else {
-            return Back()->withInput();
+            return back()->withInput();
         }
     }
 
-    public function employees_edit_password()
+    public function userEditPassword()
     {
         return view('users.employees.update_password');
     }
 
-    public function employees_update_password(ChangePasswordRequest $request)
+    public function userUpdatePassword(ChangePasswordRequest $request)
     {
-        if($this->userService->change_password($request)) {
+        if ($this->userService->userUpdatePassword($request)) {
             return redirect()->route('users.logout');
         } else {
             return Back()->withErrors([
-                'errorChangePass' => 'Have an erroe while change password'
+                'errorChangePass' => 'Have an error while change password'
             ]);
         }
     }
 
-    public function upload_avatar(Request $request)
+    public function editAvatar()
+    {
+        return view('users.userupdate');
+    }
+
+    public function updateAvatar(Request $request)
     {
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -161,18 +161,22 @@ class UserController extends Controller
                 $user = \Auth::user();
                 $user->avatar = '/image/' . $filename;
                 $user->save();
-                return Back()->withSuccess('Upload Avatar is successfuly');
+                return back()->withSuccess('Upload Avatar is successfuly');
             } else {
-                return Back();
+                return back()->withErrors([
+                    'errorUpload' => 'Have an error while uploading'
+                ]);
             }
         } else {
-            return Back();
+            return back()->withErrors([
+                'errorUpload' => 'Have an error while uploading'
+            ]);
         }
     }
 
-    public function admin_resetpassword(User $user, ResetPasswordRequest $request)
+    public function adminResestPassword(User $user, ResetPasswordRequest $request)
     {
-        if ($this->userService->admin_resetpassword($user, $request)) {
+        if ($this->userService->adminResestPassword($user, $request)) {
             return back()->withSuccess('Reset Password is successfuly');
         } else {
             return back()->withErrors([

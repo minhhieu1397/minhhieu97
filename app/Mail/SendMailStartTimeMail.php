@@ -28,10 +28,9 @@ class SendMailStartTimeMail extends Mailable
      */
     public function build()
     {
-         return $this->subject('Timesheet create')
+        return $this->subject('Timesheet create')
             ->view('emails.starttime_create_timesheet')->with([
                 'user' => $this->user
             ]);
-        
     }
 }
