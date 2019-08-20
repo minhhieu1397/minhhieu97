@@ -7,7 +7,7 @@
                 </li>
                 @can ('Admin')
                     <li class="nav-item">
-                        <a class="nav-link text-primary h5" href="{{route('users.index')}}">Admin</a>
+                        <a class="nav-link text-primary h5" href="{{route('admins.index')}}">Admin</a>
                     </li>
                 @endcan
             </ul>

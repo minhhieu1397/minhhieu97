@@ -32,12 +32,12 @@
 							<td>{{$user->description}}</td>
 							<td>{{$user->role}}</td>
 							<td>{{$user->leader}}</td>
-							<td><a href="{{ route('admin.timesheet.user', $user['id']) }}">Timesheet</a></td>
+							<td><a href="{{ route('admins.timesheet', $user['id']) }}">Timesheet</a></td>
 							<td>
-								<a href="{{route('users.show', $user['id'])}}">VIEW</a>
+								<a href="{{route('admins.show', $user['id'])}}">VIEW</a>
 								{!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id]]) !!}
-						       		<div class="form-group">
-						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
+													       		<div class="form-group">
+													       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
 									</div>
 								{!! Form::close() !!}
 							</td>

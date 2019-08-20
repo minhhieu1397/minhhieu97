@@ -72,7 +72,7 @@ class TimesheetService
         ]);
 	}
 
-	public function view_approve()
+	public function viewApprove()
 	{
 		return $this->timesheetRepository->viewApprove();
 	}
@@ -86,7 +86,7 @@ class TimesheetService
 
 	public function adminViewTimesheet($user)
 	{
-		return $this->timesheetRepository->view_timesheet($user);
+		return $this->timesheetRepository->adminViewTimesheet($user);
 	}
 
 	public function delete($timesheet)

@@ -10,25 +10,44 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'UserController@login')->name('users.login');
-Route::post('/users/login', 'UserController@postLogin')->name('users.login.post');
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('/users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
-	Route::post('/users/update_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
-	Route::get('/users/edit_password', 'UserController@userEditPassword')->name('users.employees.editpassword');
-	Route::put('/users/edit_password', 'UserController@userUpdatePassword')->name('users.employees.updatepassword');
-	Route::get('/users/edit', 'UserController@userEdit')->name('users.edit');
-	Route::put('/users/edit', 'UserController@userUpdate')->name('users.update');
-	Route::get('/users', 'UserController@index')->name('users.index');
+
+    
+
+
+Route::get('/', 'LoginController@login')->name('users.login');
+Route::post('/users/login', 'LoginController@postLogin')->name('users.login.post');
+
+Route::get('/admins', 'admin\AdminController@index')->name('admins.index');
+Route::get('/admins/create', 'admin\AdminController@create')->name('admins.create');
+Route::post('/admins/create', 'admin\AdminController@store')->name('admins.store');
+Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
+Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
+Route::get('/user/view/{user}', 'TimesheetController@adminViewTimesheet')->name('admin.timesheet');
+
+
+Route::get('/admins/{user}', 'admin\AdminController@show')->name('admins.show');
+Route::get('/admins/view/{user}', 'TimesheetController@adminViewTimesheet')->name('admins.timesheet');
+Route::get('/admins/{user}/edit', 'admin\AdminController@edit')->name('admins.edit');
+Route::put('/admins/{user}/edit', 'admin\AdminController@update')->name('admins.update');
+Route::put('/admins/{user}/reset_password', 'admin\AdminController@resetPassword')->name('admins.resetpassword');
+
+	Route::get('/users/{user}/edit', 'user\UserController@edit')->name('users.edit');
+	Route::put('/users/{user}/edit', 'user\UserController@update')->name('users.update');
+	Route::get('/users/update_avatar', 'user\UserController@editAvatar')->name('users.edit.avatar');
+	Route::post('/users/update_avatar', 'user\UserController@updateAvatar')->name('users.update.avatar');
+
+	Route::get('/users/edit_password', 'user\UserController@editPassword')->name('users.editpassword');
+	Route::put('/users/edit_password', 'user\UserController@updatePassword')->name('users.updatepassword');
+	
+	/*Route::get('/users', 'UserController@index')->name('users.index');*/
 	Route::get('/users/create', 'UserController@adminCreateUser')->name('admin.users.create');
 	Route::post('/users/create', 'UserController@adminStoreUser')->name('admin.users.store');
-	Route::get('/users/{user}', 'UserController@show')->name('users.show');
-	Route::get('/users/{user}/edit', 'UserController@adminEdit')->name('admin.users.edit');
-	Route::put('/users/{user}/edit', 'UserController@adminUpdate')->name('admin.users.update');
-	Route::put('/users/{user}/reset_password', 'UserController@adminResestPassword')->name('admin.user.resetpassword');
-	Route::get('logout', 'UserController@logout')->name('users.logout');
+	
+	
+	
+	Route::get('logout', 'user\UserController@logout')->name('users.logout');
 	Route::delete('/user/{user}', 'UserController@destroy')->name('users.destroy');
-	Route::get('/user/view/{user}', 'TimesheetController@adminViewTimesheet')->name('admin.timesheet.user');
+	
 	Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
 	Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
 	Route::get('/timesheets/approve', 'TimesheetController@viewApprove')->name('timesheet.approve');
@@ -43,4 +62,4 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/timesheets/{timesheet}/edit', 'TimesheetController@edit')->name('timesheets.edit');
 	Route::put('/timesheets/{timesheet}/edit', 'TimesheetController@update')->name('timesheets.update');
 	Route::delete('/timesheets/{timesheet}', 'TimesheetController@destroy')->name('timesheets.destroy');
-});
+

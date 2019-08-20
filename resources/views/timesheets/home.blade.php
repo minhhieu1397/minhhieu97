@@ -9,7 +9,7 @@
 						<a class="nav-link text-primary h5" href="{{route('users.edit.avatar')}}">Update Avatar</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-primary h5" href="{{route('users.edit')}}">Update User</a>
+						<a class="nav-link text-primary h5" href="{{route('users.edit', $user['id'])}}">Update User</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-primary h5" href="{{route('timesheet.view')}}">View Timesheets</a>
@@ -18,7 +18,7 @@
 						<a class="nav-link text-primary h5" href="{{route('timesheets.create')}}">Create Timesheets</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-primary h5" href="{{route('users.employees.editpassword')}}">Change Password</a>
+						<a class="nav-link text-primary h5" href="{{route('users.editpassword')}}">Change Password</a>
 					</li>
 				</ul>
 			</div>
