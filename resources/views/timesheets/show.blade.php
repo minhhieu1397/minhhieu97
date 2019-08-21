@@ -28,7 +28,6 @@
 						<th ></th>
 					</tr>
 				</thead>
-
 				<tbody>
 					<tr class="table__content">
 						<td>{{$timesheet->id}}</td>
@@ -42,13 +41,6 @@
 						<td>{{$timesheet->late_flg}}</td>
 						<td> 
 							<a href="{{route('timesheets.edit', $timesheet['id'])}}" >Edit</a>
-							<form action="" method="POST">
-								{{ method_field('DELETE') }}
-								{{ csrf_field() }}
-								<div>
-									<button class="btn btn-danger" type="submig">Delete</button>
-								</div>
-							</form>
 						</td>
 					</tr>						
 				</tbody>

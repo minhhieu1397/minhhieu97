@@ -23,13 +23,6 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function logout() 
-    {
-        Auth::logout();
-
-        return redirect()->route('users.login');
-    }
-
     public function destroy($user)
     {
         if ($this->userService->delete($user)) {
@@ -43,6 +36,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('userUpdate', $user);
+        
         return view('users.edit_user', ['user' => $user]);
     }
 
@@ -55,14 +50,16 @@ class UserController extends Controller
         }
     }
 
-    public function editPassword()
+    public function editPassword(User $user)
     {
-        return view('users.employees.update_password');
+        $this->authorize('userUpdate', $user);
+
+        return view('users.employees.update_password', ['user' => $user]);
     }
 
-    public function updatePassword(ChangePasswordRequest $request)
+    public function updatePassword(User $user, ChangePasswordRequest $request)
     {
-        if ($this->userService->updatePassword($request)) {
+        if ($this->userService->updatePassword($user, $request)) {
             return redirect()->route('users.logout');
         } else {
             return Back()->withErrors([
@@ -96,7 +93,5 @@ class UserController extends Controller
                 'errorUpload' => 'Have an error while uploading'
             ]);
         }
-    }
-
-    
+    }  
 }

@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link list_title" href="{{route('users.logout')}}">Logout</a>
+                    <a class="nav-link list_title" href="{{route('logout')}}">Logout</a>
                 </li>
             </ul>
         </div>

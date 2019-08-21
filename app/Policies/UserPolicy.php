@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+
 class UserPolicy
 {
     use HandlesAuthorization;
@@ -16,27 +17,9 @@ class UserPolicy
         }
     }
     
-    public function adminView(User $user)
+    public function userUpdate(User $user, User $user_edit)
     {
-        if ($user->role == 'admin') {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function adminCreate(User $user)
-    {
-        if ($user->role == 'admin') {
-            return true;
-        } else {
-            return false;
-        }
-    } 
-
-    public function adminUpdate(User $user)
-    {
-        if ($user->role == 'admin') {
+        if ($user->id == $user_edit->id) {
             return true;
         } else {
             return false;

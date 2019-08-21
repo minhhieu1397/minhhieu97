@@ -1,4 +1,5 @@
 @extends ('layouts.layout_timesheet')
+
 @section('content')
 	<div class="row">
 		<div class="col-md-3 offset-md-4">
@@ -17,6 +18,7 @@
 	            	{{ Form::label('description', 'Description', ['class' => 'control-label']) }}
 	            	{{ Form::text('description', $user->description, ['class' => 'form-control']) }}
 	       		</div>
+	       		<div>
 	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}
 				</div>
 			{!! Form::close() !!}

@@ -1,19 +1,20 @@
 @extends ('layouts.layout_timesheet')
+
 @section('content')
 	<div class="row">
 		<div class="col-md-4 offset-md-3">
 			<h2 class="h1 text-center">Register</h2>
 			<div class="form-group">
-				{!! Form::open(['method' => 'PUT', 'route' => ['users.updatepassword']]) !!}
-						@if ($errors->any())
-							<div class="alert alert-danger">
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-						@endif
+				{!! Form::open(['method' => 'PUT', 'route' => ['users.updatepassword', $user->id]]) !!}
+					@if ($errors->any())
+						<div class="alert alert-danger">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
 			        <div class="form-group">
 			            	{{ Form::label('current_password', 'current_password', ['class' => 'control-label']) }}
 			       			{{ Form::password('current_password', ['class' => 'form-control']) }}

@@ -1,4 +1,5 @@
 @extends ('layouts.admin')
+
 @section('content')
 	<div class="row">
 		<div class="col-md-4 offset-md-4">
@@ -42,6 +43,4 @@
 			{!! Form::close() !!}
 		</div>
 	</div>	
-
-
 @stop()

@@ -20,7 +20,6 @@
 					@php 
 						$id = 0;
 					@endphp
-
 					@foreach ($users as $user)
 						@php 
 							$id ++;
@@ -36,8 +35,8 @@
 							<td>
 								<a href="{{route('admins.show', $user['id'])}}">VIEW</a>
 								{!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id]]) !!}
-													       		<div class="form-group">
-													       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
+						       		<div class="form-group">
+						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
 									</div>
 								{!! Form::close() !!}
 							</td>

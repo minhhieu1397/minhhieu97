@@ -22,8 +22,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        $user = Auth::user();
         $users = $this->adminService->getAll();
+        $admin = Auth::user();
+        $this->authorize('adminView', $admin);
 
     	return view('Admin.view', ['users' => $users]);
     }
@@ -50,12 +51,17 @@ class AdminController extends Controller
     public function show(User $user)
     {
         $user = $this->adminService->show($user);
+        $admin = Auth::user();
+        $this->authorize('adminShow', $admin);
 
         return view('Admin.show',['user' => $user]);
     }
 
     public function edit(User $user)
     {
+        $admin = Auth::user();
+        $this->authorize('adminUpdate', $admin);
+
         return view('Admin.update', ['user' => $user]);
     }
 

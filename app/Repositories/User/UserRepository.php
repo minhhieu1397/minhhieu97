@@ -23,9 +23,8 @@ class UserRepository
 		return $this->model->find(\Auth::user()->id)->update($attributes);
 	}
 
-	public function updatePassword($new_password)
+	public function updatePassword($user, $new_password)
 	{
-		$user = \Auth::user();
         $user->password = bcrypt($new_password);
         $user->save();
 

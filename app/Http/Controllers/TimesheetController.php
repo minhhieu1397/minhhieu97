@@ -108,7 +108,6 @@ class TimesheetController extends Controller
                 'errorApprove' => 'Have an error while Approve'
             ]);
         }
-
     }
 
     public function adminViewTimesheet(User $user)

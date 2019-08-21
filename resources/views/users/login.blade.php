@@ -1,4 +1,5 @@
 @extends ('layouts.layout_login')
+
 @section('content')
 	<div class="row content_login">
 		<div class="col-md-4 offset-md-2">
