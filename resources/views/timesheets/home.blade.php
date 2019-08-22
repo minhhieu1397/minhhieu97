@@ -18,7 +18,7 @@
 						<a class="nav-link text-primary h5" href="{{route('timesheets.create')}}">Create Timesheets</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-primary h5" href="{{route('users.editpassword', $user['id'])}}">Change Password</a>
+						<a class="nav-link text-primary h5" href="{{route('users.editpassword')}}">Change Password</a>
 					</li>
 				</ul>
 			</div>

@@ -14,7 +14,10 @@ Route::get('/', 'LoginController@login')->name('users.login');
 Route::post('/users/login', 'LoginController@postLogin')->name('users.login.post');
 Route::get('logout', 'LoginController@logout')->name('logout');
 
+
+
 Route::group(['prefix' => 'admins'], function () {
+	Route::get('seach', 'admin\AdminController@search')->name('admins.search');
 	Route::get('', 'admin\AdminController@index')->name('admins.index');
 	Route::get('create', 'admin\AdminController@create')->name('admins.create');
 	Route::post('create', 'admin\AdminController@store')->name('admins.store');
@@ -29,12 +32,12 @@ Route::group(['prefix' => 'admins'], function () {
 });
 
 Route::group(['prefix' => 'users'], function () {
-	Route::get('{user}/edit', 'user\UserController@edit')->name('users.edit');
-	Route::put('{user}/edit', 'user\UserController@update')->name('users.update');
+	Route::get('edit', 'user\UserController@edit')->name('users.edit');
+	Route::put('edit', 'user\UserController@update')->name('users.update');
 	Route::get('update_avatar', 'user\UserController@editAvatar')->name('users.edit.avatar');
 	Route::post('update_avatar', 'user\UserController@updateAvatar')->name('users.update.avatar');
-	Route::get('{user}/edit_password', 'user\UserController@editPassword')->name('users.editpassword');
-	Route::put('{user}/edit_password', 'user\UserController@updatePassword')->name('users.updatepassword');
+	Route::get('edit_password', 'user\UserController@editPassword')->name('users.editpassword');
+	Route::put('edit_password', 'user\UserController@updatePassword')->name('users.updatepassword');
 	Route::get('create', 'UserController@adminCreateUser')->name('admin.users.create');
 	Route::post('create', 'UserController@adminStoreUser')->name('admin.users.store');
 	Route::delete('{user}', 'UserController@destroy')->name('users.destroy');

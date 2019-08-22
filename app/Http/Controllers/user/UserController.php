@@ -34,10 +34,10 @@ class UserController extends Controller
         }
     }
 
-    public function edit(User $user)
+    public function edit()
     {
-        $this->authorize('userUpdate', $user);
-        
+        $user = Auth::user();
+
         return view('users.edit_user', ['user' => $user]);
     }
 
@@ -50,17 +50,17 @@ class UserController extends Controller
         }
     }
 
-    public function editPassword(User $user)
+    public function editPassword()
     {
-        $this->authorize('userUpdate', $user);
+        $user = Auth::user();
 
         return view('users.employees.update_password', ['user' => $user]);
     }
 
     public function updatePassword(User $user, ChangePasswordRequest $request)
     {
-        if ($this->userService->updatePassword($user, $request)) {
-            return redirect()->route('users.logout');
+        if ($this->userService->updatePassword($request)) {
+            return redirect()->route('logout');
         } else {
             return Back()->withErrors([
                 'errorChangePass' => 'Have an error while change password'
@@ -70,7 +70,7 @@ class UserController extends Controller
 
     public function editAvatar()
     {
-        return view('users.userupdate');
+        return view('users.user_update');
     }
 
     public function updateAvatar(Request $request)

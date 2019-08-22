@@ -86,7 +86,7 @@ class TimesheetController extends Controller
     public function update(UpdateTimesheetRequest $request, Timesheets $timesheet)
     {
     	if ($this->timesheetService->update($request, $timesheet)) {
-    		return redirect()->route('timesheets.index');
+    		return redirect()->route('timesheets.show',['timesheet' => $timesheet]);
     	} else {
     		return back()->withInput();
     	}

@@ -15,7 +15,7 @@ class AdminRepository
 
 	public function all()
 	{
-		return $this->model->all();
+		return $this->model->paginate(7);
 	}
 
 	public function create($attributes)
@@ -36,5 +36,10 @@ class AdminRepository
 	public function resetPassword($user, $attributes)
 	{
 		return $this->model->find($user->id)->update($attributes);
+	}
+
+	public function search($name)
+	{
+		return $this->model->where('name', $name)->paginate(7);
 	}
 }

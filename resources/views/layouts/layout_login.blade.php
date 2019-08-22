@@ -14,7 +14,6 @@
 
 <body>
 	<header class="st-navbar">
-<!-- Navigation -->
 		<div class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 			<h1 class="Timesheet hero-title">Timesheet</h1>
 		</div>

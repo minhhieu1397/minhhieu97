@@ -55,4 +55,11 @@ class AdminService
 			'password' => \Hash::make($request->input('password')),
 		]);
 	}
+
+	public function search($request)
+	{
+		$name = $request->input('search');
+
+		return $this->adminRepository->search($name);
+	}
 }

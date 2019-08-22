@@ -21,7 +21,23 @@
     @include('partial/timesheet_nav')
 <!-- Page Content -->	
   	<div class="container-fluid contentTimesheet">
-  		  @yield('content')
+  		@yield('content')
+        <div class="row end">
+            <div class="col-md-12">
+                <div class=" navbar-expand-lg navbar-dark bg-dark static-top">
+                    <div class="text-white text-center">
+                    Phone: +84912 112 112
+                    </div>
+                    <div class="text-center text-white">
+                        Address: Số 1, Ngõ 2, Đường 3
+                    </div>
+                    <div class="text-center text-white">
+                        Email: abcxyz@gmail.com
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
   	</div>
 </body>
 

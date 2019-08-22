@@ -3,6 +3,13 @@
 	<div class="row content_login">
 		<div class="col-md-10 offset-md-1">
 			<h1 class="text-center login-title">List Users</h1>
+			<div>
+				{!! Form::open(['method' => 'GET', 'route' => 'admins.search']) !!}
+					{{ Form::label('search', 'Seach by name:', ['class' => 'control-label']) }}
+					{{ Form::text('search', null) }}
+		       		{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
+				{!! Form::close() !!}
+ 			</div>
 			<table class="table table-condensed" >
 				<thead>
 					<tr class="table__title">
@@ -44,6 +51,7 @@
 					@endforeach
 				</tbody>
 			</table>
+			{{ $users->links('') }}
 		</div>
 	</div>
 @stop()

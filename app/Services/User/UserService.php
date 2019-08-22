@@ -26,10 +26,10 @@ class UserService
 		]);
 	}
 
-	public function updatePassword($user, $request)
+	public function updatePassword($request)
 	{
         $new_password = $request->input('new_password');
 
-		return $this->userRepository->updatePassword($user, $new_password);
+		return $this->userRepository->updatePassword($new_password);
 	}
 }

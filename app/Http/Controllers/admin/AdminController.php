@@ -86,4 +86,11 @@ class AdminController extends Controller
             ]);
         }
     }
+    
+    public function search(Request $request)
+    {
+        $users = $this->adminService->search($request); 
+
+        return view('Admin.view', ['users' => $users]);
+    }
 }
