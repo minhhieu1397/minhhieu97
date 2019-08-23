@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-success h5" href="{{route('timesheet.approve')}}">Approve</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success h5" href="{{route('emails.index')}}">EmailNotification</a>
+                </li>
             </ul>
         </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">

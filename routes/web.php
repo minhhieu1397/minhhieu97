@@ -14,36 +14,43 @@ Route::get('/', 'LoginController@login')->name('users.login');
 Route::post('/users/login', 'LoginController@postLogin')->name('users.login.post');
 Route::get('logout', 'LoginController@logout')->name('logout');
 
-
-
-Route::group(['prefix' => 'admins'], function () {
-	Route::get('seach', 'admin\AdminController@search')->name('admins.search');
-	Route::get('', 'admin\AdminController@index')->name('admins.index');
-	Route::get('create', 'admin\AdminController@create')->name('admins.create');
-	Route::post('create', 'admin\AdminController@store')->name('admins.store');
-	Route::get('edit', 'HoursController@edit')->name('hours.edit');
-	Route::put('edit', 'HoursController@update')->name('hours.update');
-	Route::get('view/{user}', 'TimesheetController@adminViewTimesheet')->name('admin.timesheet');
-	Route::get('{user}', 'admin\AdminController@show')->name('admins.show');
-	Route::get('view/{user}', 'TimesheetController@adminViewTimesheet')->name('admins.timesheet');
-	Route::get('{user}/edit', 'admin\AdminController@edit')->name('admins.edit');
-	Route::put('{user}/edit', 'admin\AdminController@update')->name('admins.update');
-	Route::put('{user}/reset_password', 'admin\AdminController@resetPassword')->name('admins.resetpassword');
+Route::namespace('Notification')->group(function () {
+	Route::get('notification/email_notification', 'EmailController@index')->name('emails.index');
+	Route::post('notification/create', 'EmailController@store')->name('emails.store');
 });
 
-Route::group(['prefix' => 'users'], function () {
-	Route::get('edit', 'user\UserController@edit')->name('users.edit');
-	Route::put('edit', 'user\UserController@update')->name('users.update');
-	Route::get('update_avatar', 'user\UserController@editAvatar')->name('users.edit.avatar');
-	Route::post('update_avatar', 'user\UserController@updateAvatar')->name('users.update.avatar');
-	Route::get('edit_password', 'user\UserController@editPassword')->name('users.editpassword');
-	Route::put('edit_password', 'user\UserController@updatePassword')->name('users.updatepassword');
-	Route::get('create', 'UserController@adminCreateUser')->name('admin.users.create');
-	Route::post('create', 'UserController@adminStoreUser')->name('admin.users.store');
+Route::namespace('Admin')->group(function () {
+	Route::get('/admins/seach', 'AdminController@search')->name('admins.search');
+	Route::get('/admins/', 'AdminController@index')->name('admins.index');
+	Route::get('/admins/create', 'AdminController@create')->name('admins.create');
+	Route::post('/admins/create', 'AdminController@store')->name('admins.store');
+	Route::get('/admins/{user}', 'AdminController@show')->name('admins.show');
+	Route::get('/admins/{user}/edit', 'AdminController@edit')->name('admins.edit');
+	Route::put('/admins/{user}/edit', 'AdminController@update')->name('admins.update');
+	Route::put('/admins/{user}/reset_password', 'AdminController@resetPassword')->name('admins.resetpassword');
+});
+
+
+
+Route::namespace('User')->group(function () {
+	Route::get('users\edit', 'UserController@edit')->name('users.edit');
+	Route::put('users\edit', 'UserController@update')->name('users.update');
+	Route::get('users\update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
+	Route::post('users\pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
+	Route::get('users\edit_password', 'UserController@editPassword')->name('users.editpassword');
+	Route::put('users\edit_password', 'UserController@updatePassword')->name('users.updatepassword');
+	Route::get('users\create', 'UserController@adminCreateUser')->name('admin.users.create');
+	Route::post('users\create', 'UserController@adminStoreUser')->name('admin.users.store');
 	Route::delete('{user}', 'UserController@destroy')->name('users.destroy');
 });
 
+Route::group(['prefix' => 'admins'], function () {
+	Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
+	Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
+});
+
 Route::group(['prefix' => 'timesheets'], function () {
+	Route::get('/admins/view/{user}', 'TimesheetController@adminViewTimesheet')->name('admins.timesheet');
 	Route::get('/hours/edit', 'HoursController@edit')->name('hours.edit');
 	Route::put('/hours/edit', 'HoursController@update')->name('hours.update');
 	Route::get('approve', 'TimesheetController@viewApprove')->name('timesheet.approve');
@@ -59,4 +66,3 @@ Route::group(['prefix' => 'timesheets'], function () {
 	Route::put('{timesheet}/edit', 'TimesheetController@update')->name('timesheets.update');
 	Route::delete('{timesheet}', 'TimesheetController@destroy')->name('timesheets.destroy');
 });
-

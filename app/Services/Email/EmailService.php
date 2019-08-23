@@ -1,0 +1,29 @@
+<?php
+namespace App\Services\Email;
+
+use Illuminate\Http\Request;
+use App\Repositories\Email\EmailRepository;
+
+class EmailService
+{
+	protected $emailRepository;
+
+	public function __construct(EmailRepository $emailRepository)
+	{
+		$this->emailRepository = $emailRepository;
+	}
+
+	public function getAll()
+	{
+		return $this->emailRepository->all();
+	}
+
+	public function create($request)
+	{
+		$emails = $this->emailRepository->create([
+			'email' => $request->input('email')
+		]);
+
+		return $emails;
+	}
+}

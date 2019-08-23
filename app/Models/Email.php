@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HoursTimesheet extends Model
+class Email extends Model
 {
-
-    protected $table = 'hourstimesheet';
+    protected $table = 'email';
 
     /**
      * The attributes that are mass assignable.
@@ -15,6 +14,6 @@ class HoursTimesheet extends Model
      * @var array
      */
     protected $fillable = [
-        'start_time', 'end_time',
+        'email',
     ];
 }
