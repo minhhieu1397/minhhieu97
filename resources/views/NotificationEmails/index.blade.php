@@ -4,7 +4,9 @@
 		<div class="col-md-4 offset-md-4">
 			{!! Form::open(['method' => 'POST', 'route' => 'emails.store']) !!}
 				@if (Session::has( 'success' ))
-					{{ Session::get( 'success' ) }}
+					<div class="alert alert-success">
+						{{ Session::get( 'success' ) }}
+					</div>
 				@endif
 				@if ($errors->any())
 					<div class="alert alert-danger">
@@ -33,6 +35,7 @@
 					<tr class="table__title">
 						<th>Id</th>
 						<th>Email</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,9 +49,12 @@
 						<tr class="table__content">
 							<td>{{$id}}</td>
 							<td>{{$email->email}}</td>
-							
 							<td>
-								
+								{!! Form::open(['method' => 'DELETE', 'route' => ['emails.destroy', $email->id]]) !!}
+								    <div class="form-group">
+						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
+									</div>
+								{!! Form::close() !!}
 							</td>
 						</tr>
 					@endforeach

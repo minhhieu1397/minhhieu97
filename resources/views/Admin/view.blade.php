@@ -21,6 +21,7 @@
 						<th>leader</th>
 						<th>View Timesheet</th>			
 						<th>View</th>
+						<th>Notification</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -47,6 +48,7 @@
 									</div>
 								{!! Form::close() !!}
 							</td>
+							<td><a href="{{ route('emails.show', $user['id'])}}">View Notification</a></td>
 						</tr>
 					@endforeach
 				</tbody>

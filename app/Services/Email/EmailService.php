@@ -26,4 +26,14 @@ class EmailService
 
 		return $emails;
 	}
+
+	public function delete($email)
+	{
+		return $this->emailRepository->delete($email);
+	}
+
+	public function show($add)
+	{
+		return $this->emailRepository->show($add);
+	}
 }

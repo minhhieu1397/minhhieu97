@@ -14,7 +14,7 @@ class EmailNotification extends Model
      * @var array
      */
     protected $fillable = [
-        'email_id', 'notification_id'
+        'email_id', 'user_id'
     ];
 }
 

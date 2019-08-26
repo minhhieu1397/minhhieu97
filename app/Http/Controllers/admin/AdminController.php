@@ -54,7 +54,7 @@ class AdminController extends Controller
         $admin = Auth::user();
         $this->authorize('adminShow', $admin);
 
-        return view('Admin.show',['user' => $user]);
+        return view('Admin.show', ['user' => $user]);
     }
 
     public function edit(User $user)

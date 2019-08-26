@@ -22,4 +22,14 @@ class EmailRepository
 	{
 		return $this->model->create($attributes);
 	}
+
+	public function delete($email)
+	{
+		return $this->model->find($email)->delete();
+	}
+
+	public function show($add)
+	{
+		return $this->model->all()->where('id', $add);
+	}
 }
