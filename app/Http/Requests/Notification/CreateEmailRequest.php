@@ -24,7 +24,7 @@ class CreateEmailRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'exists:users,email|unique:email',
+            'email' => 'exists:users, email|unique:email',
         ];
     }
 }

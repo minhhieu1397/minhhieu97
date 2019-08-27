@@ -11,6 +11,20 @@
 				{!! Form::close() !!}
  			</div>
 			<table class="table table-condensed" >
+				@if (Session::has( 'success' ))
+					<div class="alert alert-success">
+						{{ Session::get( 'success' ) }}
+					</div>
+				@endif
+				@if ($errors->any())
+					<div class="alert alert-danger">
+			   			<ul>
+				            @foreach ($errors->all() as $error)
+				                <li>{{ $error }}</li>
+				            @endforeach
+				        </ul>
+				    </div>
+				@endif
 				<thead>
 					<tr class="table__title">
 						<th>Id</th>
@@ -42,7 +56,7 @@
 							<td><a href="{{ route('admins.timesheet', $user['id']) }}">Timesheet</a></td>
 							<td>
 								<a href="{{route('admins.show', $user['id'])}}">VIEW</a>
-								{!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id]]) !!}
+								{!! Form::open(['method' => 'DELETE', 'route' => ['admins.destroy', $user->id]]) !!}
 						       		<div class="form-group">
 						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
 									</div>

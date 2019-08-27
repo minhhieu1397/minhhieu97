@@ -30,9 +30,13 @@ Route::namespace('Admin')->group(function () {
 	Route::get('/admins/{user}/edit', 'AdminController@edit')->name('admins.edit');
 	Route::put('/admins/{user}/edit', 'AdminController@update')->name('admins.update');
 	Route::put('/admins/{user}/reset_password', 'AdminController@resetPassword')->name('admins.resetpassword');
+	Route::delete('admins/{user}', 'AdminController@destroy')->name('admins.destroy');
 });
 
-	Route::post('/notification/{user}/create', 'Notification\NotificationEmailController@store')->name('notification.store');
+Route::namespace('Notification')->group(function () {
+	Route::post('/notification/{user}/create', 'NotificationEmailController@store')->name('notification.store');
+	Route::delete('/notification/{userId}/{emailId}', 'NotificationEmailController@destroy')->name('notifications.destroy');
+});
 
 Route::namespace('User')->group(function () {
 	Route::get('users\edit', 'UserController@edit')->name('users.edit');
@@ -43,7 +47,6 @@ Route::namespace('User')->group(function () {
 	Route::put('users\edit_password', 'UserController@updatePassword')->name('users.updatepassword');
 	Route::get('users\create', 'UserController@adminCreateUser')->name('admin.users.create');
 	Route::post('users\create', 'UserController@adminStoreUser')->name('admin.users.store');
-	Route::delete('users\{user}', 'UserController@destroy')->name('users.destroy');
 });
 
 Route::group(['prefix' => 'admins'], function () {

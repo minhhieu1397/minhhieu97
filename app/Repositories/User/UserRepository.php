@@ -13,11 +13,6 @@ class UserRepository
 		$this->model = $model;
 	}
 
-	public function delete($user)
-	{
-		return $this->model->find($user)->delete();
-	}
-
 	public function update($request, $attributes)
 	{
 		return $this->model->find(\Auth::user()->id)->update($attributes);

@@ -93,4 +93,15 @@ class AdminController extends Controller
 
         return view('Admin.view', ['users' => $users]);
     }
+
+    public function destroy($user)
+    {
+        if ($this->adminService->delete($user)) {
+            return back()->withSuccess( 'Delete is successfuly' );
+        } else {
+            return back()->withErrors([
+                'errorDelete' => 'Have an error while deleting timesheet'
+            ]);
+        }
+    }
 }

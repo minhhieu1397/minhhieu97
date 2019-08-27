@@ -58,6 +58,11 @@ class TimesheetRepository
 		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->get();
 	}
 
+	public function showLate($user)
+	{
+		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->where('late_flg', true)->get();
+	}
+
 	public function delete($timesheet)
 	{
         return $this->model->find($timesheet)->delete();

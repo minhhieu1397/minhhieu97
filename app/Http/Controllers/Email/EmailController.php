@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Email;
 
 use Illuminate\Http\Request;
 use App\Models\Email;
-use DB;
 use App\Models\User;
 use App\Models\EmailNotification;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +41,7 @@ class EmailController extends Controller
     public function show(User $user)
     {
     	$emails = \App\Models\User::find($user->id)->emails;
+        
     	return view('NotificationEmails.show', ['emails' => $emails, 'user' => $user]);
     }
 

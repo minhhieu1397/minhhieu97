@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Timesheet;
+namespace App\Http\Requests\Notification;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\CheckDateTimesheetRule;
 
-class CreateTimesheetRequest extends FormRequest
+class NotificationEmailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +24,7 @@ class CreateTimesheetRequest extends FormRequest
     public function rules()
     {
         return [
-            'work_date' => ['required', 'date', 'before:tomorrow', new CheckDateTimesheetRule()],       
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'details' => 'required',
+            'email' => 'exists:email,email|required'
         ];
     }
 }

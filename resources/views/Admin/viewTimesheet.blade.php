@@ -35,6 +35,14 @@
 				    </div>
 				@endif
 			</div>
+			 @can ('Admin')
+				<div class="text-center text-success">
+					Number of days in the month : {{$numberDate}}
+				</div>
+				<div class="text-center text-success">
+					Late: {{$countLate}}
+				</div>
+			@endcan
 			<table class="table table-condensed">
 				<thead>
 					<tr class="table__title">

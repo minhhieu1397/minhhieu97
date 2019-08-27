@@ -23,16 +23,6 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function destroy($user)
-    {
-        if ($this->userService->delete($user)) {
-            return redirect()->route('users.index')->withSuccess( 'Delete is successfuly' );
-        } else {
-            return back()->withErrors([
-                'errorDelete' => 'Have an error while deleting timesheet'
-            ]);
-        }
-    }
 
     public function edit()
     {
@@ -43,7 +33,7 @@ class UserController extends Controller
 
     public function update(UpdateRequest $request)
     {
-        if($this->userService->update($request)) {
+        if ($this->userService->update($request)) {
             return redirect()->route('timesheets.index');
         } else {
             return back()->withInput();

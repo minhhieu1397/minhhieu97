@@ -42,4 +42,8 @@ class AdminRepository
 	{
 		return $this->model->where('name', $name)->paginate(7);
 	}
+		public function delete($user)
+	{
+		return $this->model->find($user)->delete();
+	}
 }

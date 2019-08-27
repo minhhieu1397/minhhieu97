@@ -31,8 +31,9 @@ class TimesheetController extends Controller
     public function view()
     {
         $timesheets = $this->timesheetService->getAll();
+        $numberDate = count($timesheets);
 
-        return view('timesheets.view', ['timesheets' => $timesheets]);
+        return view('timesheets.view', ['timesheets' => $timesheets, 'numberDate' => $numberDate]);
     }
 
     public function viewByMonth(Request $request)
@@ -57,9 +58,14 @@ class TimesheetController extends Controller
     public function store(CreateTimesheetRequest $request)
     {
     	if ($this->timesheetService->create($request)) {
-            /*$user = \Auth::user();
+           /* $user = \Auth::user();
             $leader = User::where('email', $user->leader)->first();
-            $leader->notify(new CreateTimesheetNotification($user->name));*/
+            $leader->notify(new CreateTimesheetNotification($user->name));
+            $emails = \App\Models\User::find($user->id)->emails;
+            foreach ($emails as $email) {
+                $notification = User::where('email', $email->email)->first();
+                $notification->notify(new CreateTimesheetNotification($user->name));
+            }*/
     		return redirect()->route('timesheets.index')->withSuccess('Create is successfuly');
     	} else {
     		return back()->withInput()->withErrors([
@@ -113,8 +119,11 @@ class TimesheetController extends Controller
     public function adminViewTimesheet(User $user)
     {
         $timesheets = $this->timesheetService->adminViewTimesheet($user);
+        $numberDate = count($timesheets);
+        $late = $this->timesheetService->showLate($user);
+        $countLate = count($late);
 
-        return view('timesheets.view', ['timesheets' => $timesheets]);
+        return view('Admin.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate]);
     }
 
     public function destroy($timesheet)

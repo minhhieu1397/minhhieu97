@@ -89,6 +89,11 @@ class TimesheetService
 		return $this->timesheetRepository->adminViewTimesheet($user);
 	}
 
+	public function showLate($user)
+	{
+		return $this->timesheetRepository->showLate($user);
+	}
+
 	public function delete($timesheet)
 	{
 		return $this->timesheetRepository->delete($timesheet);

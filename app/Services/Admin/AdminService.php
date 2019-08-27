@@ -62,4 +62,9 @@ class AdminService
 
 		return $this->adminRepository->search($name);
 	}
+
+	public function delete($user)
+	{
+		return $this->adminRepository->delete($user);
+	}
 }

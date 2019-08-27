@@ -17,4 +17,9 @@ class NotificationEmailRepository
 	{
 		return $this->model->create($attributes);
 	}
+
+	public function delete($emailNotification)
+	{
+		return $this->model->find($emailNotification->id)->delete();
+	}
 }
