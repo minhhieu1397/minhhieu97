@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Notification;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\CkeckCreateEmailNitificationRule;
 
 class NotificationEmailRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class NotificationEmailRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'exists:email,email|required'
+            'email' => ['exists:email,email', 'required', new CkeckCreateEmailNitificationRule($this->user)],
         ];
     }
 }

@@ -18,6 +18,14 @@
 	            	{{ Form::label('details', 'Details:', ['class' => 'control-label']) }}
 	            	{{ Form::textarea('details', $timesheet->details, ['class' => 'form-control', 'rows' => 3]) }}
 	       		</div>
+	       		<div class="form-group">
+	            	{{ Form::label('issue', 'Issue', ['class' => 'control-label']) }}
+	            	{{ Form::text('issue', $timesheet->issue, ['class' => 'form-control', 'rows' => 3]) }}
+	       		</div>
+	       		<div class="form-group">
+	            	{{ Form::label('intention', 'Intention', ['class' => 'control-label']) }}
+	            	{{ Form::text('intention', $timesheet->intention, ['class' => 'form-control', 'rows' => 3]) }}
+	       		</div>
 				<div>
 	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}
 				</div>

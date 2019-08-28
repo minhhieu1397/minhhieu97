@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +22,6 @@ class UserController extends Controller
     {
         $this->userService = $userService;
     }
-
 
     public function edit()
     {

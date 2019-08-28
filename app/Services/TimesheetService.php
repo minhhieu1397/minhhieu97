@@ -4,8 +4,6 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use App\Repositories\TimesheetRepository;
 
-
-
 class TimesheetService
 {
 	protected $timesheetRepository;
@@ -68,7 +66,9 @@ class TimesheetService
       
         return $this->timesheetRepository->update($timesheet, [
         	'approve' => false,
-        	'details' => $request->input('details')
+        	'details' => $request->input('details'),
+        	'issue' => $request->input('issue'),
+        	'intention' => $request->input('intention'),
         ]);
 	}
 

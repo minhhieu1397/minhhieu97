@@ -39,14 +39,12 @@ Route::namespace('Notification')->group(function () {
 });
 
 Route::namespace('User')->group(function () {
-	Route::get('users\edit', 'UserController@edit')->name('users.edit');
-	Route::put('users\edit', 'UserController@update')->name('users.update');
-	Route::get('users\update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
-	Route::post('users\pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
-	Route::get('users\edit_password', 'UserController@editPassword')->name('users.editpassword');
-	Route::put('users\edit_password', 'UserController@updatePassword')->name('users.updatepassword');
-	Route::get('users\create', 'UserController@adminCreateUser')->name('admin.users.create');
-	Route::post('users\create', 'UserController@adminStoreUser')->name('admin.users.store');
+	Route::get('users/edit', 'UserController@edit')->name('users.edit');
+	Route::put('users/edit', 'UserController@update')->name('users.update');
+	Route::get('users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
+	Route::post('users/pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
+	Route::get('users/edit_password', 'UserController@editPassword')->name('users.editpassword');
+	Route::put('users/edit_password', 'UserController@updatePassword')->name('users.updatepassword');
 });
 
 Route::group(['prefix' => 'admins'], function () {

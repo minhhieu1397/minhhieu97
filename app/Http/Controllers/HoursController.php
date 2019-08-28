@@ -19,6 +19,6 @@ class HoursController extends Controller
         $hours = HoursTimesheet::findOrFail(0);
         $hours->update($data);
 
-		return back()->withSuccess( 'You have successfully updated' );
+		return back()->withSuccess( 'Update is successfully' );
     }
 }

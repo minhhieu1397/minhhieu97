@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class HoursTimesheet extends Model
 {
-
     protected $table = 'hourstimesheet';
 
     /**

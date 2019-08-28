@@ -2,7 +2,9 @@
 
 @section('content')
 	<div class="row text-center">
-		<h1>Notification</h1>
+		<div class="col-md-12">
+		<h1 class="text-center">Notification</h1>
+		</div>
 	</div>
 	<div class="row content_login">
 		<div class="col-md-3 offset-md-1">
