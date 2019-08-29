@@ -21,7 +21,7 @@
 							<td>{{$user->description}}</td>
 							<td>{{$user->role}}</td>
 							<td>
-								<a href="{{route('admins.edit', $user['id'])}}">edit</a>
+								<a href="{{route('users.edit', $user['id'])}}">edit</a>
 							</td>
 						</tr>
 					@endforeach

@@ -13,7 +13,42 @@ class UserRepository
 		$this->model = $model;
 	}
 
-	public function update($request, $attributes)
+	public function create($attributes)
+	{
+		return $this->model->create($attributes);
+	}
+
+	public function all()
+	{
+		return $this->model->all();
+	}
+
+	public function search($name)
+	{
+		return $this->model->where('name', $name)->get();
+	}
+
+	public function show($user)
+	{
+		return $this->model->all()->where('id', $user->id);
+	}
+
+	public function adminUpdateUser($user, $attributes)
+	{
+        return $this->model->find($user->id)->update($attributes);
+	}
+
+	public function resetPassword($user, $attributes)
+	{
+		return $this->model->find($user->id)->update($attributes);
+	}
+
+	public function delete($user)
+	{
+		return $this->model->find($user)->delete();
+	}
+
+	/*public function update($request, $attributes)
 	{
 		return $this->model->find(\Auth::user()->id)->update($attributes);
 	}
@@ -25,5 +60,5 @@ class UserRepository
         $user->save();
 
         return true;
-	}
+	}*/
 }

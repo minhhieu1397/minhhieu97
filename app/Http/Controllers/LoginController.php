@@ -18,13 +18,11 @@ class LoginController extends Controller
     	$email = $request->input('email');
     	$password = $request->input('password');
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            if (Auth::user()->role == 'admin') {
-                return redirect()->route('admins.index');
-            } else {
-                return redirect()->route('timesheets.index');
-            }
+            return redirect()->route('timesheets.index');
+        } elseif (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('admins.index');
         } else {
-            return redirect()->route('users.login')->withErrors([
+            return back()->withInput()->withErrors([
                 'errorLogin' => 'Username or password incorrect'
             ]);
         }

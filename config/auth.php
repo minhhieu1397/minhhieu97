@@ -46,6 +46,15 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'admins-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -70,9 +79,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'timesheets' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Timesheets::class,
+            'model' => App\Models\Admins::class,
         ],
 
         // 'users' => [
@@ -99,6 +108,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ],

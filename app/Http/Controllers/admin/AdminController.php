@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Admin\AdminService;
-use App\Http\Requests\Admin\CreateUserRequest;
-use App\Http\Requests\Admin\UpdateUserRequest;
-use App\Http\Requests\Admin\ResetPasswordRequest;
+
+use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\User;
+use App\Models\Admins;
 
 class AdminController extends Controller
 {
@@ -22,22 +22,20 @@ class AdminController extends Controller
 
     public function index()
     {
-        $users = $this->adminService->getAll();
-        $admin = Auth::user();
-        $this->authorize('adminView', $admin);
+        /*$this->authorize('adminView', $admin);*/
+        $admin = Auth::guard('admins')->user();
 
-    	return view('Admin.view', ['users' => $users]);
+    	return view('Admin.home', ['admin' => $admin]);
     }
 
     public function create()
     {
-        $user = Auth::user();
-        $this->authorize('adminCreate', $user);
-
+        /*$user = Auth::admins();
+        $this->authorize('adminCreate', $user);*/
         return view('Admin.create');
     }
 
-    public function store(CreateUserRequest $request)
+    public function store(CreateAdminRequest $request)
     {
         if ($this->adminService->create($request)) {
             return redirect()->route('admins.index');
@@ -48,44 +46,15 @@ class AdminController extends Controller
         }
     }
 
-    public function show(User $user)
-    {
-        $user = $this->adminService->show($user);
-        $admin = Auth::user();
-        $this->authorize('adminShow', $admin);
+    
 
-        return view('Admin.show', ['user' => $user]);
-    }
+    /*
 
-    public function edit(User $user)
-    {
-        $admin = Auth::user();
-        $this->authorize('adminUpdate', $admin);
+    
 
-        return view('Admin.update', ['user' => $user]);
-    }
+    
 
-    public function update(User $user, UpdateUserRequest $request)
-    {
-        if ($this->adminService->update($user, $request)) {
-            return back()->withSuccess('Update is success');
-        } else {
-            return back()->withInput()->withErrors([
-                'errorUpdate' => 'Have an error while updating'
-            ]);
-        }
-    }
-
-    public function resetPassword(User $user, ResetPasswordRequest $request)
-    {
-        if ($this->adminService->resetPassword($user, $request)) {
-            return back()->withSuccess('Reset Password is successfuly');
-        } else {
-            return back()->withErrors([
-                'ResetPasswordError' => 'Have an error while Reset Password'
-            ]);
-        }
-    }
+    
     
     public function search(Request $request)
     {
@@ -103,5 +72,5 @@ class AdminController extends Controller
                 'errorDelete' => 'Have an error while deleting timesheet'
             ]);
         }
-    }
+    }*/
 }

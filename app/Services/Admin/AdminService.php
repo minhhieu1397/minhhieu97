@@ -21,40 +21,19 @@ class AdminService
 
 	public function create($request)
 	{
-		$user = $this->adminRepository->create([
+		return $this->adminRepository->create([
 			'name' => $request->input('name'),
 			'email' => $request->input('email'),
 			'password' => \Hash::make($request->input('password')),
-			'description' => $request->input('description'),
-			'role' => $request->input('role')
-		]);
-
-		return $user;
-	}
-
-	public function show($user)
-	{
-		return $this->adminRepository->show($user);
-	}
-
-	public function update($user, $request)
-	{
-		$user = $this->adminRepository->update($user, [
-			'name' => $request->input('name'),
-			'email' => $request->input('email'),
-			'role' => $request->input('role'),
-			'leader' => $request->input('leader'),
-		]);
-
-		return $user;
-	}
-
-	public function resetPassword($user, $request)
-	{
-		return $this->adminRepository->resetPassword($user, [
-			'password' => \Hash::make($request->input('password')),
+			'level' => $request->input('level')
 		]);
 	}
+
+	/*
+
+	
+
+	
 
 	public function search($request)
 	{
@@ -66,5 +45,5 @@ class AdminService
 	public function delete($user)
 	{
 		return $this->adminRepository->delete($user);
-	}
+	}*/
 }

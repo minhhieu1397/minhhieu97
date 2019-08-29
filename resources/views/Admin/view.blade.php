@@ -4,10 +4,10 @@
 		<div class="col-md-10 offset-md-1">
 			<h1 class="text-center login-title">List Users</h1>
 			<div>
-				{!! Form::open(['method' => 'GET', 'route' => 'admins.search']) !!}
+				{!! Form::open(['method' => 'GET', 'route' => 'users.search']) !!}
 					{{ Form::label('search', 'Seach by name:', ['class' => 'control-label']) }}
 					{{ Form::text('search', null) }}
-		       		{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
+						       		{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
 				{!! Form::close() !!}
  			</div>
 			<table class="table table-condensed" >
@@ -53,21 +53,20 @@
 							<td>{{$user->description}}</td>
 							<td>{{$user->role}}</td>
 							<td>{{$user->leader}}</td>
-							<td><a href="{{ route('admins.timesheet', $user['id']) }}">Timesheet</a></td>
+							<td><a href="{{ route('users.timesheet', $user['id']) }}">Timesheet</a></td>
 							<td>
-								<a href="{{route('admins.show', $user['id'])}}">VIEW</a>
-								{!! Form::open(['method' => 'DELETE', 'route' => ['admins.destroy', $user->id]]) !!}
-						       		<div class="form-group">
-						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
+								<a href="{{route('users.show', $user['id'])}}">VIEW</a>
+								{!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id]]) !!}
+									<div class="form-group">
+										{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
 									</div>
 								{!! Form::close() !!}
 							</td>
-							<td><a href="{{ route('emails.show', $user['id'])}}">View Notification</a></td>
+							<!-- <td><a href="{{ route('emails.show', $user['id'])}}">View Notification</a></td> -->
 						</tr>
 					@endforeach
 				</tbody>
 			</table>
-			{{ $users->links('') }}
 		</div>
 	</div>
 @stop()

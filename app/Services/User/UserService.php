@@ -14,6 +14,61 @@ class UserService
 		$this->userRepository = $userRepository;
 	}
 
+	public function create($request)
+	{
+		return $this->userRepository->create([
+			'name' => $request->input('name'),
+			'email' => $request->input('email'),
+			'password' => \Hash::make($request->input('password')),
+			'description' => $request->input('description'),
+			'role' => $request->input('role')
+		]);
+	}
+
+	public function getAll()
+	{
+		return $this->userRepository->all();
+	}
+
+	public function search($request)
+	{
+		$name = $request->input('search');
+
+		return $this->userRepository->search($name);
+	}
+
+	public function show($user)
+	{
+		return $this->userRepository->show($user);
+	}
+
+	public function adminUpdateUser($user, $request)
+	{
+		$user = $this->userRepository->adminUpdateUser($user, [
+			'name' => $request->input('name'),
+			'email' => $request->input('email'),
+			'role' => $request->input('role'),
+			'leader' => $request->input('leader'),
+		]);
+
+		return $user;
+	}
+
+	public function resetPassword($user, $request)
+	{
+		return $this->userRepository->resetPassword($user, [
+			'password' => \Hash::make($request->input('password')),
+		]);
+	}
+
+	public function delete($user)
+	{
+		return $this->userRepository->delete($user);
+	}
+
+
+
+
 	public function update($request)
 	{
 		return $this->userRepository->update($request, [
