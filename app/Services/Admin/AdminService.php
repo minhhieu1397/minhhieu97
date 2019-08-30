@@ -29,21 +29,17 @@ class AdminService
 		]);
 	}
 
-	/*
-
-	
-
-	
-
-	public function search($request)
+	public function update($admin, $request)
 	{
-		$name = $request->input('search');
-
-		return $this->adminRepository->search($name);
+		return $this->adminRepository->update($admin, [
+			'name' => $request->input('name'),
+			'email' => $request->input('email'),
+			'level' => $request->input('level'),
+		]);
 	}
 
-	public function delete($user)
+	public function delete($admin)
 	{
-		return $this->adminRepository->delete($user);
-	}*/
+		return $this->adminRepository->delete($admin);
+	}
 }

@@ -45,7 +45,7 @@ class TimesheetRepository
 
 	public function viewApprove()
 	{
-		return $this->model->where('leader', \Auth::user()->email)->where('approve', 0)->get();
+		return $this->model->where('leader', \Auth::guard('admins')->user()->email)->where('approve', 0)->get();
 	}
 
 	public function updateApprove($timesheet, $attributes)

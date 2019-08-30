@@ -5,11 +5,6 @@
                 <li class="nav-item">
                     <a class="nav-link text-primary h5" href="{{route('timesheets.index')}}">Home</a>
                 </li>
-                @can ('Admin')
-                    <li class="nav-item">
-                        <a class="nav-link text-primary h5" href="{{route('admins.index')}}">Admin</a>
-                    </li>
-                @endcan
             </ul>
         </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">

@@ -13,13 +13,23 @@ class AdminRepository
 		$this->model = $model;
 	}
 
-/*	public function all()
-	{
-		return $this->model->paginate(7);
-	}*/
-
 	public function create($attributes)
 	{
 		return $this->model->create($attributes);
+	}
+
+	public function all()
+	{
+		return $this->model->all();
+	}
+
+	public function update($admin, $attributes)
+	{
+		return $this->model->find($admin->id)->update($attributes);
+	}
+
+	public function delete($admin)
+	{
+		return $this->model->find($admin)->delete();
 	}
 }

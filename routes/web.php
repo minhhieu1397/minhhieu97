@@ -22,14 +22,14 @@ Route::namespace('Email')->group(function () {
 });
 
 Route::namespace('Admin')->group(function () {
-
-
 	Route::get('/admins/', 'AdminController@index')->name('admins.index');
 	Route::get('/admins/create', 'AdminController@create')->name('admins.create');
 	Route::post('/admins/create', 'AdminController@store')->name('admins.store');
-	
-	
-	Route::delete('admins/{user}', 'AdminController@destroy')->name('admins.destroy');
+	Route::get('/admins/view', 'AdminController@view')->name('admins.view');
+	Route::get('/admins/{admin}', 'AdminController@show')->name('admins.show');
+	Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
+	Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
+	Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
 });
 
 Route::namespace('Notification')->group(function () {
@@ -38,25 +38,20 @@ Route::namespace('Notification')->group(function () {
 });
 
 Route::namespace('User')->group(function () {
+	Route::get('users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
+	Route::post('users/pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
+	Route::get('users/edit', 'UserController@edit')->name('users.edit');
+	Route::put('users/edit', 'UserController@update')->name('users.update');
+	Route::get('users/edit_password', 'UserController@editPassword')->name('users.editpassword');
+	Route::put('users/edit_password', 'UserController@updatePassword')->name('users.updatepassword');
 	Route::get('/users/view', 'UserController@viewUser')->name('users.view');
 	Route::get('/users/seach', 'UserController@search')->name('users.search');
 	Route::get('/users/{user}', 'UserController@show')->name('users.show');
-	Route::get('/users/{user}edit', 'UserController@adminEdit')->name('users.edit');
-	Route::put('/users/{user}edit', 'UserController@adminUpdateUser')->name('users.update');
-	/*
-	Route::put('/users/{user}/reset_password', 'UserController@resetPassword')->name('users.resetpassword');*/
-
+	Route::get('/users/{user}/edit', 'UserController@adminEdit')->name('admin.users.edit');
+	Route::put('/users/{user}/edit', 'UserController@adminUpdateUser')->name('admin.users.update');
+	Route::put('/users/{user}/reset_password', 'UserController@resetPassword')->name('users.resetpassword');
 	Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy');
-
-
-
-	Route::get('users/edit', 'UserController@edit')->name('users.edit');
-	Route::put('users/edit', 'UserController@update')->name('users.update');
 	Route::post('users/create' ,'UserController@store')->name('users.store');
-	Route::get('users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
-	Route::post('users/pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
-	Route::get('users/edit_password', 'UserController@editPassword')->name('users.editpassword');
-	Route::put('users/edit_password', 'UserController@updatePassword')->name('users.updatepassword');
 });
 
 Route::group(['prefix' => 'admins'], function () {

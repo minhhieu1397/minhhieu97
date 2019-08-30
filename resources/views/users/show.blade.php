@@ -8,19 +8,23 @@
 					<tr class="table__title">
 						<th>Name</th>
 						<th>Email</th>
-						<th>level</th>
+						<th>Description</th>
+						<th>Role</th>				
 						<th>VIEW</th>
 					</tr>
 				</thead>
 				<tbody>
+					@foreach ($user as $user)
 						<tr class="table__content">
-							<td>{{$admin->name}}</td>
-							<td>{{$admin->email}}</td>
-							<td>{{$admin->level}}</td>
+							<td>{{$user->name}}</td>
+							<td>{{$user->email}}</td>
+							<td>{{$user->description}}</td>
+							<td>{{$user->role}}</td>
 							<td>
-								<a href="{{route('admins.edit', $admin['id'])}}">edit</a>
+								<a href="{{route('admin.users.edit', $user['id'])}}">edit</a>
 							</td>
 						</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>

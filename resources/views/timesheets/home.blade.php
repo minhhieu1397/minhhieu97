@@ -9,7 +9,7 @@
 						<a class="nav-link text-primary h5" href="{{route('users.edit.avatar')}}">Update Avatar</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-primary h5" href="{{route('users.edit', $user['id'])}}">Update User</a>
+						<a class="nav-link text-primary h5" href="{{route('users.edit')}}">Update User</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-primary h5" href="{{route('timesheet.view')}}">View Timesheets</a>

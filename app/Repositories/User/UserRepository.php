@@ -48,7 +48,7 @@ class UserRepository
 		return $this->model->find($user)->delete();
 	}
 
-	/*public function update($request, $attributes)
+	public function update($request, $attributes)
 	{
 		return $this->model->find(\Auth::user()->id)->update($attributes);
 	}
@@ -60,5 +60,5 @@ class UserRepository
         $user->save();
 
         return true;
-	}*/
+	}
 }

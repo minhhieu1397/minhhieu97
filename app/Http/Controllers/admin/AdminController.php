@@ -22,7 +22,6 @@ class AdminController extends Controller
 
     public function index()
     {
-        /*$this->authorize('adminView', $admin);*/
         $admin = Auth::guard('admins')->user();
 
     	return view('Admin.home', ['admin' => $admin]);
@@ -30,8 +29,6 @@ class AdminController extends Controller
 
     public function create()
     {
-        /*$user = Auth::admins();
-        $this->authorize('adminCreate', $user);*/
         return view('Admin.create');
     }
 
@@ -46,31 +43,42 @@ class AdminController extends Controller
         }
     }
 
-    
-
-    /*
-
-    
-
-    
-
-    
-    
-    public function search(Request $request)
+    public function view()
     {
-        $users = $this->adminService->search($request); 
+        $admins = $this->adminService->getAll();
 
-        return view('Admin.view', ['users' => $users]);
+        return view('admin.view', compact('admins'));
     }
 
-    public function destroy($user)
+    public function show(Admins $admin)
     {
-        if ($this->adminService->delete($user)) {
+        return view('admin.show', compact('admin'));
+    }
+
+    public function edit(Admins $admin)
+    {
+        return view('admin.update', compact('admin'));
+    }
+
+    public function update(Admins $admin, Request $request)
+    {
+        if ($this->adminService->update($admin, $request)) {
+            return redirect()->route('admins.show', compact('admin'))->withSuccess('Update is successfuly');
+        } else { 
+            return back()->withInput()->withErrors([
+                'ErrorUpdate' => 'Have an error when updating'
+            ]);
+        }
+    }
+
+    public function destroy($admin)
+    {
+        if ($this->adminService->delete($admin)) {
             return back()->withSuccess( 'Delete is successfuly' );
         } else {
             return back()->withErrors([
                 'errorDelete' => 'Have an error while deleting timesheet'
             ]);
         }
-    }*/
+    }
 }

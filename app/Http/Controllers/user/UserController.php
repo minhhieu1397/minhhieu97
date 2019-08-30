@@ -38,14 +38,14 @@ class UserController extends Controller
     {
         $users = $this->userService->getAll();
 
-        return view('admin.view', compact('users'));
+        return view('users.view', compact('users'));
     }
 
     public function search(Request $request)
     {   
         $users = $this->userService->search($request); 
 
-        return view('admin.view', compact('users'));
+        return view('users.view', compact('users'));
     }
 
     public function show(User $user)
@@ -54,14 +54,12 @@ class UserController extends Controller
         /*$admin = Auth::user();
         $this->authorize('adminShow', $admin);*/
 
-        return view('Admin.show', ['user' => $user]);
+        return view('users.show', ['user' => $user]);
     }
 
     public function adminEdit(User $user)
     {
-        
-        
-        return view('Admin.update', ['user' => $user]);
+        return view('users.update', compact('user'));
     }
 
     public function adminUpdateUser(User $user, AdminUpdateUserRequest $request)
@@ -97,19 +95,41 @@ class UserController extends Controller
         }
     }
 
+    public function editAvatar()
+    {
+        return view('users.user_update');
+    }
 
+    public function updateAvatar(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $request->file('image')->getClientOriginalName();
+            if ($file->move('image', $filename)) {
+                $user = \Auth::user();
+                $user->avatar = '/image/' . $filename;
+                $user->save();
+                return back()->withSuccess('Upload Avatar is successfuly');
+            } else {
+                return back()->withErrors([
+                    'errorUpload' => 'Have an error while uploading'
+                ]);
+            }
+        } else {
+            return back()->withErrors([
+                'errorUpload' => 'Have an error while uploading'
+            ]);
+        }
+    }
 
-
-
-
-    /*public function edit()
+    public function edit()
     {
         $user = Auth::user();
 
         return view('users.edit_user', ['user' => $user]);
     }
-*/
-    /*public function update(UpdateRequest $request)
+
+    public function update(UpdateRequest $request)
     {
         if ($this->userService->update($request)) {
             return redirect()->route('timesheets.index');
@@ -136,30 +156,5 @@ class UserController extends Controller
         }
     }
 
-    public function editAvatar()
-    {
-        return view('users.user_update');
-    }
-
-    public function updateAvatar(Request $request)
-    {
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = $request->file('image')->getClientOriginalName();
-            if ($file->move('image', $filename)) {
-                $user = \Auth::user();
-                $user->avatar = '/image/' . $filename;
-                $user->save();
-                return back()->withSuccess('Upload Avatar is successfuly');
-            } else {
-                return back()->withErrors([
-                    'errorUpload' => 'Have an error while uploading'
-                ]);
-            }
-        } else {
-            return back()->withErrors([
-                'errorUpload' => 'Have an error while uploading'
-            ]);
-        }
-    }*/  
+      
 }
