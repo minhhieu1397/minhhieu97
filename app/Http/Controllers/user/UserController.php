@@ -37,7 +37,7 @@ class UserController extends Controller
     public function viewUser()
     {
         $users = $this->userService->getAll();
-
+        
         return view('users.view', compact('users'));
     }
 

@@ -22,9 +22,18 @@ class AdminController extends Controller
 
     public function index()
     {
+        dd(\Auth::guard('admins')->check());
         $admin = Auth::guard('admins')->user();
-
-    	return view('Admin.home', ['admin' => $admin]);
+        return view('Admin.home', ['admin' => $admin]);
+        /*if (count($admin)) {
+            if ($admin->can('is_admin')) {
+                return view('Admin.home', ['admin' => $admin]);
+            } else {
+                return redirect()->route('users.login');
+            }
+        } else {
+            return redirect()->route('users.login');
+        }*/
     }
 
     public function create()

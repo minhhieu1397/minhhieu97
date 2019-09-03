@@ -10,13 +10,6 @@ class TimesheetPolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
-    {
-        if ($user->role == 'admin') {
-            return true;
-        }
-    }
-
     public function view(User $user, Timesheets $timesheet)
     {
         if ($user->id == $timesheet->user_id) {

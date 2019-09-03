@@ -76,8 +76,8 @@ class TimesheetController extends Controller
 
     public function show(Timesheets $timesheet)
     {
-    	$timesheet = $this->timesheetService->show($timesheet);
         $this->authorize('view', $timesheet);
+    	$timesheet = $this->timesheetService->show($timesheet);
          
     	return view('timesheets.show',['timesheet' => $timesheet]);
     }

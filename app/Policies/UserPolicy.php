@@ -9,13 +9,6 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class UserPolicy
 {
     use HandlesAuthorization;
-
-    public function before($user, $ability)
-    {
-        if ($user->role == 'admin') {
-            return true;
-        }
-    }
     
     public function userUpdate(User $user, User $user_edit)
     {
