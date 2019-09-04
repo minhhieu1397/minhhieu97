@@ -17,21 +17,14 @@ class LoginController extends Controller
     {
     	$email = $request->input('email');
     	$password = $request->input('password');
-        if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect()->route('timesheets.index');
-        } elseif (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password])) {
+        } elseif (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password])) {
             return redirect()->route('admins.index');
         } else {
             return back()->withInput()->withErrors([
                 'errorLogin' => 'Username or password incorrect'
             ]);
         }
-    }
-
-    public function logout() 
-    {
-        Auth::logout();
-
-        return redirect()->route('users.login');
     }
 }

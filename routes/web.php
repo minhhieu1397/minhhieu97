@@ -12,7 +12,6 @@
 */
 Route::get('/', 'LoginController@login')->name('users.login');
 Route::post('/users/login', 'LoginController@postLogin')->name('users.login.post');
-Route::get('logout', 'LoginController@logout')->name('logout');
 
 Route::namespace('Email')->group(function () {
 	Route::get('email/email_notification', 'EmailController@index')->name('emails.index');
@@ -22,14 +21,15 @@ Route::namespace('Email')->group(function () {
 });
 
 Route::namespace('Admin')->group(function () {
-	Route::get('/admins/', 'AdminController@index')->name('admins.index');
-	Route::get('/admins/create', 'AdminController@create')->name('admins.create');
-	Route::post('/admins/create', 'AdminController@store')->name('admins.store');
-	Route::get('/admins/view', 'AdminController@view')->name('admins.view');
-	Route::get('/admins/{admin}', 'AdminController@show')->name('admins.show');
-	Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
-	Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
-	Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
+		Route::get('/admins/', 'AdminController@index')->name('admins.index');
+		Route::get('/admins/create', 'AdminController@create')->name('admins.create');
+		Route::post('/admins/create', 'AdminController@store')->name('admins.store');
+		Route::get('/admins/view', 'AdminController@view')->name('admins.view');
+		Route::get('/admins/{admin}', 'AdminController@show')->name('admins.show');
+		Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
+		Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
+		Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
+		Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
 });
 
 Route::namespace('Notification')->group(function () {
@@ -52,6 +52,7 @@ Route::namespace('User')->group(function () {
 	Route::put('/users/{user}/reset_password', 'UserController@resetPassword')->name('users.resetpassword');
 	Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy');
 	Route::post('users/create' ,'UserController@store')->name('users.store');
+	Route::get('logout', 'UserController@logout')->name('logout');
 });
 
 Route::group(['prefix' => 'admins'], function () {

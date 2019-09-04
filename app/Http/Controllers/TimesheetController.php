@@ -52,6 +52,8 @@ class TimesheetController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Timesheets::class);
+
     	return view('timesheets.create');
     }
 
@@ -128,8 +130,10 @@ class TimesheetController extends Controller
         return view('Admin.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate]);
     }
 
-    public function destroy($timesheet)
+    public function destroy(Timesheets $timesheet)
     {
+        $this->authorize('delete', $timesheet);
+
         if ($this->timesheetService->delete($timesheet)) {
             return back()->withSuccess('Delete is successfuly');
         } else {

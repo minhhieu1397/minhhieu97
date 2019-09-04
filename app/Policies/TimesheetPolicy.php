@@ -12,20 +12,22 @@ class TimesheetPolicy
 
     public function view(User $user, Timesheets $timesheet)
     {
-        if ($user->id == $timesheet->user_id) {
-            return true;
-        } else {
-            return false;
-        }
+        return $user->id == $timesheet->user_id;
+    }
+
+    public function create(User $user)
+    {
+        return $user->id > 0;
     }
 
     public function update(User $user, Timesheets $timesheet)
     {
-        if ($user->id == $timesheet->user_id) {
-            return true;
-        } else {
-            return false;
-        }
+        return $user->id === $timesheet->user_id;
+    }
+
+    public function delete(User $user, Timesheets $timesheet)
+    {
+        return $user->id == $timesheet->user_id;
     }
     
     /**

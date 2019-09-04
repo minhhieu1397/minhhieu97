@@ -51,10 +51,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        /*'admins-api' => [
+        'admins-api' => [
             'driver' => 'token',
             'provider' => 'admins',
-        ],*/
+        ],
     ],
 
     /*

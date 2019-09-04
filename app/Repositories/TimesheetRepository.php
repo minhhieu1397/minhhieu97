@@ -65,6 +65,6 @@ class TimesheetRepository
 
 	public function delete($timesheet)
 	{
-        return $this->model->find($timesheet)->delete();
+        return $this->model->find($timesheet->id)->delete();
 	}
 }

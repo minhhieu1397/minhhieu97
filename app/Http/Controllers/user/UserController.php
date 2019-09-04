@@ -125,6 +125,7 @@ class UserController extends Controller
     public function edit()
     {
         $user = Auth::user();
+        $this->authorize('userUpdate', $user);
 
         return view('users.edit_user', ['user' => $user]);
     }
@@ -156,5 +157,10 @@ class UserController extends Controller
         }
     }
 
-      
+    public function logout() 
+    {
+        Auth::logout();
+
+        return redirect()->route('users.login');
+    }
 }

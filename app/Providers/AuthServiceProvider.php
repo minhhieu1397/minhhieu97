@@ -4,11 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Models\User;
-use App\Models\Admins;
-use App\Policies\UserPolicy;
-use App\Policies\AdminPolicy;
 use App\Models\Timesheets;
+use App\Models\Admins;
 use App\Policies\TimesheetPolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -33,6 +30,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('admin_master', function ($admin) {
+            return true;
+        });
+
         Gate::define('is_admin', function ($admin) {
             if ($admin->level == '1' || $admin->level == '2') {
                 return true;
@@ -40,5 +41,7 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
             }
         });
+
+        
     }
 }

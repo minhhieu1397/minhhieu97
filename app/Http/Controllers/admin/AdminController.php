@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Admin\AdminService;
-
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\User;
 use App\Models\Admins;
@@ -22,51 +22,65 @@ class AdminController extends Controller
 
     public function index()
     {
-        dd(\Auth::guard('admins')->check());
-        $admin = Auth::guard('admins')->user();
-        return view('Admin.home', ['admin' => $admin]);
-        /*if (count($admin)) {
-            if ($admin->can('is_admin')) {
-                return view('Admin.home', ['admin' => $admin]);
-            } else {
-                return redirect()->route('users.login');
-            }
+        if (Auth::guard('admins')->check()) {
+            $admin = Auth::guard('admins')->user();
+            return view('Admin.home', ['admin' => $admin]);
         } else {
             return redirect()->route('users.login');
-        }*/
+        }
     }
 
     public function create()
     {
-        return view('Admin.create');
+        if (Auth::guard('admins')->check()) {
+            return view('Admin.create');
+        } else {
+            return redirect()->route('users.login');
+        }   
     }
 
     public function store(CreateAdminRequest $request)
     {
-        if ($this->adminService->create($request)) {
-            return redirect()->route('admins.index');
+        $admin = Auth::guard('admins')->user();
+        if ($admin->level == '1') {
+            if ($this->adminService->create($request)) {
+                return redirect()->route('admins.index');
+            } else {
+                return back()->withInput()->withErrors([
+                    'errorCreareUser' => 'Have an error while creating user'
+                ]);
+            }
         } else {
-            return back()->withInput()->withErrors([
-                'errorCreareUser' => 'Have an error while creating user'
-            ]);
+            return back()->withInput();
         }
     }
 
     public function view()
     {
-        $admins = $this->adminService->getAll();
-
-        return view('admin.view', compact('admins'));
+        if (Auth::guard('admins')->check()) {
+            $admins = $this->adminService->getAll();
+            return view('admin.view', compact('admins'));
+        } else {
+            return redirect()->route('users.login');
+        }  
     }
 
     public function show(Admins $admin)
     {
-        return view('admin.show', compact('admin'));
+        if (Auth::guard('admins')->check()) {
+            return view('admin.show', compact('admin'));
+        } else {
+            return redirect()->route('users.login');
+        }
     }
 
     public function edit(Admins $admin)
     {
-        return view('admin.update', compact('admin'));
+        if (Auth::guard('admins')->check()) {
+            return view('admin.update', compact('admin'));
+        } else {
+            return redirect()->route('users.login');
+        }
     }
 
     public function update(Admins $admin, Request $request)
@@ -89,5 +103,12 @@ class AdminController extends Controller
                 'errorDelete' => 'Have an error while deleting timesheet'
             ]);
         }
+    }
+
+    public function logout() 
+    {
+        Auth::guard('admins')->logout();
+
+        return redirect()->route('users.login');
     }
 }
