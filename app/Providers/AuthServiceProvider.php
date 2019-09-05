@@ -30,8 +30,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('admin_master', function ($admin) {
-            return true;
+        Gate::define('edit-timesheet', function ($user) {
+            return $user->id > 0;
+            dd($user->id);
         });
 
         Gate::define('is_admin', function ($admin) {

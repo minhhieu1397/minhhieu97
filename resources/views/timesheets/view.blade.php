@@ -71,7 +71,7 @@
 							<td>{{$timesheet->approve}}</td>
 							<td>{{$timesheet->late_flg}}</td>
 							<td> 
-								<a href="{{route('timesheets.show', $timesheet['id'])}}" title="View TimeSheet!!!" >View</a>
+								@can('edit-timesheet')<a href="{{route('timesheets.show', $timesheet['id'])}}" title="View TimeSheet!!!" >View</a>@endcan
 								{!! Form::open(['method' => 'DELETE', 'route' => ['timesheets.destroy', $timesheet->id]]) !!}
 						       		<div class="form-group">
 						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}

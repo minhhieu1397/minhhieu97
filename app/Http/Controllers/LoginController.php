@@ -19,7 +19,7 @@ class LoginController extends Controller
     	$password = $request->input('password');
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect()->route('timesheets.index');
-        } elseif (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password])) {
+        } elseif (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password])) {
             return redirect()->route('admins.index');
         } else {
             return back()->withInput()->withErrors([

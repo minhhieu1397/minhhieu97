@@ -25,7 +25,7 @@
 		</div>
 		<div class="col-md-3">
 			<div>
-		   		<img src="{{ $user->avatar }}" alt="Smiley face" class="img-thumbnail">
+		   		<img src="{{ $user->avatar }}" alt="Smiley face" height="300" width="300" class="img-thumbnail">
 			</div>
 		</div>
 		<div class="col-md-6">

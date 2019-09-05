@@ -125,7 +125,6 @@ class UserController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        $this->authorize('userUpdate', $user);
 
         return view('users.edit_user', ['user' => $user]);
     }

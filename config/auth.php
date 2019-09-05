@@ -47,11 +47,11 @@ return [
             'hash' => false,
         ],
 
-        'admins' => [
+        'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'admins-api' => [
+        'admin-api' => [
             'driver' => 'token',
             'provider' => 'admins',
         ],

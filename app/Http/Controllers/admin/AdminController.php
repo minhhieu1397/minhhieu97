@@ -22,65 +22,42 @@ class AdminController extends Controller
 
     public function index()
     {
-        if (Auth::guard('admins')->check()) {
-            $admin = Auth::guard('admins')->user();
-            return view('Admin.home', ['admin' => $admin]);
-        } else {
-            return redirect()->route('users.login');
-        }
+        $admin = Auth::guard('admin')->user();
+        
+        return view('admin.home', ['admin' => $admin]);
     }
 
     public function create()
     {
-        if (Auth::guard('admins')->check()) {
-            return view('Admin.create');
-        } else {
-            return redirect()->route('users.login');
-        }   
+        return view('admin.create');
     }
 
     public function store(CreateAdminRequest $request)
     {
-        $admin = Auth::guard('admins')->user();
-        if ($admin->level == '1') {
-            if ($this->adminService->create($request)) {
-                return redirect()->route('admins.index');
-            } else {
-                return back()->withInput()->withErrors([
-                    'errorCreareUser' => 'Have an error while creating user'
-                ]);
-            }
+        if ($this->adminService->create($request)) {
+            return redirect()->route('admins.index');
         } else {
-            return back()->withInput();
+            return back()->withInput()->withErrors([
+                'errorCreareUser' => 'Have an error while creating user'
+            ]);
         }
     }
 
     public function view()
     {
-        if (Auth::guard('admins')->check()) {
-            $admins = $this->adminService->getAll();
-            return view('admin.view', compact('admins'));
-        } else {
-            return redirect()->route('users.login');
-        }  
+        $admins = $this->adminService->getAll();
+        
+        return view('admin.view', compact('admins'));
     }
 
     public function show(Admins $admin)
     {
-        if (Auth::guard('admins')->check()) {
-            return view('admin.show', compact('admin'));
-        } else {
-            return redirect()->route('users.login');
-        }
+        return view('admin.show', compact('admin'));
     }
 
     public function edit(Admins $admin)
     {
-        if (Auth::guard('admins')->check()) {
-            return view('admin.update', compact('admin'));
-        } else {
-            return redirect()->route('users.login');
-        }
+        return view('admin.update', compact('admin'));
     }
 
     public function update(Admins $admin, Request $request)
@@ -107,8 +84,37 @@ class AdminController extends Controller
 
     public function logout() 
     {
-        Auth::guard('admins')->logout();
+        Auth::guard('admin')->logout();
 
         return redirect()->route('users.login');
+    }
+
+    public function editAvatar()
+    {
+        $admin = Auth::guard('admin')->user();
+
+        return view('admin.upload_avatar', compact('admin'));
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $request->file('image')->getClientOriginalName();
+            if ($file->move('imageAdmin', $filename)) {
+                $admin = Auth::guard('admin')->user();
+                $admin->avatar = '/imageAdmin/' . $filename;
+                $admin->save();
+                return back()->withSuccess('Upload Avatar is successfuly');
+            } else {
+                return back()->withErrors([
+                    'errorUpload' => 'Have an error while uploading'
+                ]);
+            }
+        } else {
+            return back()->withErrors([
+                'errorUpload' => 'Have an error while uploading'
+            ]);
+        }
     }
 }

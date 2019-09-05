@@ -127,7 +127,7 @@ class TimesheetController extends Controller
         $late = $this->timesheetService->showLate($user);
         $countLate = count($late);
 
-        return view('Admin.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate]);
+        return view('admin.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate]);
     }
 
     public function destroy(Timesheets $timesheet)

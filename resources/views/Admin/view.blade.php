@@ -22,6 +22,7 @@
 					<tr class="table__title">
 						<th>Id</th>
 						<th>Name</th>
+						<th>Avatar</th>
 						<th>Email</th>
 						<th>level</th>
 					</tr>
@@ -37,6 +38,11 @@
 						<tr class="table__content">
 							<td>{{$id}}</td>
 							<td>{{$admin->name}}</td>
+							<td>
+								<div>
+		   							<img src="{{ $admin->avatar }}" alt="no photo" height="70" width="70" class="img-thumbnail">
+								</div>
+							</td>
 							<td>{{$admin->email}}</td>
 							<td>{{$admin->level}}</td>
 							<td>

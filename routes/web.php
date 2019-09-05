@@ -20,16 +20,18 @@ Route::namespace('Email')->group(function () {
 	Route::delete('email/{email}', 'EmailController@destroy')->name('emails.destroy');
 });
 
-Route::namespace('Admin')->group(function () {
-		Route::get('/admins/', 'AdminController@index')->name('admins.index');
-		Route::get('/admins/create', 'AdminController@create')->name('admins.create');
-		Route::post('/admins/create', 'AdminController@store')->name('admins.store');
-		Route::get('/admins/view', 'AdminController@view')->name('admins.view');
-		Route::get('/admins/{admin}', 'AdminController@show')->name('admins.show');
-		Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
-		Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
-		Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
-		Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
+Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
+	Route::get('/admins/', 'AdminController@index')->name('admins.index');
+	Route::get('admins/update_avatar', 'AdminController@editAvatar')->name('admins.avatar');
+	Route::post('admins/update_avatar', 'AdminController@updateAvatar')->name('admins.update.avatar');
+	Route::get('/admins/create', 'AdminController@create')->name('admins.create');
+	Route::post('/admins/create', 'AdminController@store')->name('admins.store');
+	Route::get('/admins/view', 'AdminController@view')->name('admins.view');
+	Route::get('/admins/{admin}', 'AdminController@show')->name('admins.show');
+	Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
+	Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
+	Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
+	Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
 });
 
 Route::namespace('Notification')->group(function () {

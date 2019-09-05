@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAuthenticate
 {
@@ -13,7 +14,7 @@ class AdminAuthenticate
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = "admins")
+    public function handle($request, Closure $next, $guard = "admin")
     {
         if (!Auth::guard($guard)->check()) {
             return redirect()->route('users.login');

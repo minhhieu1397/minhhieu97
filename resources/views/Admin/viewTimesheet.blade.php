@@ -1,4 +1,4 @@
-@extends ('layouts.layout_timesheet')
+@extends ('layouts.admin')
 @section('content')
 	<h1 class="h1 text-center text-primary">View</h1>
 	<div class="row">
@@ -35,14 +35,12 @@
 				    </div>
 				@endif
 			</div>
-			 @can ('Admin')
 				<div class="text-center text-success">
 					Number of days in the month : {{$numberDate}}
 				</div>
 				<div class="text-center text-success">
 					Late: {{$countLate}}
 				</div>
-			@endcan
 			<table class="table table-condensed">
 				<thead>
 					<tr class="table__title">
@@ -56,7 +54,6 @@
 						<th>Intention</th>
 						<th>Approve</th>
 						<th>Late</th>
-						<th ></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -78,14 +75,6 @@
 							<td>{{$timesheet->intention}}</td>
 							<td>{{$timesheet->approve}}</td>
 							<td>{{$timesheet->late_flg}}</td>
-							<td> 
-								<a href="{{route('timesheets.show', $timesheet['id'])}}" title="View TimeSheet!!!" >View</a>
-								{!! Form::open(['method' => 'DELETE', 'route' => ['timesheets.destroy', $timesheet->id]]) !!}
-						       		<div class="form-group">
-						       			{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
-									</div>
-								{!! Form::close() !!}
-							</td>
 						</tr>
 					@endforeach
 				</tbody>

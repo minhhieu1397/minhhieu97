@@ -29,6 +29,7 @@
 					<tr class="table__title">
 						<th>Id</th>
 						<th>Name</th>
+						<th>avatar</th>
 						<th>Email</th>
 						<th>Description</th>
 						<th>Role</th>
@@ -49,6 +50,11 @@
 						<tr class="table__content">
 							<td>{{$id}}</td>
 							<td>{{$user->name}}</td>
+							<td>
+								<div>
+		   							<img src="{{ $user->avatar }}" alt="no photo" height="70" width="70" class="img-thumbnail">
+								</div>
+							</td>
 							<td>{{$user->email}}</td>
 							<td>{{$user->description}}</td>
 							<td>{{$user->role}}</td>

@@ -3,13 +3,16 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right main-nav">
                 <li class="active">
+                    <a class="nav-link text-success h5" href="{{route('admins.index')}}">Home</a>
+                </li>
+                <li class="active">
                     <a class="nav-link text-success h5" href="{{route('admins.create')}}">Create</a>
                 </li>
                  <li class="nav-item">
-                   <a class="nav-link text-success h5" href="{{route('users.view')}}">View User</a>/
+                   <a class="nav-link text-success h5" href="{{route('users.view')}}">View User</a>
                 </li>
                  <li class="nav-item">
-                   <a class="nav-link text-success h5" href="{{route('admins.view')}}">View Admin</a>/
+                   <a class="nav-link text-success h5" href="{{route('admins.view')}}">View Admin</a>
                 </li>
                <li class="nav-item">
                    <a class="nav-link text-success h5" href="{{route('hours.edit')}}">Update Hours</a>
