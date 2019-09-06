@@ -1,7 +1,7 @@
 @extends ('layouts.layout_login')
 
 @section('content')
-	<div class="row content_login">
+	<div class="row content_login border">
 		<div class="col-md-4 offset-md-2">
 			<img src="https://sites.google.com/site/hoctaphieuquanhat/_/rsrc/1468757342966/classroom-news/images%20%286%29.jpg" width="300px" height="300px">
 		</div>
@@ -28,7 +28,7 @@
 	            	{{ Form::label('password', 'Password:', ['class' => 'control-label']) }}
 	       			{{ Form::password('password', ['class' => 'form-control']) }}
 	       		</div class="form-group">
-				<div>
+				<div class="form-group">
 	       			{!! Form::submit( 'Login', ['class' => 'btn btn-primary']) !!}
 				</div>
 			{!! Form::close() !!}

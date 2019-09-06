@@ -3,7 +3,7 @@
 	<div class="row content_login">
 		<div class="col-md-4 offset-md-2">
 			<div>
-		   		<img src="{{$admin->avatar}}" alt="Smiley face" height="300" width="300" class="img-thumbnail">
+		   		<img src="{{$admin->avatar}}" alt="Smiley face" class="img-thumbnail">
 			</div>
 			<div>
                 <a class="nav-link text-success h5" href="{{route('admins.avatar')}}">Upload Avatar</a>

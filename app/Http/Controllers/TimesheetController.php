@@ -47,7 +47,7 @@ class TimesheetController extends Controller
     {
         $timesheets = $this->timesheetService->viewByDay($request);
 
-        return view('timesheets.view', ['timesheets' => $timesheets]);
+        return view('timesheets.view', compact('timesheets'));
     }
 
     public function create()
@@ -81,7 +81,7 @@ class TimesheetController extends Controller
         $this->authorize('view', $timesheet);
     	$timesheet = $this->timesheetService->show($timesheet);
          
-    	return view('timesheets.show',['timesheet' => $timesheet]);
+    	return view('timesheets.show', compact('timesheet'));
     }
 
     public function edit(Timesheets $timesheet)
@@ -94,7 +94,7 @@ class TimesheetController extends Controller
     public function update(UpdateTimesheetRequest $request, Timesheets $timesheet)
     {
     	if ($this->timesheetService->update($request, $timesheet)) {
-    		return redirect()->route('timesheets.show',['timesheet' => $timesheet]);
+    		return redirect()->route('timesheets.show', compact('timesheet'));
     	} else {
     		return back()->withInput()->withErrors([
                 'errorUpdate' => 'Have an error when Updating'

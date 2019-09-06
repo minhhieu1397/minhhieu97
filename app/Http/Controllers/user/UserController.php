@@ -51,10 +51,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user = $this->userService->show($user);
-        /*$admin = Auth::user();
-        $this->authorize('adminShow', $admin);*/
 
-        return view('users.show', ['user' => $user]);
+        return view('users.show', compact('user'));
     }
 
     public function adminEdit(User $user)
@@ -142,7 +140,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('users.employees.update_password', ['user' => $user]);
+        return view('users.employees.update_password', ['user' => $user]);  
     }
 
     public function updatePassword(User $user, ChangePasswordRequest $request)

@@ -29,7 +29,7 @@ class AdminController extends Controller
 
     public function create()
     {
-        return view('admin.create');
+        return view('admin.create');     
     }
 
     public function store(CreateAdminRequest $request)
@@ -68,7 +68,7 @@ class AdminController extends Controller
             return back()->withInput()->withErrors([
                 'ErrorUpdate' => 'Have an error when updating'
             ]);
-        }
+        } 
     }
 
     public function destroy($admin)
@@ -92,7 +92,7 @@ class AdminController extends Controller
     public function editAvatar()
     {
         $admin = Auth::guard('admin')->user();
-
+   
         return view('admin.upload_avatar', compact('admin'));
     }
 
@@ -110,7 +110,7 @@ class AdminController extends Controller
                 return back()->withErrors([
                     'errorUpload' => 'Have an error while uploading'
                 ]);
-            }
+            }  
         } else {
             return back()->withErrors([
                 'errorUpload' => 'Have an error while uploading'

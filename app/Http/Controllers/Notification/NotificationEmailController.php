@@ -25,7 +25,7 @@ class NotificationEmailController extends Controller
     		return back()->withSuccess('Create is successfuly');
     	} else {
     		return back()->withErrors([
-    			'CreateEmaiNotification' => 'Have an error when creting notification email '
+    			'CreateEmaiNotification' => 'Have an error when creting notification email'
     		]);
     	}
     }

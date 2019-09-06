@@ -1,7 +1,7 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
 	<div class="row">
-		<div class="col-md-2 offset-md-1">
+		<div class="col-md-2 offset-md-1 border ">
 			<h1 class="text-center login-title">List</h1>
 			<div class="navbar-collapse">
 				<ul class=" navbar-nav">
@@ -28,7 +28,7 @@
 		   		<img src="{{ $user->avatar }}" alt="Smiley face" height="300" width="300" class="img-thumbnail">
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 border">
 			<div class="h4">
 				<strong>Email:</strong> {{$user->email}}
 			</div>
