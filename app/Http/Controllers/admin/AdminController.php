@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\User;
 use App\Models\Admins;
+use App\Http\Controllers\Admin\BaseController;
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
 	protected $adminService;
 
@@ -29,7 +30,7 @@ class AdminController extends Controller
 
     public function create()
     {
-        return view('admin.create');     
+        return view('admin.admin.create');     
     }
 
     public function store(CreateAdminRequest $request)
@@ -47,17 +48,17 @@ class AdminController extends Controller
     {
         $admins = $this->adminService->getAll();
         
-        return view('admin.view', compact('admins'));
+        return view('admin.admin.view', compact('admins'));
     }
 
     public function show(Admins $admin)
     {
-        return view('admin.show', compact('admin'));
+        return view('admin.admin.show', compact('admin'));
     }
 
     public function edit(Admins $admin)
     {
-        return view('admin.update', compact('admin'));
+        return view('admin.admin.update', compact('admin'));
     }
 
     public function update(Admins $admin, Request $request)
@@ -86,14 +87,14 @@ class AdminController extends Controller
     {
         Auth::guard('admin')->logout();
 
-        return redirect()->route('users.login');
+        return redirect()->route('timesheet.login');
     }
 
     public function editAvatar()
     {
         $admin = Auth::guard('admin')->user();
    
-        return view('admin.upload_avatar', compact('admin'));
+        return view('admin.admin.upload_avatar', compact('admin'));
     }
 
     public function updateAvatar(Request $request)

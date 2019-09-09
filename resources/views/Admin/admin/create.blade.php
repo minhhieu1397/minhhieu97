@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-4 offset-md-4">
 			<h2 class="text-center login-title">Register</h2>
-			{!! Form::open(['method' => 'POST', 'route' => 'users.store']) !!}
+			{!! Form::open(['method' => 'POST', 'route' => 'admins.user.store']) !!}
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">
 						{{ Session::get( 'success' ) }}

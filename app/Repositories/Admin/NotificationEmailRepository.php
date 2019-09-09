@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Notification;
+namespace App\Repositories\Admin;
 
 use App\Models\EmailNotification;
 

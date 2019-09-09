@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Notification;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\EmailNotification;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Services\Notification\NotificationEmailService;
+use App\Services\Admin\NotificationEmailService;
 use App\Http\Requests\Notification\NotificationEmailRequest;
 
 class NotificationEmailController extends Controller

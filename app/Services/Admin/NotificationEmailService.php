@@ -1,9 +1,9 @@
 <?php
-namespace App\Services\Notification;
+namespace App\Services\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Email;
-use App\Repositories\Notification\NotificationEmailRepository;
+use App\Repositories\Admin\NotificationEmailRepository;
 
 class NotificationEmailService
 {

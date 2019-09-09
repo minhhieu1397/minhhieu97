@@ -9,13 +9,13 @@
                     <a class="nav-link text-success h5" href="{{route('admins.create')}}">Create</a>
                 </li>
                  <li class="nav-item">
-                   <a class="nav-link text-success h5" href="{{route('users.view')}}">View User</a>
+                   <a class="nav-link text-success h5" href="{{route('admins.users.view')}}">View User</a>
                 </li>
                  <li class="nav-item">
                    <a class="nav-link text-success h5" href="{{route('admins.view')}}">View Admin</a>
                 </li>
                <li class="nav-item">
-                   <a class="nav-link text-success h5" href="{{route('hours.edit')}}">Update Hours</a>
+                   <a class="nav-link text-success h5" href="{{route('admins.hours.edit')}}">Update Hours</a>
                </li>
                <li class="nav-item">
                    <a class="nav-link text-success h5" href="{{route('timesheet.approve')}}">Approve</a>
@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link list_title" href="{{route('admin.logout')}}">Logout</a>
+                    <a class="nav-link list_title" href="{{route('admins.logout')}}">Logout</a>
                 </li>
             </ul>
         </div>

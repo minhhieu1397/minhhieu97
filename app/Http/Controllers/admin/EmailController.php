@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Email;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Email;
@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\EmailNotification;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Services\Email\EmailService;
+use App\Services\Admin\EmailService;
 use App\Http\Requests\Notification\CreateEmailRequest;
 
 class EmailController extends Controller

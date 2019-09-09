@@ -72,28 +72,6 @@ class TimesheetService
         ]);
 	}
 
-	public function viewApprove()
-	{
-		return $this->timesheetRepository->viewApprove();
-	}
-
-	public function updateApprove($timesheet)
-	{
-		return $this->timesheetRepository->updateApprove($timesheet, [
-			'approve' => true,
-		]);
-	}
-
-	public function adminViewTimesheet($user)
-	{
-		return $this->timesheetRepository->adminViewTimesheet($user);
-	}
-
-	public function showLate($user)
-	{
-		return $this->timesheetRepository->showLate($user);
-	}
-
 	public function delete($timesheet)
 	{
 		return $this->timesheetRepository->delete($timesheet);

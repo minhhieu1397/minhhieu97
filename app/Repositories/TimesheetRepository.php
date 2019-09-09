@@ -15,7 +15,7 @@ class TimesheetRepository
 
 	public function all()
 	{
-    	   return $this->model->all()->where('user_id', \Auth::user()->id);
+    	return $this->model->all()->where('user_id', \Auth::user()->id);
 	}
 
 	public function viewByMonth($month)
@@ -41,26 +41,6 @@ class TimesheetRepository
 	public function update($timesheet, $attributes)
 	{
 		return $this->model->find($timesheet->id)->update($attributes);
-	}
-
-	public function viewApprove()
-	{
-		return $this->model->where('leader', \Auth::guard('admin')->user()->email)->where('approve', 0)->get();
-	}
-
-	public function updateApprove($timesheet, $attributes)
-	{
-		return $this->model->find($timesheet->id)->update($attributes);
-	}
-
-	public function adminViewTimesheet($user)
-	{
-		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->get();
-	}
-
-	public function showLate($user)
-	{
-		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->where('late_flg', true)->get();
 	}
 
 	public function delete($timesheet)

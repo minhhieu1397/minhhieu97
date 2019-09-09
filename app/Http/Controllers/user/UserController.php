@@ -6,91 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\UpdateRequest;
-use App\Http\Requests\User\AdminUpdateUserRequest;
 use App\Http\Requests\User\ChangePasswordRequest;
-use App\Http\Requests\User\ResetPasswordRequest;
 use App\Services\User\UserService;
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Controllers\User\BaseController;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     protected $userService;
 
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
-    }
-
-    public function store(CreateUserRequest $request)
-    {
-        if ($this->userService->create($request)) {
-            return back()->withSuccess('Create user successfully');
-        } else {
-            return back()->withErrors([
-                'errorCreate' => 'Have an error when creating'
-            ]);
-        }
-    }
-
-    public function viewUser()
-    {
-        $users = $this->userService->getAll();
-        
-        return view('users.view', compact('users'));
-    }
-
-    public function search(Request $request)
-    {   
-        $users = $this->userService->search($request); 
-
-        return view('users.view', compact('users'));
-    }
-
-    public function show(User $user)
-    {
-        $user = $this->userService->show($user);
-
-        return view('users.show', compact('user'));
-    }
-
-    public function adminEdit(User $user)
-    {
-        return view('users.update', compact('user'));
-    }
-
-    public function adminUpdateUser(User $user, AdminUpdateUserRequest $request)
-    {
-        if ($this->userService->adminUpdateUser($user, $request)) {
-            return back()->withSuccess('Update is success');
-        } else {
-            return back()->withInput()->withErrors([
-                'errorUpdate' => 'Have an error while updating'
-            ]);
-        }
-    }
-
-    public function resetPassword(User $user, ResetPasswordRequest $request)
-    {
-        if ($this->userService->resetPassword($user, $request)) {
-            return back()->withSuccess('Reset Password is successfuly');
-        } else {
-            return back()->withErrors([
-                'ResetPasswordError' => 'Have an error while Reset Password'
-            ]);
-        }
-    }
-
-    public function destroy($user)
-    {
-        if ($this->userService->delete($user)) {
-            return back()->withSuccess( 'Delete is successfuly' );
-        } else {
-            return back()->withErrors([
-                'errorDelete' => 'Have an error while deleting timesheet'
-            ]);
-        }
     }
 
     public function editAvatar()
@@ -158,6 +86,6 @@ class UserController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('users.login');
+        return redirect()->route('timesheet.login');
     }
 }

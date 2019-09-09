@@ -1,8 +1,8 @@
 <?php
-namespace App\Services\Email;
+namespace App\Services\Admin;
 
 use Illuminate\Http\Request;
-use App\Repositories\Email\EmailRepository;
+use App\Repositories\Admin\EmailRepository;
 
 class EmailService
 {

@@ -4,7 +4,7 @@
 		<div class="col-md-10 offset-md-1">
 			<h1 class="text-center login-title">List Users</h1>
 			<div>
-				{!! Form::open(['method' => 'GET', 'route' => 'users.search']) !!}
+				{!! Form::open(['method' => 'GET', 'route' => 'admins.users.search']) !!}
 					{{ Form::label('search', 'Seach by name:', ['class' => 'control-label']) }}
 					{{ Form::text('search', null) }}
 						       		{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
@@ -61,8 +61,8 @@
 							<td>{{$user->leader}}</td>
 							<td><a href="{{ route('users.timesheet', $user['id']) }}">Timesheet</a></td>
 							<td>
-								<a href="{{route('users.show', $user['id'])}}">VIEW</a>
-								{!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id]]) !!}
+								<a href="{{route('admins.user.show', $user['id'])}}">VIEW</a>
+								{!! Form::open(['method' => 'DELETE', 'route' => ['admins.user.destroy', $user->id]]) !!}
 									<div class="form-group">
 										{!! Form::submit( 'Delete', ['class' => 'btn btn-danger']) !!}
 									</div>

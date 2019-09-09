@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-4 offset-md-3">
 			<h2 class="h1 text-center">Register</h2>
-			{!! Form::open(['method' => 'PUT', 'route' => 'hours.update']) !!}
+			{!! Form::open(['method' => 'PUT', 'route' => 'admins.hours.update']) !!}
 				<div class="alert alert-success">
 					@if (Session::has( 'success' ))
 					 	{{ Session::get( 'success' ) }}
