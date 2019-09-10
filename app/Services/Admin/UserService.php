@@ -11,7 +11,7 @@ class UserService
 	public function create($request)
 	{
 		return $this->userRepository->create([
-			'name' => $request->input('name'),
+			'name' => ucwords(strtolower($request->input('name'))),
 			'email' => $request->input('email'),
 			'password' => \Hash::make($request->input('password')),
 			'description' => $request->input('description'),
@@ -26,7 +26,7 @@ class UserService
 
 	public function search($request)
 	{
-		$name = $request->input('search');
+		$name = ucwords(strtolower($request->input('search')));
 
 		return $this->userRepository->search($name);
 	}
@@ -48,14 +48,12 @@ class UserService
 
 	public function update($user, $request)
 	{
-		$user = $this->userRepository->update($user, [
-			'name' => $request->input('name'),
+		return $this->userRepository->update($user, [
+			'name' => ucwords(strtolower($request->input('name'))),
 			'email' => $request->input('email'),
 			'role' => $request->input('role'),
 			'leader' => $request->input('leader'),
 		]);
-
-		return $user;
 	}
 
 	public function resetPassword($user, $request)

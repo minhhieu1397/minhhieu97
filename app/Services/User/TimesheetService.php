@@ -1,8 +1,8 @@
 <?php
-namespace App\Services;
+namespace App\Services\User;
 
 use Illuminate\Http\Request;
-use App\Repositories\TimesheetRepository;
+use App\Repositories\User\TimesheetRepository;
 
 class TimesheetService
 {

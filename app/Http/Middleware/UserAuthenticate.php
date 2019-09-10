@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuthenticate
+class UserAuthenticate
 {
     /**
      * Handle an incoming request.
@@ -14,7 +14,7 @@ class AdminAuthenticate
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = "admin")
+    public function handle($request, Closure $next, $guard = "web")
     {
         if (!Auth::guard($guard)->check()) {
             return redirect()->route('timesheet.login');

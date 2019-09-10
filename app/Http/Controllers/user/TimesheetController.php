@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Timesheet;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use App\Services\TimesheetService;
+use App\Services\User\TimesheetService;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\User;
@@ -12,8 +12,9 @@ use App\Http\Requests\Timesheet\CreateTimesheetRequest;
 use App\Http\Requests\Timesheet\UpdateTimesheetRequest;
 use App\Notifications\CreateTimesheetNotification;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\User\BaseController;
 
-class TimesheetController extends Controller
+class TimesheetController extends BaseController
 {
 	protected $timesheetService;
 

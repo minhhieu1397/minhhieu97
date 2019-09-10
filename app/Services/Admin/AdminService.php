@@ -22,7 +22,7 @@ class AdminService
 	public function create($request)
 	{
 		return $this->adminRepository->create([
-			'name' => $request->input('name'),
+			'name' => ucwords(strtolower($request->input('name'))),
 			'email' => $request->input('email'),
 			'password' => \Hash::make($request->input('password')),
 			'level' => $request->input('level')
@@ -32,7 +32,7 @@ class AdminService
 	public function update($admin, $request)
 	{
 		return $this->adminRepository->update($admin, [
-			'name' => $request->input('name'),
+			'name' => ucwords(strtolower($request->input('name'))),
 			'email' => $request->input('email'),
 			'level' => $request->input('level'),
 		]);

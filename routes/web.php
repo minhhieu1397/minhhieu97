@@ -13,10 +13,6 @@
 Route::get('/', 'LoginController@login')->name('timesheet.login');
 Route::post('/users/login', 'LoginController@postLogin')->name('users.login.post');
 
-Route::namespace('Email')->group(function () {
-	
-});
-
 Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::post('admins/notification/{user}/create', 'NotificationEmailController@store')->name('notification.store');
 	Route::delete('admins/notification/{userId}/{emailId}', 'NotificationEmailController@destroy')->name('notifications.destroy');
@@ -24,15 +20,12 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::post('admins/email/create', 'EmailController@store')->name('emails.store');
 	Route::get('admins/email/{user}', 'EmailController@show')->name('emails.show');
 	Route::delete('admins/email/{email}', 'EmailController@destroy')->name('emails.destroy');
-
 	Route::get('/admins/hours/edit', 'HoursController@edit')->name('admins.hours.edit');
 	Route::put('/admins/hours/edit', 'HoursController@update')->name('admins.hours.update');
-
 	Route::get('/admins/logout', 'AdminController@logout')->name('admins.logout');
 	Route::get('/admins/timesheets/view/{user}', 'TimesheetController@adminViewTimesheet')->name('users.timesheet');
 	Route::get('/admins/approve', 'TimesheetController@viewApprove')->name('timesheet.approve');
 	Route::put('/admins/approve/{timesheet}', 'TimesheetController@updateApprove')->name('timesheet.approveUpdate');
-
 	Route::get('/admins/', 'AdminController@index')->name('admins.index');
 	Route::get('/admins/update_avatar', 'AdminController@editAvatar')->name('admins.avatar');
 	Route::post('/admins/update_avatar', 'AdminController@updateAvatar')->name('admins.update.avatar');
@@ -43,7 +36,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
 	Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
 	Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
-
 	Route::post('/admins/users/create' ,'UserController@store')->name('admins.user.store');
 	Route::get('/admins/users/view', 'UserController@view')->name('admins.users.view');
 	Route::get('/admins/users/seach', 'UserController@search')->name('admins.users.search');
@@ -55,17 +47,14 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 });
 
 
-Route::namespace('User')->group(function () {
-	Route::get('users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
-	Route::post('users/pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
-	Route::get('users/edit', 'UserController@edit')->name('users.edit');
-	Route::put('users/edit', 'UserController@update')->name('users.update');
-	Route::get('users/edit_password', 'UserController@editPassword')->name('users.editpassword');
-	Route::put('users/edit_password', 'UserController@updatePassword')->name('users.updatepassword');
-	Route::get('logout', 'UserController@logout')->name('logout');
-});
-
-Route::namespace('Timesheet')->group(function () {
+Route::group(['namespace' => 'User', 'middleware' => 'user'], function () {
+	Route::get('/users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
+	Route::post('/users/pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');
+	Route::get('/users/edit', 'UserController@edit')->name('users.edit');
+	Route::put('/users/edit', 'UserController@update')->name('users.update');
+	Route::get('/users/edit_password', 'UserController@editPassword')->name('users.editpassword');
+	Route::put('/users/edit_password', 'UserController@updatePassword')->name('users.updatepassword');
+	Route::get('/logout', 'UserController@logout')->name('logout');
 	Route::get('/timesheets/view', 'TimesheetController@view')->name('timesheet.view');
 	Route::get('/timesheets/view_by_date', 'TimesheetController@viewByDay')->name('timesheet.viewDay');
 	Route::get('/timesheets/view_by_month', 'TimesheetController@viewByMonth')->name('timesheet.viewMonth');
@@ -79,5 +68,3 @@ Route::namespace('Timesheet')->group(function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
