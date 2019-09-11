@@ -4,17 +4,17 @@
 	<div class="row">
 		<div class="col-md-2">
 			<h2 class="h5">By date:</h2>
-				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewDay']) !!}
-		            {{Form::date('date', \Carbon\Carbon::now())}}
-		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
-				{!! Form::close() !!}
+			{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewDay']) !!}
+	            {{Form::date('date', \Carbon\Carbon::now())}}
+	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+			{!! Form::close() !!}
 		</div>
 		<div class="col-md-2">
 			<h2 class="h5">By month:</h2>
-				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewMonth']) !!}
-		            {{ Form::text('month', null) }}
-		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
-				{!! Form::close() !!}
+			{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewMonth']) !!}
+	            {{ Form::text('month', null) }}
+	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+			{!! Form::close() !!}
 		</div>
 	</div>
 	<div class="row">

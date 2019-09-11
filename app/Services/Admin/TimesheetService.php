@@ -34,4 +34,10 @@ class TimesheetService
 	{
 		return $this->timesheetRepository->showLate($user);
 	}
+	public function numberDateTimesheet($user)
+	{
+		$now = \Carbon\Carbon::now()->month;
+
+		return $this->timesheetRepository->numberDateTimesheet($user, $now);
+	}
 }

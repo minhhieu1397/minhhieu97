@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Services\Admin\EmailService;
 use App\Http\Requests\Notification\CreateEmailRequest;
+use App\Http\Controllers\Admin\BaseController;
 
-class EmailController extends Controller
+class EmailController extends BaseController
 {
 	protected $emailService;
 

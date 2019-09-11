@@ -13,14 +13,14 @@
 					</tr>
 				</thead>
 				<tbody>
-						<tr class="table__content">
-							<td>{{$admin->name}}</td>
-							<td>{{$admin->email}}</td>
-							<td>{{$admin->level}}</td>
-							<td>
-								<a href="{{route('admins.edit', $admin['id'])}}">edit</a>
-							</td>
-						</tr>
+					<tr class="table__content">
+						<td>{{$admin->name}}</td>
+						<td>{{$admin->email}}</td>
+						<td>{{$admin->level}}</td>
+						<td>
+							<a href="{{route('admins.edit', $admin['id'])}}">edit</a>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

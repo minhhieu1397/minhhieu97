@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\HoursTimesheet;
 use App\Http\Requests\HoursRequest\HoursRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
+use DB;
 
-class HoursController extends Controller
+class HoursController extends BaseController
 {
     public function edit()
     {
-    	return view('hours.update');
+        $hour = DB::table('hourstimesheet')->first();
+
+    	return view('hours.update', compact('hour'));
     }
 
     public function update(HoursRequest $request)

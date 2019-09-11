@@ -45,8 +45,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::put('/admins/users/{user}/reset_password', 'UserController@resetPassword')->name('users.resetpassword');
 	Route::delete('/admins/users/{user}', 'UserController@destroy')->name('admins.user.destroy');
 });
-
-
 Route::group(['namespace' => 'User', 'middleware' => 'user'], function () {
 	Route::get('/users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
 	Route::post('/users/pdate_avatar', 'UserController@updateAvatar')->name('users.update.avatar');

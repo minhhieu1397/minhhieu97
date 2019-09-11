@@ -31,11 +31,6 @@ class UserService
 		return $this->userRepository->search($name);
 	}
 
-	public function show($user)
-	{
-		return $this->userRepository->show($user);
-	}
-
 	public function delete($user)
 	{
 		return $this->userRepository->delete($user);

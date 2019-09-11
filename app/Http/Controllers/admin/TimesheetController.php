@@ -7,8 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Services\Admin\TimesheetService;
 use App\Models\User;
 use App\Models\Timesheets;
+use App\Http\Controllers\Admin\BaseController;
 
-class TimesheetController extends Controller
+class TimesheetController extends BaseController
 {
     protected $timesheetService;
 
@@ -38,9 +39,8 @@ class TimesheetController extends Controller
     public function adminViewTimesheet(User $user)
     {
         $timesheets = $this->timesheetService->adminViewTimesheet($user);
-        $numberDate = count($timesheets);
-        $late = $this->timesheetService->showLate($user);
-        $countLate = count($late);
+        $numberDate = count($this->timesheetService->numberDateTimesheet($user));
+        $countLate = count($this->timesheetService->showLate($user));
 
         return view('admin.timesheet.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate]);
     }

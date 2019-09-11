@@ -7,7 +7,7 @@
 				{!! Form::open(['method' => 'GET', 'route' => 'admins.users.search']) !!}
 					{{ Form::label('search', 'Seach by name:', ['class' => 'control-label']) }}
 					{{ Form::text('search', null) }}
-						       		{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
+					{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
 				{!! Form::close() !!}
  			</div>
 			<table class="table table-condensed" >

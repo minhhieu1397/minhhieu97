@@ -9,8 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\Admin\NotificationEmailService;
 use App\Http\Requests\Notification\NotificationEmailRequest;
+use App\Http\Controllers\Admin\BaseController;
 
-class NotificationEmailController extends Controller
+class NotificationEmailController extends BaseController
 {
 	protected $notificationEmailService;
 

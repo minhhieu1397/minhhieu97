@@ -32,4 +32,8 @@ class TimesheetRepository
 	{
 		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->where('late_flg', true)->get();
 	}
+	public function numberDateTimesheet($user, $now)
+	{
+		return $this->model->whereMonth('work_date', $now)->Where('user_id', $user->id)->get();
+	}
 }

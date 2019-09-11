@@ -53,7 +53,6 @@
 									</div>
 								{!! Form::close() !!}
 							</td>
-							
 						</tr>
 					@endforeach
 				</tbody>

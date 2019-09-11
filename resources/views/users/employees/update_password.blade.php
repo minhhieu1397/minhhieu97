@@ -16,8 +16,8 @@
 						</div>
 					@endif
 			        <div class="form-group">
-			            	{{ Form::label('current_password', 'current_password', ['class' => 'control-label']) }}
-			       			{{ Form::password('current_password', ['class' => 'form-control']) }}
+		            	{{ Form::label('current_password', 'current_password', ['class' => 'control-label']) }}
+		       			{{ Form::password('current_password', ['class' => 'form-control']) }}
 			       	</div>
 					<div class="form-group">
 		            	{{ Form::label('new_password', 'New Password:', ['class' => 'control-label', ]) }}

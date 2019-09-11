@@ -5,11 +5,11 @@
 		<div class="col-md-4 offset-md-3">
 			<h2 class="h1 text-center">Register</h2>
 			{!! Form::open(['method' => 'PUT', 'route' => 'admins.hours.update']) !!}
-				<div class="alert alert-success">
-					@if (Session::has( 'success' ))
+				@if (Session::has( 'success' ))
+					<div class="alert alert-success">
 					 	{{ Session::get( 'success' ) }}
-					@endif
-				</div>
+					</div>
+				@endif
 				@if ($errors->any())
 					<div class="alert alert-danger">
 			   			<ul>
@@ -21,11 +21,11 @@
 				@endif
 	       		<div class="form-group">
 	            	{{ Form::label('start_time', 'Start Time', ['class' => 'control-label']) }}
-	            	{{ Form::time('start_time', null, ['class' => 'form-control']) }}
+	            	{{ Form::time('start_time', $hour->start_time, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
 	            	{{ Form::label('end_time', 'End Time', ['class' => 'control-label']) }}
-	            	{{ Form::time('end_time', null, ['class' => 'form-control']) }}
+	            	{{ Form::time('end_time', $hour->end_time, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
 	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}

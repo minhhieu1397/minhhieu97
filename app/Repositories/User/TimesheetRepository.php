@@ -33,11 +33,6 @@ class TimesheetRepository
 		return $this->model->create($attributes);
 	}
 
-	public function find($timesheet)
-	{
-		return $this->model->find($timesheet->id);
-	}
-
 	public function update($timesheet, $attributes)
 	{
 		return $this->model->find($timesheet->id)->update($attributes);

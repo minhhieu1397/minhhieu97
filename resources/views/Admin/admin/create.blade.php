@@ -2,8 +2,8 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-md-4 offset-md-4">
-			<h2 class="text-center login-title">Register</h2>
+		<div class="col-md-4 offset-md-4  border">
+			<h2 class="text-center login-title">User Register</h2>
 			{!! Form::open(['method' => 'POST', 'route' => 'admins.user.store']) !!}
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">
@@ -31,7 +31,6 @@
 	            	{{ Form::label('password', 'Password', ['class' => 'control-label']) }}
 	       			{{ Form::password('password', ['class' => 'form-control']) }}
 	       		</div>
-
 	       		<div class="form-group">
 	            	{{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'control-label']) }}
 	       			{{ Form::password('password_confirmation', ['class' => 'form-control']) }}
@@ -49,10 +48,10 @@
 			{!! Form::close() !!}
 		</div>
 	</div>
+	<br>
 	<div class="row">
-		<div class="col-md-4 offset-md-4">
-
-			<h2 class="text-center login-title">Register</h2>
+		<div class="col-md-4 offset-md-4  border">
+			<h2 class="text-center login-title">Admin Register</h2>
 			{!! Form::open(['method' => 'POST', 'route' => 'admins.store']) !!}
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">

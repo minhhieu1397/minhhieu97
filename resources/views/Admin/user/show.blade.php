@@ -14,7 +14,6 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($user as $user)
 						<tr class="table__content">
 							<td>{{$user->name}}</td>
 							<td>{{$user->email}}</td>
@@ -24,7 +23,6 @@
 								<a href="{{route('admin.users.edit', $user['id'])}}">edit</a>
 							</td>
 						</tr>
-					@endforeach
 				</tbody>
 			</table>
 		</div>

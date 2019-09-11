@@ -55,11 +55,6 @@ class TimesheetService
 		return $timesheet;
 	}
 
-	public function show($timesheet)
-	{
-		return $this->timesheetRepository->find($timesheet);
-	}
-
 	public function update($request, $timesheet)
 	{
 		$attributes = $request->all();

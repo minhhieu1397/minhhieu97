@@ -24,7 +24,7 @@ class CreateAdminRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',         
+            'email' => 'required|email|unique:users|unique:admins',         
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
         ];
     }

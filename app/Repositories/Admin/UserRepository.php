@@ -28,11 +28,6 @@ class UserRepository
 		return $this->model->where('name', $name)->get();
 	}
 
-	public function show($user)
-	{
-		return $this->model->all()->where('id', $user->id);
-	}
-
 	public function delete($user)
 	{
 		return $this->model->find($user)->delete();

@@ -9,8 +9,9 @@ use App\Services\Admin\UserService;
 use App\Http\Requests\User\AdminUpdateUserRequest;
 use App\Http\Requests\User\ResetPasswordRequest;
 use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Controllers\Admin\BaseController;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
 	protected $userService;
 
@@ -25,7 +26,7 @@ class UserController extends Controller
             return back()->withSuccess('Create user successfully');
         } else {
             return back()->withErrors([
-                'errorCreate' => 'Have an error when creating'
+                'errorCreateUser' => 'Have an error when creating'
             ]);
         }
     }
@@ -46,8 +47,6 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $user = $this->userService->show($user);
-
         return view('admin.user.show', compact('user'));
     }
 
