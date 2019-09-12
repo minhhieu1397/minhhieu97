@@ -4,6 +4,9 @@
 	<div class="row">
 		<div class="col-md-4 offset-md-3">
 			<h2 class="text-center login-title">Update</h2>
+			<div>
+		   		<img src="{{ $user->avatar }}" alt="Smiley face" height="300" width="300" class="img-thumbnail">
+			</div>
 			<form action="{{ route('users.update.avatar') }}" enctype='multipart/form-data' method="POST">
 		        {{ csrf_field() }}
 		        @if ($errors->any())

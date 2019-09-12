@@ -20,7 +20,7 @@ class AdminRepository
 
 	public function all()
 	{
-		return $this->model->all();
+		return $this->model->paginate(5);
 	}
 
 	public function update($admin, $attributes)

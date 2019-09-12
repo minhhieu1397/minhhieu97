@@ -42,6 +42,15 @@ class TimesheetController extends BaseController
         $numberDate = count($this->timesheetService->numberDateTimesheet($user));
         $countLate = count($this->timesheetService->showLate($user));
 
-        return view('admin.timesheet.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate]);
+        return view('admin.timesheet.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user]);
+    }
+
+    public function view_by_month(Request $request, User $user)
+    {
+        $timesheets = $this->timesheetService->view_by_month($request, $user);
+        $numberDate = count($this->timesheetService->numberDateTimesheet($user));
+        $countLate = count($this->timesheetService->showLate($user));
+
+        return view('admin.timesheet.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user]);
     }
 }

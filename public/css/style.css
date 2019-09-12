@@ -1,10 +1,8 @@
 .Timesheet{
 	color: #42EC0EFF;
 	font-size: 50px;
-	font-family: Arnoldboecklin, fantasy;
 	margin-left: 140px;
 	margin-top:30px;
-	font-style: oblique;
 }
 .content_login{
 	background-color: #FFFFFFFF;
@@ -12,6 +10,9 @@
 
 .contentTimesheet{
 	background-color: #FFFFFFFF;
+}
+.login-title{
+	background-color: #000000;
 }
 
 .login-title{
@@ -40,3 +41,14 @@
 	height: 100px;
 	width: 100%;
 }
+img.img-center {
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+	margin-top: 50px;
+} 
+
+.men-vintage{
+	color: #FFFFFF;
+}
+

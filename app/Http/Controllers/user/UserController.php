@@ -23,7 +23,8 @@ class UserController extends BaseController
 
     public function editAvatar()
     {
-        return view('users.user_update');
+        $user = Auth::user();
+        return view('users.user_update', compact('user'));
     }
 
     public function updateAvatar(Request $request)

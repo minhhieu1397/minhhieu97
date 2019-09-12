@@ -18,7 +18,7 @@
   	</div>
     @include('partial/admin_nav')
 <!-- Page Content -->	
-  	<div class="container-fluid contentTimesheet">
+  	<div class="container-fluid">
   		  @yield('content')
         <div class="row">
             <div class="col-md-12">

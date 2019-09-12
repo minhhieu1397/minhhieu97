@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::put('/admins/hours/edit', 'HoursController@update')->name('admins.hours.update');
 	Route::get('/admins/logout', 'AdminController@logout')->name('admins.logout');
 	Route::get('/admins/timesheets/view/{user}', 'TimesheetController@adminViewTimesheet')->name('users.timesheet');
+	Route::get('/admins/timesheets/view_by_month/{user}', 'TimesheetController@view_by_month')->name('admin.timesheet.bymonth');
 	Route::get('/admins/approve', 'TimesheetController@viewApprove')->name('timesheet.approve');
 	Route::put('/admins/approve/{timesheet}', 'TimesheetController@updateApprove')->name('timesheet.approveUpdate');
 	Route::get('/admins/', 'AdminController@index')->name('admins.index');

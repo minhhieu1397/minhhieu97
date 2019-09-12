@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right main-nav">

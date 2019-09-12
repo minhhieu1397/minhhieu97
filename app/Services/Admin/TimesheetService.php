@@ -30,14 +30,22 @@ class TimesheetService
 		return $this->timesheetRepository->adminViewTimesheet($user);
 	}
 
+	public function view_by_month($request, $user)
+	{
+		$month = $request->input('month');
+
+		return $this->timesheetRepository->view_by_month($user, $month);
+	}
+
 	public function showLate($user)
 	{
 		return $this->timesheetRepository->showLate($user);
 	}
 	public function numberDateTimesheet($user)
 	{
-		$now = \Carbon\Carbon::now()->month;
+		$month = \Carbon\Carbon::now()->month;
+		$year = \Carbon\Carbon::now()->year;
 
-		return $this->timesheetRepository->numberDateTimesheet($user, $now);
+		return $this->timesheetRepository->numberDateTimesheet($user, $month, $year);
 	}
 }

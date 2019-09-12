@@ -14,12 +14,13 @@
 
 <body>
 	<header class="st-navbar">
-		<div class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-			<h1 class="Timesheet hero-title">Timesheet</h1>
+		<div class="navbar navbar-expand-lg navbar-dark static-top login-title">
+			<img src="https://www.designbold.com/academy/wp-content/uploads/2018/06/Trial-Logo-1.png" width="120" height="120">
+			<p class="men-vintage">Men vintage</p>
 		</div>
 	</header>
   <!-- Page Content -->	
-	<div class="container">
+	<div class="container-fluid">
 		@yield ('content')
 	</div>
 </body>

@@ -27,13 +27,18 @@ class TimesheetRepository
 	{
 		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->get();
 	}
+
+	public function view_by_month($user, $month)
+	{
+		return $this->model->orderBy('work_date', 'desc')->whereMonth('work_date', $month)->where('user_id', $user->id)->get();
+	}
 	
 	public function showLate($user)
 	{
 		return $this->model->orderBy('work_date', 'desc')->where('user_id', $user->id)->where('late_flg', true)->get();
 	}
-	public function numberDateTimesheet($user, $now)
+	public function numberDateTimesheet($user, $month, $year)
 	{
-		return $this->model->whereMonth('work_date', $now)->Where('user_id', $user->id)->get();
+		return $this->model->whereMonth('work_date', $month)->whereYear('work_date', $year)->Where('user_id', $user->id)->get();
 	}
 }

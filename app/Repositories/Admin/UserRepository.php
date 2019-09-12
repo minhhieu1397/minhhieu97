@@ -20,7 +20,7 @@ class UserRepository
 
 	public function all()
 	{
-		return $this->model->all();
+		return $this->model->paginate(5);
 	}
 
 	public function search($name)

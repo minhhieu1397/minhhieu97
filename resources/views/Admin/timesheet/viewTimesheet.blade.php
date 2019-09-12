@@ -3,15 +3,8 @@
 	<h1 class="h1 text-center text-primary">View</h1>
 	<div class="row">
 		<div class="col-md-2">
-			<h2 class="h5">By date:</h2>
-				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewDay']) !!}
-		            {{Form::date('date', \Carbon\Carbon::now())}}
-		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
-				{!! Form::close() !!}
-		</div>
-		<div class="col-md-2">
 			<h2 class="h5">By month:</h2>
-				{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewMonth']) !!}
+				{!! Form::open(['method' => 'GET', 'route' => ['admin.timesheet.bymonth', $user->id]]) !!}
 		            {{ Form::text('month', null) }}
 		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
 				{!! Form::close() !!}
@@ -36,7 +29,12 @@
 				@endif
 			</div>
 				<div class="text-center text-success">
-					Number of days in the month : {{$numberDate}}
+					Number of days in  
+					@php
+						$month = \Carbon\Carbon::now()->month;
+					@endphp
+					{{$month}}th
+					: {{$numberDate}}
 				</div>
 				<div class="text-center text-success">
 					Late: {{$countLate}}

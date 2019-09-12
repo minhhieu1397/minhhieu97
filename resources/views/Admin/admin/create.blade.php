@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-4 offset-md-4  border">
-			<h2 class="text-center login-title">User Register</h2>
+			<h2 class="text-center login-title">Create User Accounts</h2>
 			{!! Form::open(['method' => 'POST', 'route' => 'admins.user.store']) !!}
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">
@@ -20,7 +20,7 @@
 				    </div>
 				@endif
 				<div class="form-group">
-	            	{{ Form::label('name', 'Name', ['class' => 'control-label']) }}
+	            	{{ Form::label('name', 'Name:', ['class' => 'control-label']) }}
 	            	{{ Form::text('name', null, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
@@ -28,11 +28,11 @@
 	            	{{ Form::text('email', null, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
-	            	{{ Form::label('password', 'Password', ['class' => 'control-label']) }}
+	            	{{ Form::label('password', 'Password:', ['class' => 'control-label']) }}
 	       			{{ Form::password('password', ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
-	            	{{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'control-label']) }}
+	            	{{ Form::label('password_confirmation', 'Confirm Password:', ['class' => 'control-label']) }}
 	       			{{ Form::password('password_confirmation', ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
@@ -51,7 +51,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-4 offset-md-4  border">
-			<h2 class="text-center login-title">Admin Register</h2>
+			<h2 class="text-center login-title">Create Admin Accounts</h2>
 			{!! Form::open(['method' => 'POST', 'route' => 'admins.store']) !!}
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">
@@ -68,7 +68,7 @@
 				    </div>
 				@endif
 				<div class="form-group">
-	            	{{ Form::label('name', 'Name', ['class' => 'control-label']) }}
+	            	{{ Form::label('name', 'Name:', ['class' => 'control-label']) }}
 	            	{{ Form::text('name', null, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
@@ -76,12 +76,12 @@
 	            	{{ Form::text('email', null, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
-	            	{{ Form::label('password', 'Password', ['class' => 'control-label']) }}
+	            	{{ Form::label('password', 'Password:', ['class' => 'control-label']) }}
 	       			{{ Form::password('password', ['class' => 'form-control']) }}
 	       		</div>
 
 	       		<div class="form-group">
-	            	{{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'control-label']) }}
+	            	{{ Form::label('password_confirmation', 'Confirm Password:', ['class' => 'control-label']) }}
 	       			{{ Form::password('password_confirmation', ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
