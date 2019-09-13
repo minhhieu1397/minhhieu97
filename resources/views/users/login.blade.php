@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-3 offset-md-3">
-			<img src="http://inthaian.com/Data/upload/images/thiet-ke-logo-2(2).jpg" width="300px" height="300px">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRizxP8TG7X8dl-nTlo2nbQLqzb63xKZXIoItEidqa-RhONCFrN" width="300px" height="300px">
 		</div>
 		<div class="col-md-2 ofset-md-2">
 			{!! Form::open(['method' => 'POST', 'route' => 'users.login.post', 'class' => 'form-signin']) !!}

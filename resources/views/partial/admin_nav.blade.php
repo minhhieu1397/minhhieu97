@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark static-top">
+<!-- <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right main-nav">
@@ -33,4 +33,14 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
+<div class="container-fluid admin-index">
+    <nav class="sticky-top navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Timesheet</a>
+      <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+              <a class="nav-link" href="#">Sign out</a>
+          </li>
+      </ul>
+    </nav>
+</div>

@@ -1,15 +1,15 @@
 @extends ('layouts.admin')
 @section('content')
-	<div class="row content_login">
-		<div class="col-md-10 offset-md-1">
-			<h1 class="text-center login-title">List Users</h1>
+	<div class="row border">
+		<div class="col-md-12">
+			<h1 class="text-center">List Users</h1>
 			<div>
 				{!! Form::open(['method' => 'GET', 'route' => 'admins.users.search']) !!}
 					{{ Form::label('search', 'Seach by name:', ['class' => 'control-label']) }}
 					{{ Form::text('search', null) }}
 					{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
 				{!! Form::close() !!}
- 			</div>
+			 </div>
 			<table class="table table-condensed" >
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">
@@ -52,7 +52,7 @@
 							<td>{{$user->name}}</td>
 							<td>
 								<div>
-		   							<img src="{{ $user->avatar }}" alt="no photo" height="70" width="70" class="img-thumbnail">
+					   							<img src="{{ $user->avatar }}" alt="no photo" height="70" width="70" class="img-thumbnail">
 								</div>
 							</td>
 							<td>{{$user->email}}</td>

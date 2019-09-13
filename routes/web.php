@@ -37,6 +37,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
 	Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
 	Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
+
+	Route::get('/admins/users/create', 'UserController@create')->name('admins.user.create');
 	Route::post('/admins/users/create' ,'UserController@store')->name('admins.user.store');
 	Route::get('/admins/users/view', 'UserController@view')->name('admins.users.view');
 	Route::get('/admins/users/seach', 'UserController@search')->name('admins.users.search');

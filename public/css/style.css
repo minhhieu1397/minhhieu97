@@ -12,7 +12,7 @@
 	background-color: #FFFFFFFF;
 }
 .login-title{
-	background-color: #000000;
+	background-color: #56ffb8;
 }
 
 .login-title{
@@ -49,6 +49,11 @@ img.img-center {
 } 
 
 .men-vintage{
-	color: #FFFFFF;
+	color: #000000;
+	margin-left: 50px;
+}
+
+.admin-menu{
+	font-size: 20px;
 }
 

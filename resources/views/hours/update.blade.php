@@ -1,8 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-	<div class="row">
-		<div class="col-md-4 offset-md-3">
+		<div class="col-md-3 offset-md-2">
 			<h2 class="h1 text-center">Register</h2>
 			{!! Form::open(['method' => 'PUT', 'route' => 'admins.hours.update']) !!}
 				@if (Session::has( 'success' ))
@@ -32,5 +31,4 @@
 				</div>
 			{!! Form::close() !!}
 		</div>
-	</div>	
 @stop()

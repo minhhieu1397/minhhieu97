@@ -20,6 +20,11 @@ class UserController extends BaseController
         $this->userService = $userService;
     }
 
+    public function create()
+    {
+        return view('admin.user.create');
+    }
+
     public function store(CreateUserRequest $request)
     {
         if ($this->userService->create($request)) {
