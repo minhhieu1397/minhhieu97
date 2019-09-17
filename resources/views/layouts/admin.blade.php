@@ -15,11 +15,11 @@
 </head>
 
 <body>
-  <!-- Navigation -->
-  	<!-- <div class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <h1 class="Timesheet">Timesheet  </h1>
-    </div> -->
+  <header class="st-navbar">
     @include('partial/admin_nav')
+  </header>
+  <!-- Navigation -->
+
 <!-- Page Content -->	
 
 <div class="container-fluid">
@@ -53,12 +53,6 @@
                             <li><a href="{{route('admins.hours.edit')}}">Update Hours</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="layers"></span>
-                            Integrations
-                        </a>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -66,7 +60,7 @@
     </div>
 </div>
 
-      <footer class="fixed-bottom navbar-dark bg-dark admin-footer">
+      <footer class="navbar-dark bg-dark admin-footer">
         <div class="container-fluid pading">
           <div class="row text-center">
               <div class="col-md-4">
@@ -114,7 +108,6 @@
           </div>
         </div>
       </footer>
-    </div>
 </body>
 
 </html>

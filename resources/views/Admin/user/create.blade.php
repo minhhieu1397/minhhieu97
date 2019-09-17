@@ -1,8 +1,8 @@
 @extends ('layouts.admin')
 
 @section('content')
-		<div class="col-md-4 offset-md-4  border">
-			<h2 class="text-center login-title">Create User Accounts</h2>
+		<div class="col-md-4 offset-md-2  border">
+			<h2 class="text-center">Create User Accounts</h2>
 			{!! Form::open(['method' => 'POST', 'route' => 'admins.user.store']) !!}
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">

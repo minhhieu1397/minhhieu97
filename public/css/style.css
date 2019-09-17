@@ -1,9 +1,3 @@
-.Timesheet{
-	color: #42EC0EFF;
-	font-size: 50px;
-	margin-left: 140px;
-	margin-top:30px;
-}
 .content_login{
 	background-color: #FFFFFFFF;
 }
@@ -56,4 +50,61 @@ img.img-center {
 .admin-menu{
 	font-size: 20px;
 }
+.admin-index{
+	margin-left: 0;
+	margin-right: 0;
+}
 
+.timesheet-nav {
+	margin-right: 10px;
+}
+
+.timesheet-menu a{
+	background-color: #343a40;
+	color: #FFFFFF;
+	font-size: 20px;
+	
+}
+.timesheet-a{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.timesheet-menu ul li ul {
+	background-color: #343a40;
+	color: #FFFFFF;
+	font-size: 20px;
+	height: auto;
+	width: 200px;
+	text-align: center;
+}
+
+.timesheet-sigout{
+	margin-left: 1200px;
+}
+
+.carousel-inner img{
+	width: 100%;
+}
+.timsheet-p{
+	font-size: 20px;
+	font-family: Comic Sans MS;
+}
+
+.timesheet-content{
+	margin-top:40px;
+} 
+.footer-timesheet {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+}
+
+.content {
+	min-height: 750px;
+	padding-bottom: 10px;
+}
+
+.admin-sigout{
+	padding-right: 10px;
+}

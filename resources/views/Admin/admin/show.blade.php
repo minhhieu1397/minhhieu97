@@ -1,8 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-	<div class="row content_login">
-		<div class="col-md-10 offset-md-1">
+		<div class="col-md-8">
 			<table class="table table-condensed" >
 				<thead>
 					<tr class="table__title">
@@ -24,5 +23,4 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
 @stop()

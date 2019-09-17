@@ -83,6 +83,13 @@ class UserController extends BaseController
         }
     }
 
+    public function personal()
+    {
+        $user = Auth::user();
+        
+        return view('users.personal', compact('user'));
+    }
+
     public function logout() 
     {
         Auth::logout();

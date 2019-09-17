@@ -10,35 +10,73 @@
     <title>Timesheet</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"> 
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <!-- Navigation -->
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <h1 class="Timesheet">Timesheet	</h1>
+    <div class="container-fluid bg-dark">
+        @include('partial/timesheet_nav')
     </div>
-    @include('partial/timesheet_nav')
+    
 <!-- Page Content -->	
   	<div class="container-fluid">
-  		@yield('content')
-        <div class="row end">
-            <div class="col-md-12">
-                <div class=" navbar-expand-lg navbar-dark bg-dark static-top">
-                    <div class="text-white text-center">
-                    Phone: +84912 112 112
+  		<div class="content">
+        @yield('content')
+      </div>
+  	</div>
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-dark blue">
+        <div class="container-fluid pading">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="text-center text-white">
+                        Branch 1: 
                     </div>
                     <div class="text-center text-white">
-                        Address: Số 1, Ngõ 2, Đường 3
+                        Address: Cầu Giấy, Ha Noi
                     </div>
                     <div class="text-center text-white">
-                        Email: abcxyz@gmail.com
+                        Phone: 01111111111
+                    </div>
+                    <div class="text-center text-white">
+                        Email: abv@gmail.com
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center text-white">
+                        Branch 2: 
+                    </div>
+                    <div class="text-center text-white">
+                        Address: Đống Đa, Ha Noi
+                    </div>
+                    <div class="text-center text-white">
+                        Phone: 012332424242
+                    </div>
+                    <div class="text-center text-white">
+                        Email: minhhieuadasdada@gmail.com
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center text-white">
+                        Branch 1: 
+                    </div>
+                    <div class="text-center text-white">
+                        Address: Hà Đông, Ha Noi
+                    </div>
+                    <div class="text-center text-white">
+                        Phone: 1231231231313
+                    </div>
+                    <div class="text-center text-white">
+                        Email: abvdấdadadasd@gmail.com
                     </div>
                 </div>
             </div>
-          </div>
         </div>
-  	</div>
+    </footer>
+    <!-- Footer -->
 </body>
-
 </html>
