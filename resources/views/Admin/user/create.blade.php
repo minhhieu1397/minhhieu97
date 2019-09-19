@@ -1,9 +1,9 @@
 @extends ('layouts.admin')
 
 @section('content')
-		<div class="col-md-4 offset-md-2  border">
-			<h2 class="text-center">Create User Accounts</h2>
-			{!! Form::open(['method' => 'POST', 'route' => 'admins.user.store']) !!}
+		<div class="col-md-11 content">
+			<h2 class="text-center timesheet-content">Create User Accounts</h2>
+			{!! Form::open(['method' => 'POST', 'class'=>'content-create-user', 'route' => 'admins.user.store']) !!}
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">
 						{{ Session::get( 'success' ) }}
@@ -39,7 +39,7 @@
 	            	{{ Form::text('description', null, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
-	       			{!! Form::select('role',['Manage' => 'manage', 'Employee' => 'employee']) !!}
+	       			{!! Form::select('role', ['Manage' => 'manage', 'Employee' => 'employee'], null, ['class' => 'form-control']) !!}
 	       		</div>
 	       		<div class="form-group">
 	       			{!! Form::submit( 'Create', ['class' => 'btn btn-primary']) !!}

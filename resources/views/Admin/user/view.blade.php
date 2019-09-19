@@ -1,6 +1,7 @@
 @extends ('layouts.admin')
 @section('content')
-	<div class="row border">
+<dir class="col-md-11">
+	<div class="row content">
 		<div class="col-md-12">
 			<h1 class="text-center">List Users</h1>
 			<div>
@@ -76,4 +77,5 @@
 			{{ $users->links() }}
 		</div>
 	</div>
+</div>
 @stop()

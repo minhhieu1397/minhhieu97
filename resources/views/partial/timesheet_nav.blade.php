@@ -1,8 +1,5 @@
-<nav class="col-md-12  site-header sticky-top py-1 timesheet-nav">
-    <div class="flex-column flex-md-row justify-content-between timesheet-menu ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="col-md-10 site-header timesheet-nav">
+    <div class="flex-column flex-md-row justify-content-between timesheet-menu">
         <ul class="nav">
             <li class="dropdown nav-item">
                 <a class="py-2 d-none d-md-inline-block py-2 d-none d-md-inline-block timesheet-a" href="{{route('timesheets.index')}}">Home</a>
@@ -26,9 +23,12 @@
                     </ul>
             </li>
             <li class="dropdown nav-item">
-                <a class="py-2 d-none d-md-inline-block py-2 d-none d-md-inline-block timesheet-sigout" href="{{route('logout')}}">Sign out</a>
+                <a class="py-2 d-none d-md-inline-block py-2 d-none d-md-inline-block timesheet-a" href="{{route('users.personal')}}">Approve</a>
             </li>
         </ul>
         
     </div>
 </nav>
+<span class="col-md-1 text-white">
+    <a class="text-white" href="{{route('logout')}}">Sign out</a>
+</span>

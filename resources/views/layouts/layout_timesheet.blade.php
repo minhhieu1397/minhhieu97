@@ -18,15 +18,15 @@
 
 <body>
     <!-- Navigation -->
-    <div class="container-fluid bg-dark">
+    <div class="container-fluid navbar navbar-expand-lg navbar-dark static-top bg-dark">
         @include('partial/timesheet_nav')
     </div>
     
 <!-- Page Content -->	
   	<div class="container-fluid">
   		<div class="content">
-        @yield('content')
-      </div>
+            @yield('content')
+        </div>
   	</div>
     <!-- Footer -->
     <footer class="page-footer font-small bg-dark blue">

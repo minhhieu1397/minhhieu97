@@ -13,11 +13,6 @@
 </head>
 
 <body>
-	<header class="st-navbar">
-		<div class="navbar navbar-expand-lg navbar-dark static-top bg-dark">
-			<p class="text-white display-4">Talk Anymore</p>
-		</div>
-	</header>
   <!-- Page Content -->	
 	<div class="container-fluid">
 		@yield ('content')

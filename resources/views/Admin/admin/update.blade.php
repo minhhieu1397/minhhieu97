@@ -1,8 +1,10 @@
 @extends ('layouts.admin')
 
 @section('content')
-		<div class="col-md-4 offset-md-2">
-			<h2 class="text-center">Register</h2>
+<div class="col-md-11 content">
+	<div class="row">
+		<div class="col-md-3 offset-md-4">
+			<h2 class="text-center timesheet-content">Register</h2>
 			{!! Form::open(['method' => 'PUT', 'route' => ['admins.update', $admin->id]]) !!}
 				<div class="success alert-success">
 					@if (Session::has( 'success' ))
@@ -27,11 +29,13 @@
 	            	{{ Form::text('email', $admin->email, ['class' => 'form-control']) }}
 	       		</div>
 				<div class="form-group">
-	       			{!! Form::select('level',['1' => '1', '2' => '2']) !!}
+	       			{!! Form::select('level', ['1' => '1', '2' => '2'], null, ['class' => 'form-control selec-level']) !!}
 	       		</div>
 	       		<div class="form-group">
 	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}
 				</div>
 			{!! Form::close() !!}
 		</div>
+	</div>
+</div>
 @stop()

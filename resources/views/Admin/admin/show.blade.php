@@ -1,7 +1,8 @@
 @extends ('layouts.admin')
 
 @section('content')
-		<div class="col-md-8">
+		<div class="col-md-11 content">
+			<h2 class="text-center timesheet-content">Admin</h2>
 			<table class="table table-condensed" >
 				<thead>
 					<tr class="table__title">
