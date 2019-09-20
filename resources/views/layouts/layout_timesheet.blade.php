@@ -24,59 +24,9 @@
     
 <!-- Page Content -->	
   	<div class="container-fluid">
-  		<div class="content">
+  		<div>
             @yield('content')
         </div>
   	</div>
-    <!-- Footer -->
-    <footer class="page-footer font-small bg-dark blue">
-        <div class="container-fluid pading">
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <div class="text-center text-white">
-                        Branch 1: 
-                    </div>
-                    <div class="text-center text-white">
-                        Address: Cầu Giấy, Ha Noi
-                    </div>
-                    <div class="text-center text-white">
-                        Phone: 01111111111
-                    </div>
-                    <div class="text-center text-white">
-                        Email: abv@gmail.com
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="text-center text-white">
-                        Branch 2: 
-                    </div>
-                    <div class="text-center text-white">
-                        Address: Đống Đa, Ha Noi
-                    </div>
-                    <div class="text-center text-white">
-                        Phone: 012332424242
-                    </div>
-                    <div class="text-center text-white">
-                        Email: minhhieuadasdada@gmail.com
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="text-center text-white">
-                        Branch 1: 
-                    </div>
-                    <div class="text-center text-white">
-                        Address: Hà Đông, Ha Noi
-                    </div>
-                    <div class="text-center text-white">
-                        Phone: 1231231231313
-                    </div>
-                    <div class="text-center text-white">
-                        Email: abvdấdadadasd@gmail.com
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer -->
 </body>
 </html>

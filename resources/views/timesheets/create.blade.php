@@ -2,7 +2,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-4 offset-md-4">
-			<h1 class="h1 text-center text-primary">Create</h1>
+			<h1 class="h1 text-center text-primary padding-user">Create</h1>
 			<div class="text-center">
 				@if (Session::has( 'success' ))
 					{{ Session::get( 'success' ) }}

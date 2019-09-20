@@ -53,7 +53,7 @@
 							<td>{{$user->name}}</td>
 							<td>
 								<div>
-					   							<img src="{{ $user->avatar }}" alt="no photo" height="70" width="70" class="img-thumbnail">
+		   							<img src="{{ $user->avatar }}" alt="no photo" height="70" width="70" class="img-thumbnail">
 								</div>
 							</td>
 							<td>{{$user->email}}</td>

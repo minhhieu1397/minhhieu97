@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-2 offset-md-5">
 			{!! Form::open(['method' => 'POST', 'route' => 'users.login.post', 'class' => 'form-signin']) !!}
-				<h2 class="h1 text-center timesheet-content content-login">Login</h2>
+				<h2 class="h1 text-center content-login">Login</h2>
 				@if ($errors->any())
 					<div class="alert alert-danger">
 						<ul>

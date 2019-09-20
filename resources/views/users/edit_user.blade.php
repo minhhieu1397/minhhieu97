@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-3 offset-md-4">
-			<h2 class="text-center timesheet-content">Register</h2>
+			<h2 class="text-center">Register</h2>
 			{!! Form::open(['method' => 'PUT', 'route' => ['users.update', $user->id]]) !!}
 				@if ($errors->any())
 					<div class="alert alert-danger">

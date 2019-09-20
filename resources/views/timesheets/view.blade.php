@@ -1,5 +1,6 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
+<div class="timesheet-content">
 	<h1 class="h1 text-center text-primary">View</h1>
 	<div class="row">
 		<div class="col-md-2">
@@ -84,4 +85,5 @@
 			</table>
 		</div>
 	</div>
+</div>
 @stop()
