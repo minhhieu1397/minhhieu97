@@ -18,24 +18,6 @@ class TimesheetController extends BaseController
 		$this->timesheetService = $timesheetService;
 	}
 
-	public function viewApprove()
-    {
-        $timesheets = $this->timesheetService->viewApprove();
-
-        return view('admin.timesheet.approve', ['timesheets' => $timesheets]);
-    }
-
-    public function updateApprove(Timesheets $timesheet)
-    {
-        if ($this->timesheetService->updateApprove($timesheet)) {
-            return back()->withSuccess('Approve is Success');
-        } else {
-            return back()->withErrors([
-                'errorApprove' => 'Have an error while Approve'
-            ]);
-        }
-    }
-
     public function adminViewTimesheet(User $user)
     {
         $timesheets = $this->timesheetService->adminViewTimesheet($user);

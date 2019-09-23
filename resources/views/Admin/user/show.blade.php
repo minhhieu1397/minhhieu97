@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="col-md-10 content">
-		<h2 class="text-center timesheet-content">Show</h2>
+		<h2 class="text-center">Show</h2>
 		<table class="table table-condensed" >
 			<thead>
 				<tr class="table__title">

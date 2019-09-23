@@ -14,13 +14,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    </style>
 </head>
 
 <body>
     <!-- Navigation -->
-    <div class="container-fluid navbar navbar-expand-lg navbar-dark static-top bg-dark">
-        @include('partial/timesheet_nav')
-    </div>
+<div class="container-fluid navbar navbar-expand-lg navbar-dark static-top bg-dark">
+    @include('partial/timesheet_nav')
+</div>
     
 <!-- Page Content -->	
   	<div class="container-fluid">

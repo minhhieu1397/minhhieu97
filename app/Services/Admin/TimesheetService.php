@@ -13,18 +13,6 @@ class TimesheetService
 		$this->timesheetRepository = $timesheetRepository;
 	}
 
-	public function viewApprove()
-	{
-		return $this->timesheetRepository->viewApprove();
-	}
-
-	public function updateApprove($timesheet)
-	{
-		return $this->timesheetRepository->updateApprove($timesheet, [
-			'approve' => true,
-		]);
-	}
-
 	public function adminViewTimesheet($user)
 	{
 		return $this->timesheetRepository->adminViewTimesheet($user);

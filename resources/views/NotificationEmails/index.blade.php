@@ -1,6 +1,7 @@
 @extends ('layouts.admin')
 @section('content')
-	<div class="row content_login">
+<div class="content col-md-11">
+	<div class="row">
 		<div class="col-md-4 offset-md-4">
 			{!! Form::open(['method' => 'POST', 'route' => 'emails.store']) !!}
 				@if (Session::has( 'success' ))
@@ -62,5 +63,6 @@
 			</table>
 		</div>
 	</div>
+</div>
 @stop()
 

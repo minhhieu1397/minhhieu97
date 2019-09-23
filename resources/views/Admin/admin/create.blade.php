@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-md-11 content">
 	<dir class="row">
-		<div class="col-md-3 offset-md-4">
+		<div class="col-md-3 offset-md-2">
 			<h2 class="text-center">Create Admin Accounts</h2>
 			{!! Form::open(['method' => 'POST', 'route' => 'admins.store']) !!}
 				@if (Session::has( 'success' ))

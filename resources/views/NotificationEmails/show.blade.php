@@ -1,13 +1,14 @@
 @extends ('layouts.admin')
 
 @section('content')
-	<div class="row text-center">
+<div class="content col-md-12">
+	<div class="row">
 		<div class="col-md-12">
 		<h1 class="text-center">Notification</h1>
 		</div>
 	</div>
 	<div class="row content_login">
-		<div class="col-md-3 offset-md-1">
+		<div class="col-md-3">
 			{!! Form::open(['method' => 'POST', 'route' => ['notification.store', $user->id]]) !!}
 			<div class="form-group">
 				{{ Form::label('email', 'Email:', ['class' => 'control-label']) }}
@@ -20,7 +21,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-10 offset-md-1">
+		<div class="col-md-10">
 			<table class="table table-condensed" >
 				@if (Session::has( 'success' ))
 					<div class="alert alert-success">
@@ -59,4 +60,5 @@
 			</table>
 		</div>
 	</div>
+</div>
 @stop()

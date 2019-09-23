@@ -1,4 +1,4 @@
-@extends ('layouts.admin')
+@extends ('layouts.layout_timesheet')
 @section('content')
     <h1 class="text-center login-title text-primary">View</h1>
     <div class="row">

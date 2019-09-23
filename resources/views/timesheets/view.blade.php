@@ -1,7 +1,7 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
 <div class="timesheet-content">
-	<h1 class="h1 text-center text-primary">View</h1>
+	<h1 class="h1 text-center text-primary padding-personal">View</h1>
 	<div class="row">
 		<div class="col-md-2">
 			<h2 class="h5">By date:</h2>
@@ -36,7 +36,7 @@
 				    </div>
 				@endif
 			</div>
-			<table class="table table-condensed">
+			<table class="table table-bordered">
 				<thead>
 					<tr class="table__title">
 						<th>Id</th>

@@ -42,4 +42,14 @@ class TimesheetRepository
 	{
         return $this->model->find($timesheet->id)->delete();
 	}
+
+	public function viewApprove()
+	{
+		return $this->model->where('leader', \Auth::user()->email)->where('approve', 0)->get();
+	}
+
+	public function updateApprove($timesheet, $attributes)
+	{
+		return $this->model->find($timesheet->id)->update($attributes);
+	}
 }

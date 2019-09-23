@@ -60,7 +60,7 @@
 .timesheet-menu a{
 	background-color: #343a40;
 	color: #FFFFFF;
-	font-size: 20px;
+	font-size: 17px;
 	
 }
 .timesheet-a{
@@ -201,4 +201,9 @@
 
 .padding-personal{
 	padding-bottom: 30px;
+}
+
+.pading-show{
+	padding-top: 15px;
+	color: #0026FF;
 }

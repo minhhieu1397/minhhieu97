@@ -71,4 +71,16 @@ class TimesheetService
 	{
 		return $this->timesheetRepository->delete($timesheet);
 	}
+
+	public function viewApprove()
+	{
+		return $this->timesheetRepository->viewApprove();
+	}
+
+	public function updateApprove($timesheet)
+	{
+		return $this->timesheetRepository->updateApprove($timesheet, [
+			'approve' => true,
+		]);
+	}
 }

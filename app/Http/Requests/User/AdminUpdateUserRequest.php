@@ -27,7 +27,7 @@ class AdminUpdateUserRequest extends FormRequest
             'email' => 'required|unique:users,email,' . $this->user->id,
             'name' => 'required',
             'role' => 'required',
-            'leader' => 'exists:admins,email',
+            'leader' => 'exists:users,email',
         ];
     }
 }

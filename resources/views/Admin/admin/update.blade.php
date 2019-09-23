@@ -4,7 +4,7 @@
 <div class="col-md-11 content">
 	<div class="row">
 		<div class="col-md-3 offset-md-4">
-			<h2 class="text-center timesheet-content">Register</h2>
+			<h2 class="text-center">Update</h2>
 			{!! Form::open(['method' => 'PUT', 'route' => ['admins.update', $admin->id]]) !!}
 				<div class="success alert-success">
 					@if (Session::has( 'success' ))
