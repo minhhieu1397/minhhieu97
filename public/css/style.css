@@ -207,3 +207,8 @@
 	padding-top: 15px;
 	color: #0026FF;
 }
+
+.day {
+	min-width: 200px;
+	min-height: 200px;
+}
