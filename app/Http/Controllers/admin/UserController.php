@@ -45,9 +45,14 @@ class UserController extends BaseController
 
     public function search(Request $request)
     {   
-        $users = $this->userService->search($request); 
-
-        return view('admin.user.view', compact('users'));
+        if (count( $this->userService->search($request))) {
+            $users = $this->userService->search($request); 
+            return view('admin.user.view', compact('users'));
+        } else {
+            return back()->withErrors([
+                'ErrorMonth' => 'Does not exist in database'
+            ]);
+        }
     }
 
     public function show(User $user)

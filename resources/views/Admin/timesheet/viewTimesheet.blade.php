@@ -2,8 +2,9 @@
 @section('content')
 <div class="col-md-11 content">
 	<h1 class="h1 text-center text-primary">View</h1>
+
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-2 form-group">
 			<h2 class="h5">By month:</h2>
 				{!! Form::open(['method' => 'GET', 'route' => ['admin.timesheet.bymonth', $user->id]]) !!}
 		            {{ Form::text('month', null) }}
@@ -30,11 +31,7 @@
 				@endif
 			</div>
 				<div class="text-center text-success">
-					Number of days in  
-					@php
-						$month = \Carbon\Carbon::now()->month;
-					@endphp
-					{{$month}}th
+					Number of days in month
 					: {{$numberDate}}
 				</div>
 				<div class="text-center text-success">
@@ -59,7 +56,7 @@
 					@php
 						$id = 0;
 					@endphp
-					@foreach ($timesheets as $timesheet)
+					@foreach($timesheets as $timesheet)
 						<tr class="table__content">
 							@php
 								$id ++;
@@ -80,10 +77,7 @@
 			</table>
 		</div>
 	</div>
-	
-		
 		<div class="row">
-
 			<div class="col-md-1 border day">
 				1 <br/>
 				@foreach ($timesheets as $timesheet)
@@ -202,8 +196,12 @@
 						$day = \Carbon\Carbon::createFromDate($timesheet->work_date)->format('d');
 					@endphp
 					@if($day ==	10)
-						{{$timesheet->details}}<br/>
-						{{$timesheet->issue}}
+						
+						<!-- <input type="button" class="clickMe" value="Click Me"/>
+						<p class="timesheet-detail"> Details : {{$timesheet->details}} <br/> Issue: 	{{$timesheet->issue}}</p> -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    						Open modal
+ 						</button>
 					@endif
 				@endforeach
 			</div>
@@ -228,6 +226,9 @@
 					@if($day ==	12)
 						{{$timesheet->details}}<br/>
 						{{$timesheet->issue}}
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    						Open modal
+ 						</button>
 					@endif
 				@endforeach
 			</div>
@@ -442,30 +443,64 @@
 					@endif
 				@endforeach
 			</div>
-			<div class="col-md-1 border day">
-				30 <br/> 
-				@foreach ($timesheets as $timesheet)
-					@php
-						$day = \Carbon\Carbon::createFromDate($timesheet->work_date)->format('d');
-					@endphp
-					@if($day ==	30)
-						{{$timesheet->details}}<br/>
-						{{$timesheet->issue}}
-					@endif
-				@endforeach
-			</div>
-			<div class="col-md-1 border day">
-				31 <br/> 
-				@foreach ($timesheets as $timesheet)
-					@php
-						$day = \Carbon\Carbon::createFromDate($timesheet->work_date)->format('d');
-					@endphp
-					@if($day ==	31)
-						{{$timesheet->details}}<br/>
-						{{$timesheet->issue}}
-					@endif
-				@endforeach
-			</div>
+			@if(\Carbon\Carbon::createFromDate($timesheet->work_date)->lastOfMonth()->format('d') >= 29)
+				<div class="col-md-1 border day">
+					30 <br/> 
+					@foreach ($timesheets as $timesheet)
+						@php
+							$day = \Carbon\Carbon::createFromDate($timesheet->work_date)->format('d');
+						@endphp
+						@if($day ==	30)
+							{{$timesheet->details}}<br/>
+							{{$timesheet->issue}}
+						@endif
+					@endforeach
+				</div>
+			@endif
+			@if(\Carbon\Carbon::createFromDate($timesheet->work_date)->lastOfMonth()->format('d') == 31)
+				<div class="col-md-1 border day">
+					31 <br/> 
+					@foreach ($timesheets as $timesheet)
+						@php
+							$day = \Carbon\Carbon::createFromDate($timesheet->work_date)->format('d');
+						@endphp
+						@if($day ==	31)
+							{{$timesheet->details}}<br/>
+							{{$timesheet->issue}}
+						@endif
+					@endforeach
+				</div>
+			@endif
 		</div>
+		<div class="modal" id="myModal">
+		    <div class="modal-dialog">
+			    <div class="modal-content">
+			        <!-- Modal Header -->
+			        <div class="modal-header">
+				        <h4 class="modal-title">Modal Heading</h4>
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        </div>
+			        
+			        <!-- Modal body -->
+			        <div class="modal-body">
+			        	Details: {{$timesheet->details}} <br/>
+			            Issue: {{$timesheet->issue}}
+			        </div>
+			        
+			        <!-- Modal footer -->
+			        <div class="modal-footer">
+			            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			        </div>
+			        
+			    </div>
+		    </div>
+	    </div>
 	</div>
+	<script type="text/javascript">
+		
+		$('.clickMe').on('click', function() {
+			let contentAlert = $(this).closest('.day').find('.timesheet-detail').text();
+			alert(contentAlert);
+		})
+	</script>
 @stop()

@@ -28,11 +28,17 @@ class TimesheetController extends BaseController
     }
 
     public function view_by_month(Request $request, User $user)
-    {
-        $timesheets = $this->timesheetService->view_by_month($request, $user);
-        $numberDate = count($this->timesheetService->numberDateTimesheet($user));
-        $countLate = count($this->timesheetService->showLate($user));
-
+    {   
+        if (count($this->timesheetService->view_by_month($request, $user))) {
+            $timesheets = $this->timesheetService->view_by_month($request, $user);
+            $numberDate = count($this->timesheetService->numberDateFindMonth($request, $user));
+            $countLate = count($this->timesheetService->showLateFindMonth($request, $user));
+        } else {
+            return back()->withErrors([
+                'ErrorMonth' => 'Does not exist in database'
+            ]);
+        }
+        
         return view('admin.timesheet.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user]);
     }
 }

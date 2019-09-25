@@ -2,13 +2,6 @@
 @section('content')
 <div class="col-md-11 content">
 	<h1 class="text-center">List Users</h1>
-	<div>
-		{!! Form::open(['method' => 'GET', 'route' => 'admins.users.search']) !!}
-			{{ Form::label('search', 'Seach by name:', ['class' => 'control-label']) }}
-			{{ Form::text('search', null) }}
-			{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
-		{!! Form::close() !!}
-	 </div>
 	<table class="table table-condensed" >
 		@if (Session::has( 'success' ))
 			<div class="alert alert-success">

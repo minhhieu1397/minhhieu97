@@ -29,11 +29,26 @@ class TimesheetService
 	{
 		return $this->timesheetRepository->showLate($user);
 	}
+
 	public function numberDateTimesheet($user)
 	{
 		$month = \Carbon\Carbon::now()->month;
 		$year = \Carbon\Carbon::now()->year;
 
 		return $this->timesheetRepository->numberDateTimesheet($user, $month, $year);
+	}
+
+	public function showLateFindMonth($request, $user)
+	{
+		$month = $request->input('month');
+
+		return $this->timesheetRepository->showLateFindMonth($user, $month);
+	}
+
+	public function numberDateFindMonth($request, $user)
+	{
+		$month = $request->input('month');
+
+		return $this->timesheetRepository->numberDateFindMonth($user, $month);
 	}
 }
