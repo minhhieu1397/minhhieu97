@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-md-11 content">
 	<div class="row">
-		<div class="col-md-2 offset-md-4">
+		<div class="col-md-2 offset-md-2">
 			<h2 class="h1 text-center">Register</h2>
 			{!! Form::open(['method' => 'PUT', 'route' => 'admins.hours.update']) !!}
 				@if (Session::has( 'success' ))

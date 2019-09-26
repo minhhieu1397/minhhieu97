@@ -18,9 +18,9 @@ class TimesheetRepository
 		return $this->model->orderBy('work_date', 'desc')->whereMonth('work_date', \Carbon\Carbon::now()->month)->where('user_id', $user->id)->get();
 	}
 
-	public function view_by_month($user, $month)
+	public function view_by_month($user, $month, $year)
 	{
-		return $this->model->orderBy('work_date', 'desc')->whereMonth('work_date', $month)->where('user_id', $user->id)->get();
+		return $this->model->orderBy('work_date', 'desc')->whereMonth('work_date', $month)->whereYear('work_date', $year)->where('user_id', $user->id)->get();
 	}
 	
 	public function showLate($user)

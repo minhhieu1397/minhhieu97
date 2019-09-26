@@ -21,8 +21,9 @@ class TimesheetService
 	public function view_by_month($request, $user)
 	{
 		$month = $request->input('month');
+		$year = \Carbon\Carbon::now()->year;
 
-		return $this->timesheetRepository->view_by_month($user, $month);
+		return $this->timesheetRepository->view_by_month($user, $month, $year);
 	}
 
 	public function showLate($user)

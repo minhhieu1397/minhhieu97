@@ -6,11 +6,11 @@
 	<div class="row">
 		<div class="col-md-2 form-group">
 			<h2 class="h5">By month:</h2>
-			{!! Form::open(['method' => 'GET', 'route' => ['admin.timesheet.bymonth', $user->id]]) !!}
-	            {{ Form::text('month', null, ['class' => 'form-control', 'placeholder' => 'Month']) }}
-	            {{ Form::text('year', null, ['class' => 'form-control', 'placeholder' => 'Year']) }}
-	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
-			{!! Form::close() !!}
+				{!! Form::open(['method' => 'GET', 'route' => ['admin.timesheet.bymonth', $user->id]]) !!}
+		            {{ Form::text('month', null, ['class' => 'form-control', 'placeholder' => 'Month']) }}
+	            	{{ Form::text('year', null, ['class' => 'form-control', 'placeholder' => 'Year']) }}
+		       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+				{!! Form::close() !!}
 		</div>
 	</div>
 	<div class="row">
@@ -80,19 +80,21 @@
 	</div>
 		<div class="row">
 			@php 
-				$j = \Carbon\Carbon::parse($month->format('Y-m-d'))->daysInMonth;
+				$j = \Carbon\Carbon::parse($month)->daysInMonth;
 			@endphp
 			@for ($i = 1 ; $i <= $j ; $i++)
 				<div class="col-md-1 day border">
 					{{ $i }}<br/>
-					{{ data_get(data_get($timesheets, $i), 'work_date') }} <br/>
-					{{ data_get(data_get($timesheets, $i), 'details') }}
+					@if (count(data_get($timesheets, $i)) == 1)
+						  - Time: {{ data_get(data_get($timesheets, $i), 'start_time') }} => {{ data_get(data_get($timesheets, $i), 'end_time') }} <br/>
+						  - Details: {{ data_get(data_get($timesheets, $i), 'details') }}<br/>
+						  - Issue: {{ data_get(data_get($timesheets, $i), 'issue') }}<br/> 
+						  - Intention: {{ data_get(data_get($timesheets, $i), 'intention') }}<br/>
+					@endif
 				</div>
 			@endfor
 		</div>
 	
-
-
 		<div class="modal" id="myModal">
 		    <div class="modal-dialog">
 			    <div class="modal-content">
@@ -104,8 +106,7 @@
 			        
 			        <!-- Modal body -->
 			        <div class="modal-body">
-			        	Details: {{$timesheet->details}} <br/>
-			            Issue: {{$timesheet->issue}}
+			        	
 			        </div>
 			        
 			        <!-- Modal footer -->

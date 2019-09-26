@@ -23,8 +23,14 @@ class TimesheetController extends BaseController
         $timesheets = $this->timesheetService->adminViewTimesheet($user);
         $numberDate = count($this->timesheetService->numberDateTimesheet($user));
         $countLate = count($this->timesheetService->showLate($user));
+        $listtimesheet = [];
+        $month = \Carbon\Carbon::now();
+        foreach ($timesheets as $key => $timesheet) {
+            $day = \Carbon\Carbon::createFromDate(data_get( $timesheet, 'work_date'))->format('d');
+            $listtimesheet[$day] = $timesheet;
+        }
 
-        return view('admin.timesheet.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user]);
+        return view('admin.timesheet.viewTimesheet', ['timesheets' => $listtimesheet, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user, 'month' => $month]);
     }
 
     public function view_by_month(Request $request, User $user)
@@ -33,12 +39,20 @@ class TimesheetController extends BaseController
             $timesheets = $this->timesheetService->view_by_month($request, $user);
             $numberDate = count($this->timesheetService->numberDateFindMonth($request, $user));
             $countLate = count($this->timesheetService->showLateFindMonth($request, $user));
+            $listtimesheet = [];
+            foreach ($timesheets as $key => $timesheet) {
+                $day = \Carbon\Carbon::createFromDate(data_get( $timesheet, 'work_date'))->format('d');
+                $listtimesheet[$day] = $timesheet;
+
+            }
+                $month = $listtimesheet[$day]->work_date;
+            return view('admin.timesheet.searchTimesheet', ['timesheets' => $listtimesheet, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user, 'month' => $month]);
         } else {
             return back()->withErrors([
                 'ErrorMonth' => 'Does not exist in database'
             ]);
         }
         
-        return view('admin.timesheet.viewTimesheet', ['timesheets' => $timesheets, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user]);
+        
     }
 }
