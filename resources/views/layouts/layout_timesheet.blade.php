@@ -30,10 +30,8 @@
 </div>
     
 <!-- Page Content -->	
-  	<div class="container-fluid">
-  		<div>
-            @yield('content')
-        </div>
+  	<div class="container-fluid content-timesheets">
+        @yield('content')
   	</div>
 </body>
 </html>

@@ -1,7 +1,11 @@
 @extends ('layouts.layout_timesheet')
 @section('content')
-    <h1 class="text-center login-title text-primary">View</h1>
     <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center text-primary">View</h1>
+        </div>
+    </div>
+    <div class="row timesheet-content">
         <div class="col-md-12 ">
             <div class="text-center">
                 @if (Session::has( 'success' ))

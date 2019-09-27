@@ -4,11 +4,11 @@
 	<div class="row content">
 		<div class="col-md-12">
 			<h1 class="text-center">List Users</h1>
-			<div>
+			<div width="100px">
 				{!! Form::open(['method' => 'GET', 'route' => 'admins.users.search']) !!}
-					{{ Form::label('search', 'Seach by name:', ['class' => 'control-label']) }}
-					{{ Form::text('search', null) }}
-					{!! Form::submit( 'Search', ['class' => 'btn-primary']) !!}
+					{{ Form::label('search', 'Seach by name:', ['class' => 'control-label ']) }}
+					{{ Form::text('search', null, ['class' => 'form-control nav-admin']) }}
+					{!! Form::submit( 'Search', ['class' => 'btn-primary form-control btn-search']) !!}
 				{!! Form::close() !!}
 			 </div>
 			<table class="table table-condensed" >

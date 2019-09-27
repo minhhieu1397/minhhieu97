@@ -88,9 +88,6 @@
 	font-family: Comic Sans MS;
 }
 
-.timesheet-content{
-	margin-top:40px;
-} 
 .footer-timesheet {
    position: fixed;
    left: 0;
@@ -108,7 +105,8 @@
 .timesheet-content{
 	min-height: 900px;
 	padding-bottom: 10px;
-		padding-left: 50px;
+	padding-left: 50px;
+	padding-top: 50px; 
 }
 
 .admin-sigout{
@@ -211,4 +209,16 @@
 .day {
 	min-width: 200px;
 	min-height: 200px;
+}
+
+.classsearch{
+	width: 80px;
+}
+
+.content-timesheets{
+	background-color: #FFFFFF;
+}
+
+.btn-search{
+	width: 70px;
 }

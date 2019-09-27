@@ -11,12 +11,10 @@
 	<link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"> 
 </head>
-
 <body>
   <!-- Page Content -->	
 	<div class="container-fluid">
 		@yield ('content')
 	</div>
 </body>
-
 </html>

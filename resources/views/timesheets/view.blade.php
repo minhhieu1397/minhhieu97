@@ -3,18 +3,18 @@
 <div class="timesheet-content">
 	<h1 class="h1 text-center text-primary padding-personal">View</h1>
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-2 form-group">
 			<h2 class="h5">By date:</h2>
 			{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewDay']) !!}
-	            {{Form::date('date', \Carbon\Carbon::now())}}
-	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+	            {{Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control'])}}
+	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary form-control btn-search']) !!}
 			{!! Form::close() !!}
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-2 form-group offset-md-1">
 			<h2 class="h5">By month:</h2>
 			{!! Form::open(['method' => 'GET', 'route' => 'timesheet.viewMonth']) !!}
-	            {{ Form::text('month', null) }}
-	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+	            {{ Form::text('month', null,  ['class' => 'form-control']) }}
+	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary form-control btn-search']) !!}
 			{!! Form::close() !!}
 		</div>
 	</div>

@@ -2,126 +2,38 @@
 @section('content')
 <div class="col-md-11 content">
 	<h1 class="h1 text-center text-primary">View</h1>
-
 	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<div class="text-center text-success">
+				Number of days in month
+				: {{$numberDate}}
+			</div>
+			<div class="text-center text-success">
+				Late: {{$countLate}}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+
 		<div class="col-md-2 form-group">
 			<h2 class="h5">By month:</h2>
 			{!! Form::open(['method' => 'GET', 'route' => ['admin.timesheet.bymonth', $user->id]]) !!}
-	            {{ Form::text('month', null, ['class' => 'form-control', 'placeholder' => 'Month']) }}
-	            {{ Form::text('year', null, ['class' => 'form-control', 'placeholder' => 'Year']) }}
-	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary']) !!}
+	            {{ Form::text('month', null, ['class' => 'form-control classsearch', 'placeholder' => 'Month']) }}
+	            {{ Form::text('year', null, ['class' => 'form-control classsearch', 'placeholder' => 'Year']) }}
+	       		{!! Form::submit( 'Seach', ['class' => 'btn-primary form-control classsearch']) !!}
 			{!! Form::close() !!}
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<div class="text-center">
-				@if (Session::has( 'success' ))
-					<div class="alert alert-success">
-						{{ Session::get( 'success' ) }}
-					</div>
-				@endif
-				@if ($errors->any())
-					<div class="alert alert-danger">
-			   			<ul>
-				            @foreach ($errors->all() as $error)
-				                <li>{{ $error }}</li>
-				            @endforeach
-				        </ul>
-				    </div>
-				@endif
+		@php 
+			$j = \Carbon\Carbon::parse($month->format('Y-m-d'))->daysInMonth;
+		@endphp
+		@for ($i = 1 ; $i <= $j ; $i++)
+			<div class="col-md-1 day border">
+				{{ $i }}<br/>
+				{{ data_get(data_get($timesheets, $i), 'work_date') }} <br/>
+				{{ data_get(data_get($timesheets, $i), 'details') }}
 			</div>
-				<div class="text-center text-success">
-					Number of days in month
-					: {{$numberDate}}
-				</div>
-				<div class="text-center text-success">
-					Late: {{$countLate}}
-				</div>
-			<table class="table table-condensed">
-				<thead>
-					<tr class="table__title">
-						<th>Id</th>
-						<th>Name</th>
-						<th>Work date</th>
-						<th>Start time</th>
-						<th>End time</th>
-						<th>Details</th>
-						<th>Issue</th>
-						<th>Intention</th>
-						<th>Approve</th>
-						<th>Late</th>
-					</tr>
-				</thead>
-				<tbody>
-					@php
-						$id = 0;
-					@endphp
-					@foreach($timesheets as $timesheet)
-						<tr class="table__content">
-							@php
-								$id ++;
-							@endphp
-							<td>{{$id}}</td>
-							<td>{{$timesheet->name}}</td>
-							<td>{{$timesheet->work_date}}</td>
-							<td>{{$timesheet->start_time}}</td>
-							<td>{{$timesheet->end_time}}</td>
-							<td>{{$timesheet->details}}</td>
-							<td>{{$timesheet->issue}}</td>
-							<td>{{$timesheet->intention}}</td>
-							<td>{{$timesheet->approve}}</td>
-							<td>{{$timesheet->late_flg}}</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
-		</div>
+		@endfor
 	</div>
-		<div class="row">
-			@php 
-				$j = \Carbon\Carbon::parse($month->format('Y-m-d'))->daysInMonth;
-			@endphp
-			@for ($i = 1 ; $i <= $j ; $i++)
-				<div class="col-md-1 day border">
-					{{ $i }}<br/>
-					{{ data_get(data_get($timesheets, $i), 'work_date') }} <br/>
-					{{ data_get(data_get($timesheets, $i), 'details') }}
-				</div>
-			@endfor
-		</div>
-	
-
-
-		<div class="modal" id="myModal">
-		    <div class="modal-dialog">
-			    <div class="modal-content">
-			        <!-- Modal Header -->
-			        <div class="modal-header">
-				        <h4 class="modal-title">Modal Heading</h4>
-				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-			        </div>
-			        
-			        <!-- Modal body -->
-			        <div class="modal-body">
-			        	Details: {{$timesheet->details}} <br/>
-			            Issue: {{$timesheet->issue}}
-			        </div>
-			        
-			        <!-- Modal footer -->
-			        <div class="modal-footer">
-			            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-			        </div>
-			        
-			    </div>
-		    </div>
-	    </div>
-	</div>
-	<script type="text/javascript">
-		
-		$('.clickMe').on('click', function() {
-			let contentAlert = $(this).closest('.day').find('.timesheet-detail').text();
-			alert(contentAlert);
-		})
-	</script>
 @stop()

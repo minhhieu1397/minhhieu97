@@ -31,6 +31,7 @@
 				    </div>
 				@endif
 			</div>
+			<div>
 				<div class="text-center text-success">
 					Number of days in month
 					: {{$numberDate}}
@@ -38,44 +39,7 @@
 				<div class="text-center text-success">
 					Late: {{$countLate}}
 				</div>
-			<table class="table table-condensed">
-				<thead>
-					<tr class="table__title">
-						<th>Id</th>
-						<th>Name</th>
-						<th>Work date</th>
-						<th>Start time</th>
-						<th>End time</th>
-						<th>Details</th>
-						<th>Issue</th>
-						<th>Intention</th>
-						<th>Approve</th>
-						<th>Late</th>
-					</tr>
-				</thead>
-				<tbody>
-					@php
-						$id = 0;
-					@endphp
-					@foreach($timesheets as $timesheet)
-						<tr class="table__content">
-							@php
-								$id ++;
-							@endphp
-							<td>{{$id}}</td>
-							<td>{{$timesheet->name}}</td>
-							<td>{{$timesheet->work_date}}</td>
-							<td>{{$timesheet->start_time}}</td>
-							<td>{{$timesheet->end_time}}</td>
-							<td>{{$timesheet->details}}</td>
-							<td>{{$timesheet->issue}}</td>
-							<td>{{$timesheet->intention}}</td>
-							<td>{{$timesheet->approve}}</td>
-							<td>{{$timesheet->late_flg}}</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
+			</div>
 		</div>
 	</div>
 		<div class="row">

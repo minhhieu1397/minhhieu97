@@ -25,6 +25,7 @@ class TimesheetController extends BaseController
         $countLate = count($this->timesheetService->showLate($user));
         $listtimesheet = [];
         $month = \Carbon\Carbon::now();
+        
         foreach ($timesheets as $key => $timesheet) {
             $day = \Carbon\Carbon::createFromDate(data_get( $timesheet, 'work_date'))->format('d');
             $listtimesheet[$day] = $timesheet;
@@ -35,24 +36,22 @@ class TimesheetController extends BaseController
 
     public function view_by_month(Request $request, User $user)
     {   
-        if (count($this->timesheetService->view_by_month($request, $user))) {
-            $timesheets = $this->timesheetService->view_by_month($request, $user);
-            $numberDate = count($this->timesheetService->numberDateFindMonth($request, $user));
-            $countLate = count($this->timesheetService->showLateFindMonth($request, $user));
+        $timesheets = $this->timesheetService->view_by_month($request, $user);
+        $numberDate = count($this->timesheetService->numberDateFindMonth($request, $user));
+        $countLate = count($this->timesheetService->showLateFindMonth($request, $user));
+
+        if (count($timesheets)) {
             $listtimesheet = [];
             foreach ($timesheets as $key => $timesheet) {
                 $day = \Carbon\Carbon::createFromDate(data_get( $timesheet, 'work_date'))->format('d');
                 $listtimesheet[$day] = $timesheet;
-
             }
-                $month = $listtimesheet[$day]->work_date;
+            $month = $listtimesheet[$day]->work_date;
             return view('admin.timesheet.searchTimesheet', ['timesheets' => $listtimesheet, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user, 'month' => $month]);
         } else {
             return back()->withErrors([
                 'ErrorMonth' => 'Does not exist in database'
             ]);
         }
-        
-        
     }
 }
