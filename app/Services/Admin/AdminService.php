@@ -1,11 +1,12 @@
 <?php
 namespace App\Services\Admin;
 
+use App\Services\Interfaces\AdminInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Repositories\Admin\AdminRepository;
 
-class AdminService
+class AdminService implements AdminInterface
 {
 	protected $adminRepository;
 

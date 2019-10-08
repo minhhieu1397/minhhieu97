@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Admin\AdminService;
+use App\Services\Interfaces\AdminInterface;
+
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\User;
@@ -16,7 +18,7 @@ class AdminController extends BaseController
 {
 	protected $adminService;
 
-    public function __construct(AdminService $adminService)
+    public function __construct(AdminInterface $adminService)
     {
         $this->adminService = $adminService;
     }
