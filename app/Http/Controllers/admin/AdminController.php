@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Admin\AdminService;
-use App\Services\Interfaces\AdminInterface;
-
+use App\Services\Interfaces\Admin\AdminInterface;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\User;
@@ -16,11 +15,11 @@ use App\Http\Controllers\Admin\BaseController;
 
 class AdminController extends BaseController
 {
-	protected $adminService;
+	protected $adminInterface;
 
-    public function __construct(AdminInterface $adminService)
+    public function __construct(AdminInterface $adminInterface)
     {
-        $this->adminService = $adminService;
+        $this->adminInterface = $adminInterface;
     }
 
     public function index()
@@ -37,7 +36,7 @@ class AdminController extends BaseController
 
     public function store(CreateAdminRequest $request)
     {
-        if ($this->adminService->create($request)) {
+        if ($this->adminInterface->create($request)) {
             return redirect()->route('admins.index');
         } else {
             return back()->withInput()->withErrors([
@@ -48,7 +47,7 @@ class AdminController extends BaseController
 
     public function view()
     {
-        $admins = $this->adminService->getAll();
+        $admins = $this->adminInterface->getAll();
         
         return view('admin.admin.view', compact('admins'));
     }
@@ -65,7 +64,7 @@ class AdminController extends BaseController
 
     public function update(Admins $admin, Request $request)
     {
-        if ($this->adminService->update($admin, $request)) {
+        if ($this->adminInterface->update($admin, $request)) {
             return redirect()->route('admins.show', compact('admin'))->withSuccess('Update is successfuly');
         } else { 
             return back()->withInput()->withErrors([
@@ -76,7 +75,7 @@ class AdminController extends BaseController
 
     public function destroy($admin)
     {
-        if ($this->adminService->delete($admin)) {
+        if ($this->adminInterface->delete($admin)) {
             return back()->withSuccess( 'Delete is successfuly' );
         } else {
             return back()->withErrors([

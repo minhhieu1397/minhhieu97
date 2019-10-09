@@ -11,14 +11,15 @@ use App\Services\User\UserService;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\BaseController;
+use App\Services\Interfaces\User\UserInterface;
 
 class UserController extends BaseController
 {
-    protected $userService;
+    protected $userInterface;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserInterface $userInterface)
     {
-        $this->userService = $userService;
+        $this->userInterface = $userInterface;
     }
 
     public function editAvatar()
@@ -58,7 +59,7 @@ class UserController extends BaseController
 
     public function update(UpdateRequest $request)
     {
-        if ($this->userService->update($request)) {
+        if ($this->userInterface->update($request)) {
             return redirect()->route('timesheets.index');
         } else {
             return back()->withInput();
@@ -74,7 +75,7 @@ class UserController extends BaseController
 
     public function updatePassword(User $user, ChangePasswordRequest $request)
     {
-        if ($this->userService->updatePassword($request)) {
+        if ($this->userInterface->updatePassword($request)) {
             return redirect()->route('logout');
         } else {
             return Back()->withErrors([

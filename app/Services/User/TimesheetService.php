@@ -3,8 +3,10 @@ namespace App\Services\User;
 
 use Illuminate\Http\Request;
 use App\Repositories\User\TimesheetRepository;
+use App\Services\Interfaces\User\TimesheetInterface;
 
-class TimesheetService
+
+class TimesheetService implements TimesheetInterface
 {
 	protected $timesheetRepository;
 

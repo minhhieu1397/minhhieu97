@@ -10,14 +10,15 @@ use App\Http\Requests\User\AdminUpdateUserRequest;
 use App\Http\Requests\User\ResetPasswordRequest;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Controllers\Admin\BaseController;
+use App\Services\Interfaces\Admin\UserInterface;
 
 class UserController extends BaseController
 {
-	protected $userService;
+	protected $userInterface;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserInterface $userInterface)
     {
-        $this->userService = $userService;
+        $this->userInterface = $userInterface;
     }
 
     public function create()
@@ -27,7 +28,7 @@ class UserController extends BaseController
 
     public function store(CreateUserRequest $request)
     {
-        if ($this->userService->create($request)) {
+        if ($this->userInterface->create($request)) {
             return back()->withSuccess('Create user successfully');
         } else {
             return back()->withErrors([
@@ -38,15 +39,15 @@ class UserController extends BaseController
 
     public function view()
     {
-        $users = $this->userService->getAll();
+        $users = $this->userInterface->getAll();
         
         return view('admin.user.view', compact('users'));
     }
 
     public function search(Request $request)
     {   
-        if (count( $this->userService->search($request))) {
-            $users = $this->userService->search($request); 
+        if (count( $this->userInterface->search($request))) {
+            $users = $this->userInterface->search($request); 
             return view('admin.user.view', compact('users'));
         } else {
             return back()->withErrors([
@@ -62,7 +63,7 @@ class UserController extends BaseController
 
     public function destroy($user)
     {
-        if ($this->userService->delete($user)) {
+        if ($this->userInterface->delete($user)) {
             return back()->withSuccess( 'Delete is successfuly' );
         } else {
             return back()->withErrors([
@@ -78,7 +79,7 @@ class UserController extends BaseController
 
     public function update(User $user, AdminUpdateUserRequest $request)
     {
-        if ($this->userService->update($user, $request)) {
+        if ($this->userInterface->update($user, $request)) {
             return back()->withSuccess('Update is success');
         } else {
             return back()->withInput()->withErrors([
@@ -89,7 +90,7 @@ class UserController extends BaseController
 
     public function resetPassword(User $user, ResetPasswordRequest $request)
     {
-        if ($this->userService->resetPassword($user, $request)) {
+        if ($this->userInterface->resetPassword($user, $request)) {
             return back()->withSuccess('Reset Password is successfuly');
         } else {
             return back()->withErrors([

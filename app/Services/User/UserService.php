@@ -4,8 +4,9 @@ namespace App\Services\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Repositories\User\UserRepository;
+use App\Services\Interfaces\User\UserInterface;
 
-class UserService
+class UserService implements UserInterface
 {
 	protected $userRepository;
 

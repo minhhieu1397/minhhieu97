@@ -13,14 +13,15 @@ use App\Http\Requests\Timesheet\UpdateTimesheetRequest;
 use App\Notifications\CreateTimesheetNotification;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\BaseController;
+use App\Services\Interfaces\User\TimesheetInterface;
 
 class TimesheetController extends BaseController
 {
-	protected $timesheetService;
+	protected $timesheetInterface;
 
-	public function __construct(TimesheetService $timesheetService)
+	public function __construct(TimesheetInterface $timesheetInterface)
 	{
-		$this->timesheetService = $timesheetService;
+		$this->timesheetInterface = $timesheetInterface;
 	}
 
     public function index()
@@ -32,7 +33,7 @@ class TimesheetController extends BaseController
 
     public function view()
     {
-        $timesheets = $this->timesheetService->getAll();
+        $timesheets = $this->timesheetInterface->getAll();
         $numberDate = count($timesheets);
 
         return view('timesheets.view', ['timesheets' => $timesheets, 'numberDate' => $numberDate]);
@@ -40,14 +41,14 @@ class TimesheetController extends BaseController
 
     public function viewByMonth(Request $request)
     {
-        $timesheets = $this->timesheetService->viewByMonth($request);
+        $timesheets = $this->timesheetInterface->viewByMonth($request);
 
         return view('timesheets.view', ['timesheets' => $timesheets]);
     }
 
     public function viewByDay(Request $request)
     {
-        $timesheets = $this->timesheetService->viewByDay($request);
+        $timesheets = $this->timesheetInterface->viewByDay($request);
 
         return view('timesheets.view', compact('timesheets'));
     }
@@ -61,7 +62,7 @@ class TimesheetController extends BaseController
 
     public function store(CreateTimesheetRequest $request)
     {
-    	if ($this->timesheetService->create($request)) {
+    	if ($this->timesheetInterface->create($request)) {
            /* $user = \Auth::user();
             $leader = User::where('email', $user->leader)->first();
             $leader->notify(new CreateTimesheetNotification($user->name));
@@ -94,7 +95,7 @@ class TimesheetController extends BaseController
 
     public function update(UpdateTimesheetRequest $request, Timesheets $timesheet)
     {
-    	if ($this->timesheetService->update($request, $timesheet)) {
+    	if ($this->timesheetInterface->update($request, $timesheet)) {
     		return redirect()->route('timesheets.show', compact('timesheet'));
     	} else {
     		return back()->withInput()->withErrors([
@@ -107,7 +108,7 @@ class TimesheetController extends BaseController
     {
         $this->authorize('delete', $timesheet);
 
-        if ($this->timesheetService->delete($timesheet)) {
+        if ($this->timesheetInterface->delete($timesheet)) {
             return back()->withSuccess('Delete is successfuly');
         } else {
             return back()->withErrors([
@@ -118,14 +119,14 @@ class TimesheetController extends BaseController
 
     public function viewApprove()
     {
-        $timesheets = $this->timesheetService->viewApprove();
+        $timesheets = $this->timesheetInterface->viewApprove();
 
         return view('timesheets.approve', ['timesheets' => $timesheets]);
     }
 
     public function updateApprove(Timesheets $timesheet)
     {
-        if ($this->timesheetService->updateApprove($timesheet)) {
+        if ($this->timesheetInterface->updateApprove($timesheet)) {
             return back()->withSuccess('Approve is Success');
         } else {
             return back()->withErrors([

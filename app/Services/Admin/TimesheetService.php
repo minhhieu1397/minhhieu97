@@ -2,9 +2,10 @@
 namespace App\Services\Admin;
 
 use Illuminate\Http\Request;
+use App\Services\Interfaces\Admin\TimesheetInterface;
 use App\Repositories\Admin\TimesheetRepository;
 
-class TimesheetService
+class TimesheetService implements TimesheetInterface
 {
 	protected $timesheetRepository;
 

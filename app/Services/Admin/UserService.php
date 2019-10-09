@@ -3,10 +3,16 @@ namespace App\Services\Admin;
 
 use Illuminate\Http\Request;
 use App\Repositories\Admin\UserRepository;
+use App\Services\Interfaces\Admin\UserInterface;
 
-class UserService
+class UserService implements UserInterface
 {
 	protected $userRepository;
+
+	public function __construct(UserRepository $userRepository)
+	{
+		$this->userRepository = $userRepository;
+	}
 
 	public function create($request)
 	{
@@ -36,11 +42,6 @@ class UserService
 		return $this->userRepository->delete($user);
 	}
 	
-	public function __construct(UserRepository $userRepository)
-	{
-		$this->userRepository = $userRepository;
-	}
-
 	public function update($user, $request)
 	{
 		return $this->userRepository->update($user, [
