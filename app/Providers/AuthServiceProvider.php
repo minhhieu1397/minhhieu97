@@ -32,7 +32,6 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('edit-timesheet', function ($user) {
             return $user->id > 0;
-            dd($user->id);
         });
 
         Gate::define('is_admin', function ($admin) {

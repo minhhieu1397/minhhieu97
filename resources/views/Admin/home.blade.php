@@ -2,7 +2,7 @@
 @section('content')
 	<div role="main" class="col-md-12 content">
       <div class="row">
-      	<div class="col-md-4 ">
+      	<div class="col-md-4">
 			<div>
 		   		<img src="{{$admin->avatar}}" alt="Smiley face" class="img-thumbnail">
 			</div>

@@ -1,8 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-	<div class="row">
-		<div class="col-md-4 offset-md-3">
+		<div class="col-md-4 offset-md-3 content">
 			<h2 class="text-center login-title">Update</h2>
 			<form action="{{ route('admins.update.avatar') }}" enctype='multipart/form-data' method="POST">
 		        {{ csrf_field() }}
@@ -19,9 +18,8 @@
 					 {{ Session::get( 'success' ) }}
 				@endif
 		        <input type="file" name="image" required="true">
-		        	<br/>
+		        <br/>
 		        <input type="submit" value="upload">
 		    </form>
 		</div>
-	</div>	
 @stop()

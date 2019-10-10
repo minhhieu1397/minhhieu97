@@ -29,7 +29,7 @@ class UserController extends BaseController
     public function store(CreateUserRequest $request)
     {
         if ($this->userInterface->create($request)) {
-            return back()->withSuccess('Create user successfully');
+            return back()->withSuccess('Create user successfully!');
         } else {
             return back()->withErrors([
                 'errorCreateUser' => 'Have an error when creating'
@@ -45,9 +45,9 @@ class UserController extends BaseController
     }
 
     public function search(Request $request)
-    {   
+    {
         if (count( $this->userInterface->search($request))) {
-            $users = $this->userInterface->search($request); 
+            $users = $this->userInterface->search($request);
             return view('admin.user.view', compact('users'));
         } else {
             return back()->withErrors([
@@ -64,7 +64,7 @@ class UserController extends BaseController
     public function destroy($user)
     {
         if ($this->userInterface->delete($user)) {
-            return back()->withSuccess( 'Delete is successfuly' );
+            return back()->withSuccess( 'Delete is successfuly!' );
         } else {
             return back()->withErrors([
                 'errorDelete' => 'Have an error while deleting timesheet'

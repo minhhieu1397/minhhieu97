@@ -23,7 +23,7 @@ class NotificationEmailController extends BaseController
     public function store(NotificationEmailRequest $request, User $user)
     {
     	if ($this->notificationEmailService->create($user, $request)) {
-    		return back()->withSuccess('Create is successfuly');
+    		return back()->withSuccess('Create is successfuly!');
     	} else {
     		return back()->withErrors([
     			'CreateEmaiNotification' => 'Have an error when creting notification email'

@@ -36,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="{{route('admins.index')}}">
                             <span data-feather="home"></span> <i class="glyphicon glyphicon-home"></i>
-                            Home 
+                                Home 
                             </a>
                         </li>
                         <li class="dropdown nav-item">

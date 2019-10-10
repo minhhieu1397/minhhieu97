@@ -26,13 +26,15 @@ class TimesheetController extends BaseController
         $countLate = count($this->timesheetInterface->showLate($user));
         $listtimesheet = [];
         $month = \Carbon\Carbon::now();
-        
+
         foreach ($timesheets as $key => $timesheet) {
             $day = \Carbon\Carbon::createFromDate(data_get( $timesheet, 'work_date'))->format('d');
             $listtimesheet[$day] = $timesheet;
         }
 
-        return view('admin.timesheet.viewTimesheet', ['timesheets' => $listtimesheet, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user, 'month' => $month]);
+        return view('admin.timesheet.viewTimesheet', [
+            'timesheets' => $listtimesheet, 'numberDate' => $numberDate, 'countLate' => $countLate, 'user' => $user, 'month' => $month
+        ]);
     }
 
     public function view_by_month(Request $request, User $user)

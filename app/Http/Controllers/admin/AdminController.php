@@ -9,6 +9,7 @@ use App\Services\Admin\AdminService;
 use App\Services\Interfaces\Admin\AdminInterface;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\CreateAdminRequest;
+use App\Http\Requests\Image\UploadImageRequest;
 use App\Models\User;
 use App\Models\Admins;
 use App\Http\Controllers\Admin\BaseController;
@@ -25,7 +26,7 @@ class AdminController extends BaseController
     public function index()
     {
         $admin = Auth::guard('admin')->user();
-        
+
         return view('admin.home', ['admin' => $admin]);
     }
 
@@ -66,11 +67,11 @@ class AdminController extends BaseController
     {
         if ($this->adminInterface->update($admin, $request)) {
             return redirect()->route('admins.show', compact('admin'))->withSuccess('Update is successfuly');
-        } else { 
+        } else {
             return back()->withInput()->withErrors([
                 'ErrorUpdate' => 'Have an error when updating'
             ]);
-        } 
+        }
     }
 
     public function destroy($admin)
@@ -98,7 +99,7 @@ class AdminController extends BaseController
         return view('admin.admin.upload_avatar', compact('admin'));
     }
 
-    public function updateAvatar(Request $request)
+    public function updateAvatar(UploadImageRequest $request)
     {
         if ($request->hasFile('image')) {
             $file = $request->file('image');

@@ -4,7 +4,7 @@
 <div class="col-md-11">
 	<div class="row bg-light header-right">
 	    <span class="col-md-1 offset-md-10 navbar-nav">
-	        <a class="nav-link  text-dark" href="{{route('admins.logout')}}">Sign out</a>
+	        <a class="nav-link text-dark" href="{{route('admins.logout')}}">Sign out</a>
 	    </span>
     </div>
 </div>

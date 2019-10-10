@@ -10,7 +10,7 @@ class NotificationEmailRepository
 
 	public function __construct(EmailNotification $model)
 	{
-		$this->model =$model;
+		$this->model = $model;
 	}
 
 	public function create($attributes)

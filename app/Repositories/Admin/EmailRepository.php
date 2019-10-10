@@ -10,7 +10,7 @@ class EmailRepository
 
 	public function __construct(Email $model)
 	{
-		$this->model =$model;
+		$this->model = $model;
 	}
 
 	public function all()

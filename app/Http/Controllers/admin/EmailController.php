@@ -31,7 +31,7 @@ class EmailController extends BaseController
     public function store(CreateEmailRequest $request)
     {
     	if ($this->emailService->create($request)) {
-    		return back()->withSuccess('Create is successfuly ');
+    		return back()->withSuccess('Create is successfuly!');
     	} else {
     		return back()->withErrors([
     			'ErrorEmail' => 'Have an error when create NotificationEmail'

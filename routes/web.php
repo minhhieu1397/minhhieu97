@@ -35,7 +35,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::get('/admins/{admin}/edit', 'AdminController@edit')->name('admins.edit');
 	Route::put('/admins/{admin}/edit', 'AdminController@update')->name('admins.update');
 	Route::delete('admins/{admin}', 'AdminController@destroy')->name('admins.destroy');
-
 	Route::get('/admins/users/create', 'UserController@create')->name('admins.user.create');
 	Route::post('/admins/users/create' ,'UserController@store')->name('admins.user.store');
 	Route::get('/admins/users/view', 'UserController@view')->name('admins.users.view');
@@ -46,6 +45,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::put('/admins/users/{user}/reset_password', 'UserController@resetPassword')->name('users.resetpassword');
 	Route::delete('/admins/users/{user}', 'UserController@destroy')->name('admins.user.destroy');
 });
+
 Route::group(['namespace' => 'User', 'middleware' => 'user'], function () {
 	Route::get('/user/personal', 'UserController@personal')->name('users.personal');
 	Route::get('/users/update_avatar', 'UserController@editAvatar')->name('users.edit.avatar');
@@ -55,7 +55,6 @@ Route::group(['namespace' => 'User', 'middleware' => 'user'], function () {
 	Route::get('/users/edit_password', 'UserController@editPassword')->name('users.editpassword');
 	Route::put('/users/edit_password', 'UserController@updatePassword')->name('users.updatepassword');
 	Route::get('/logout', 'UserController@logout')->name('logout');
-
 	Route::get('/timesheets/approve', 'TimesheetController@viewApprove')->name('timesheet.approve');
 	Route::put('/timesheets/approve/{timesheet}', 'TimesheetController@updateApprove')->name('timesheet.approveUpdate');
 	Route::get('/timesheets/view', 'TimesheetController@view')->name('timesheet.view');
