@@ -15,8 +15,8 @@ class CreateTableEmailNotificationTable extends Migration
     {
         Schema::create('email_notification', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->Integer('email_id');
-            $table->Integer('notification_id');
+            $table->integer('email_id');
+            $table->integer('user_id');
 
             $table->timestamps();
         });

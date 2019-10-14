@@ -14,6 +14,7 @@ class CreateHoursTimesheetTable extends Migration
     public function up()
     {
         Schema::create('hours_timesheet', function (Blueprint $table) {
+            $table->integer('id');
             $table->TIME('start_time');
             $table->TIME('end_time');
             });

@@ -19,9 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
-            $table->binary('avatar');
+            $table->string('avatar');
             $table->string('description');
             $table->string('approve');
+            $table->string('leader');
             
             $table->timestamps();
         });

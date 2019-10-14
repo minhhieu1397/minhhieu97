@@ -21,7 +21,11 @@ class CreateTableTimesheetsTable extends Migration
             $table->string('start_time');
             $table->string('end_time');
             $table->string('details');
-            $table->string('approve');
+            $table->string('issue')->default(null);
+            $table->string('intention')->default(null);
+            $table->string('leader')->default(null);
+            $table->integer('late_flg')->default(null);
+            $table->boolean('approve');
 
             $table->timestamps();
         });
