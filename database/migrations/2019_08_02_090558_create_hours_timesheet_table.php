@@ -17,7 +17,7 @@ class CreateHoursTimesheetTable extends Migration
             $table->integer('id');
             $table->time('start_time');
             $table->time('end_time');
-            });
+        });
     }
 
     /**
@@ -25,6 +25,7 @@ class CreateHoursTimesheetTable extends Migration
      *
      * @return void
      */
+    
     public function down()
     {
         Schema::dropIfExists('hours_timesheet');

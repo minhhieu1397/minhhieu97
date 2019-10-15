@@ -22,11 +22,11 @@
 				@endif
 	       		<div class="form-group">
 	            	{{ Form::label('start_time', 'Start Time', ['class' => 'control-label']) }}
-	            	{{ Form::time('start_time', $hour->start_time, ['class' => 'form-control']) }}
+	            	{{ Form::time('start_time', null, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
 	            	{{ Form::label('end_time', 'End Time', ['class' => 'control-label']) }}
-	            	{{ Form::time('end_time', $hour->end_time, ['class' => 'form-control']) }}
+	            	{{ Form::time('end_time', null, ['class' => 'form-control']) }}
 	       		</div>
 	       		<div class="form-group">
 	       			{!! Form::submit( 'Update', ['class' => 'btn btn-primary']) !!}
