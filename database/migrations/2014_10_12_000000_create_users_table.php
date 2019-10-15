@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->string('description');
-            $table->string('approve');
-            $table->string('leader');
+            $table->string('approve')->nullable();
+            $table->string('leader')->nullable();
             
             $table->timestamps();
         });
