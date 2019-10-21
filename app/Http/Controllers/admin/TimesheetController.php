@@ -8,25 +8,24 @@ use App\Services\Admin\TimesheetService;
 use App\Models\User;
 use App\Models\Timesheets;
 use App\Http\Controllers\Admin\BaseController;
-use App\Services\Interfaces\Admin\TimesheetInterface;
+use App\Services\Interfaces\TimesheetServiceInterface;
 
 class TimesheetController extends BaseController
 {
     protected $timesheetInterface;
 
-	public function __construct(TimesheetInterface $timesheetInterface)
+	public function __construct(TimesheetServiceInterface $timesheetInterface)
 	{
 		$this->timesheetInterface = $timesheetInterface;
 	}
 
-    public function adminViewTimesheet(User $user)
+    public function getTimesheetByUser(User $user)
     {
-        $timesheets = $this->timesheetInterface->adminViewTimesheet($user);
+        $timesheets = $this->timesheetInterface->getTimesheetByUser($user);
         $numberDate = count($this->timesheetInterface->numberDateTimesheet($user));
         $countLate = count($this->timesheetInterface->showLate($user));
         $listtimesheet = [];
         $month = \Carbon\Carbon::now();
-
         foreach ($timesheets as $key => $timesheet) {
             $day = \Carbon\Carbon::createFromDate(data_get( $timesheet, 'work_date'))->format('d');
             $listtimesheet[$day] = $timesheet;
@@ -37,9 +36,9 @@ class TimesheetController extends BaseController
         ]);
     }
 
-    public function view_by_month(Request $request, User $user)
+    public function getTimesheetByMonth(Request $request, User $user)
     {   
-        $timesheets = $this->timesheetInterface->view_by_month($request, $user);
+        $timesheets = $this->timesheetInterface->getTimesheetByMonth($request, $user);
         $numberDate = count($this->timesheetInterface->numberDateFindMonth($request, $user));
         $countLate = count($this->timesheetInterface->showLateFindMonth($request, $user));
 

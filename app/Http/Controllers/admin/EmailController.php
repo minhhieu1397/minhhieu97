@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\EmailNotification;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\EmailService;
+use App\Services\EmailService;
 use App\Http\Requests\Notification\CreateEmailRequest;
 use App\Http\Controllers\Admin\BaseController;
 

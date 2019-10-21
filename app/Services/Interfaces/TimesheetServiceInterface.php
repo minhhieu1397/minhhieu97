@@ -1,9 +1,9 @@
 <?php
-namespace App\Services\Interfaces\Admin;
+namespace App\Services\Interfaces;
 
-interface TimesheetInterface 
+interface TimesheetServiceInterface 
 {
-	public function adminViewTimesheet($user);
+	/*public function adminViewTimesheet($user);
 
 	public function view_by_month($request, $user);
 
@@ -13,5 +13,5 @@ interface TimesheetInterface
 
 	public function showLateFindMonth($request, $user);
 	
-	public function numberDateFindMonth($request, $user);
+	public function numberDateFindMonth($request, $user);*/
 }

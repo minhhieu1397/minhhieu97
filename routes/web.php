@@ -23,8 +23,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admins'], function () {
 	Route::get('/admins/hours/edit', 'HoursController@edit')->name('admins.hours.edit');
 	Route::put('/admins/hours/edit', 'HoursController@update')->name('admins.hours.update');
 	Route::get('/admins/logout', 'AdminController@logout')->name('admins.logout');
-	Route::get('/admins/timesheets/view/{user}', 'TimesheetController@adminViewTimesheet')->name('users.timesheet');
-	Route::get('/admins/timesheets/view_by_month/{user}', 'TimesheetController@view_by_month')->name('admin.timesheet.bymonth');
+	Route::get('/admins/timesheets/view/{user}', 'TimesheetController@getTimesheetByUser')->name('users.timesheet');
+	Route::get('/admins/timesheets/view_by_month/{user}', 'TimesheetController@getTimesheetByMonth')->name('admin.timesheet.bymonth');
 	Route::get('/admins/', 'AdminController@index')->name('admins.index');
 	Route::get('/admins/update_avatar', 'AdminController@editAvatar')->name('admins.avatar');
 	Route::post('/admins/update_avatar', 'AdminController@updateAvatar')->name('admins.update.avatar');

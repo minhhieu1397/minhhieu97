@@ -13,13 +13,13 @@ use App\Http\Requests\Timesheet\UpdateTimesheetRequest;
 use App\Notifications\CreateTimesheetNotification;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\BaseController;
-use App\Services\Interfaces\User\TimesheetInterface;
+use App\Services\Interfaces\TimesheetServiceInterface;
 
 class TimesheetController extends BaseController
 {
 	protected $timesheetInterface;
 
-	public function __construct(TimesheetInterface $timesheetInterface)
+	public function __construct(TimesheetServiceInterface $timesheetInterface)
 	{
 		$this->timesheetInterface = $timesheetInterface;
 	}

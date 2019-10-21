@@ -1,28 +1,30 @@
 <?php
-namespace App\Services\Admin;
+namespace App\Services;
 
-use App\Services\Interfaces\Admin\AdminInterface;
+use App\Services\Interfaces\AdminServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\CreateUserRequest;
-use App\Repositories\Admin\AdminRepository;
+use App\Models\Admins;
 
-class AdminService implements AdminInterface
+class AdminService implements AdminServiceInterface
 {
-	protected $adminRepository;
+	/*protected $adminRepository;
+*/
+	protected $model;
 
-	public function __construct(AdminRepository $adminRepository)
+	public function __construct(Admins $model)
 	{
-		$this->adminRepository = $adminRepository;
+		$this->model = $model;
 	}
 
 	public function getAll()
 	{
-		return $this->adminRepository->all();
+		return $this->model->paginate(5);
 	}
 
 	public function create($request)
 	{
-		return $this->adminRepository->create([
+		return $this->model->create([
 			'name' => ucwords(strtolower($request->input('name'))),
 			'email' => $request->input('email'),
 			'password' => \Hash::make($request->input('password')),
@@ -32,7 +34,7 @@ class AdminService implements AdminInterface
 
 	public function update($admin, $request)
 	{
-		return $this->adminRepository->update($admin, [
+		return $this->model->find($admin->id)->update([
 			'name' => ucwords(strtolower($request->input('name'))),
 			'email' => $request->input('email'),
 			'level' => $request->input('level'),
@@ -41,6 +43,6 @@ class AdminService implements AdminInterface
 
 	public function delete($admin)
 	{
-		return $this->adminRepository->delete($admin);
+		return $this->model->find($admin)->delete($admin);
 	}
 }

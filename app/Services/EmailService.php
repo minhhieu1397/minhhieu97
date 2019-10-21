@@ -1,10 +1,10 @@
 <?php
+namespace App\Services;
 
-namespace App\Repositories\Admin;
-
+use Illuminate\Http\Request;
 use App\Models\Email;
 
-class EmailRepository
+class EmailService
 {
 	protected $model;
 
@@ -13,14 +13,18 @@ class EmailRepository
 		$this->model = $model;
 	}
 
-	public function all()
+	public function getAll()
 	{
 		return $this->model->all();
 	}
 
-	public function create($attributes)
+	public function create($request)
 	{
-		return $this->model->create($attributes);
+		return $this->model->create([
+			'email' => $request->input('email')
+		]);
+
+		return $emails;
 	}
 
 	public function delete($email)

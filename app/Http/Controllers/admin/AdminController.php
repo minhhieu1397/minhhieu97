@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Admin\AdminService;
-use App\Services\Interfaces\Admin\AdminInterface;
+use App\Services\Interfaces\AdminServiceInterface;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Http\Requests\Image\UploadImageRequest;
@@ -18,7 +18,7 @@ class AdminController extends BaseController
 {
 	protected $adminInterface;
 
-    public function __construct(AdminInterface $adminInterface)
+    public function __construct(AdminServiceInterface $adminInterface)
     {
         $this->adminInterface = $adminInterface;
     }

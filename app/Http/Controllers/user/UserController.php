@@ -8,17 +8,16 @@ use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\Image\UploadImageRequest;
 use App\Http\Requests\User\ChangePasswordRequest;
-use App\Services\User\UserService;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\BaseController;
-use App\Services\Interfaces\User\UserInterface;
+use App\Services\Interfaces\UserServiceInterface;
 
 class UserController extends BaseController
 {
     protected $userInterface;
 
-    public function __construct(UserInterface $userInterface)
+    public function __construct(UserServiceInterface $userInterface)
     {
         $this->userInterface = $userInterface;
     }
@@ -60,7 +59,7 @@ class UserController extends BaseController
 
     public function update(UpdateRequest $request)
     {
-        if ($this->userInterface->update($request)) {
+        if ($this->userInterface->UpdateDescription($request)) {
             return redirect()->route('timesheets.index');
         } else {
             return back()->withInput();

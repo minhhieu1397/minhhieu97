@@ -10,13 +10,13 @@ use App\Http\Requests\User\AdminUpdateUserRequest;
 use App\Http\Requests\User\ResetPasswordRequest;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Controllers\Admin\BaseController;
-use App\Services\Interfaces\Admin\UserInterface;
+use App\Services\Interfaces\UserServiceInterface;
 
 class UserController extends BaseController
 {
 	protected $userInterface;
 
-    public function __construct(UserInterface $userInterface)
+    public function __construct(UserServiceInterface $userInterface)
     {
         $this->userInterface = $userInterface;
     }
